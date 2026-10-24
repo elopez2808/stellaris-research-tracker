@@ -302,6 +302,8 @@ html.pmlock{overflow:hidden}
 .pmlist b.up{color:var(--soc)} .pmlist b.down{color:var(--danger)}
 .pmlist.tips{color:var(--muted)} .pmlist.tips b{color:var(--fg)}
 .card .mod,.card .pre,.card .un,.card .odds,.pmsub,.pmlist li{overflow-wrap:anywhere;word-break:normal;white-space:normal}
+.qhint{flex-basis:100%;font-size:13px;color:var(--muted);padding:2px 4px}
+.qhint b{color:var(--fg)}
 </style>
 <header class="bar">
   <p class="mark">Stellaris <span class="markthin">Research</span></p>
@@ -360,6 +362,7 @@ html.pmlock{overflow:hidden}
       <div class="olabel"><span class="n">03</span><span class="k">Filter</span><span class="v" id="filterV">All techs</span></div>
       <div class="filters">
         <input class="search" type="text" id="q" placeholder="Search techs, unlocks or categories" aria-label="Search techs">
+        <div class="qhint" id="qhint" hidden></div>
         <button class="chip" id="hideDone" aria-pressed="false"><span class="sw"></span>Hide researched</button>
         <button class="chip" id="hideRare" aria-pressed="false"><span class="sw"></span>Hide rare &amp; dangerous</button>
         <button class="chip" id="readyOnly" aria-pressed="false"><span class="sw"></span>In the draw now</button>
@@ -2454,7 +2457,7 @@ function renderBands(){
       if(m==='todo'&&done.has(x.i))return false;
       if(m==='done'&&!done.has(x.i))return false;
       if(m==='ready'&&st.state!=='pool')return false;
-      if(q&&!(x.n+' '+x.c+' '+x.u+' '+x.only+' '+(MODNAMES[x.mod]||'')).toLowerCase().includes(q))return false;
+      if(q&&!qText(x).includes(q))return false;
       return true;
     }).sort(F.byOdds?((x,y)=>((ODDS[y.i].p||0)-(ODDS[x.i].p||0))||(done.has(x.i)-done.has(y.i))||x.n.localeCompare(y.n)):((x,y)=>x.c.localeCompare(y.c)||x.cost-y.cost||x.n.localeCompare(y.n)));
     let state,cls='';
@@ -2464,7 +2467,8 @@ function renderBands(){
     else if(dn)state=`<b>Complete</b> · Tier ${t+1} unlocked · ${inPool} in the draw`;
     else if(t===mt)state=`<b>${c}</b> researched · ${inPool} in the draw`;
     else state=`<b>${c} / ${req(t+1)}</b> · ${req(t+1)-c} more to unlock Tier ${t+1} · ${inPool} in the draw`;
-    const ck=a+t, col=(ck in TC)?TC[ck]:(dn||(lk&&!dn)||(t===0&&c>0));
+    if(q&&!list.length)continue;
+    const ck=a+t, col=q?false:(ck in TC)?TC[ck]:(dn||(lk&&!dn)||(t===0&&c>0));
     h+=`<section class="panel band${dn?' done':''}${lk&&!dn?' closed':''}${col?' collapsed':''}" data-a="${a}" id="tier${t}">
       <div class="bandhead"><div><p class="eyebrow">${AREAS[a]} · ${TV.filter(x=>x.a===a&&x.t===t).length} techs</p><h2>${t===0?'Starting <b>techs</b>':'Tier <b>'+t+'</b>'}</h2></div><div class="state${cls}">${state}</div><button class="bcol" data-ck="${ck}" aria-expanded="${!col}" aria-label="${col?'Expand':'Collapse'} ${t===0?'starting techs':'tier '+t}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>`;
     if(!col){h+=`
@@ -2509,6 +2513,7 @@ function renderBands(){
     }
     h+='</section>';
   }
+  if(q&&!h)h=`<section class="panel band" data-a="${a}"><div class="empty">No ${AREAS[a]} techs match “${esc(q)}”${F.hideDone||F.hideRare||F.readyOnly?' with the current filters':''}.</div></section>`;
   $('bands').innerHTML=h;
   $('optsNote').textContent=`${k} options per area`+(k>(E.num.opts||3)?' (incl. Self-Evolving Logic)':'');
 }
@@ -2612,7 +2617,7 @@ $('bands').addEventListener('click',e=>{
   const c=e.target.closest('.card');if(c)toggle(+c.dataset.i)});
 try{Object.assign(TF,JSON.parse(localStorage.getItem(LS+'-tf')||'{}'))}catch(_){}
 $('bands').addEventListener('keydown',e=>{const c=e.target.closest('.card');if(c&&(e.key===' '||e.key==='Enter')){e.preventDefault();const i=+c.dataset.i;toggle(i);const n=document.querySelector(`.card[data-i="${i}"]`);n&&n.focus()}});
-function selectArea(k){if(S.area===k){moveThumb();return}S.area=k;lsSet();renderTop();renderBands()}
+function selectArea(k){if(S.area===k){moveThumb();return}S.area=k;lsSet();renderTop();renderBands();if(!Q_SW&&typeof qHint==='function')qHint(false)}
 let dragJustEnded=false;
 $('seg').addEventListener('click',e=>{if(dragJustEnded){dragJustEnded=false;return}const b=e.target.closest('button');if(!b)return;selectArea(b.dataset.a)});
 /* drag the thumb */
@@ -2651,7 +2656,32 @@ $('seg').addEventListener('click',e=>{if(dragJustEnded){dragJustEnded=false;retu
 })();
 $('sizes').addEventListener('click',e=>{const b=e.target.closest('.size');if(!b)return;if(TC[S.area+b.dataset.t]!==false){TC[S.area+b.dataset.t]=false;saveTC();renderBands()}const el=$('tier'+b.dataset.t);el&&el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
 for(const k in F)$(k).addEventListener('click',()=>{F[k]=!F[k];renderTop();renderBands()});
-$('q').addEventListener('input',renderBands);
+function qText(x){return (x.n+' '+x.c+' '+x.u+' '+x.only+' '+(MODNAMES[x.mod]||'')).toLowerCase()}
+function qScan(q){const r={p:{n:0,name:0,best:0},s:{n:0,name:0,best:0},e:{n:0,name:0,best:0}};
+  for(const x of TV){if(!qText(x).includes(q))continue;const o=r[x.a];o.n++;const nm=x.n.toLowerCase();const sc=nm===q?3:nm.startsWith(q)?2:nm.includes(q)?1:0;if(sc)o.name++;o.best=Math.max(o.best,sc)}return r}
+function qUpdate(fromTyping){
+  const q=$('q').value.trim().toLowerCase(),hint=$('qhint');
+  if(!q){hint.hidden=true;renderBands();return}
+  const r=qScan(q),cur=S.area;
+  const others=['p','s','e'].filter(k=>k!==cur);
+  const better=others.filter(k=>r[k].best>r[cur].best||(r[cur].n===0&&r[k].n>0)).sort((x,y)=>r[y].best-r[x].best||r[y].n-r[x].n)[0];
+  let switched=false;
+  if(fromTyping&&better&&q.length>=3){switched=true;Q_SW=true;selectArea(better);Q_SW=false}else renderBands();
+  qHint(switched);
+}
+let Q_SW=false;
+function qHint(switched){
+  const q=$('q').value.trim().toLowerCase(),hint=$('qhint');if(!q){hint.hidden=true;return}
+  const r=qScan(q),a=S.area,parts=[];
+  parts.push(`<b>${r[a].n}</b> in ${AREAS[a]}`);
+  ['p','s','e'].filter(k=>k!==a&&r[k].n).forEach(k=>parts.push(`<button type="button" class="linkbtn" data-qa="${k}">${r[k].n} in ${AREAS[k]}</button>`));
+  hint.innerHTML=(switched?`Switched to ${AREAS[a]} · `:'')+parts.join(' · ')+(r[a].n?` · <button type="button" class="linkbtn" id="qgo">Show results ↓</button>`:'');
+  hint.hidden=false;
+}
+$('q').addEventListener('input',()=>qUpdate(true));
+$('q').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const c=document.querySelector('#bands .card');if(c){c.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});c.focus({preventScroll:true})}}});
+$('qhint').addEventListener('click',e=>{const b=e.target.closest('[data-qa]');if(b){selectArea(b.dataset.qa);return}
+  if(e.target.closest('#qgo')){const c=document.querySelector('#bands .card');if(c){c.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});c.focus({preventScroll:true})}}});
 $('camp').addEventListener('change',e=>{S.cur=e.target.value;loadDone();commit();renderAll()});
 function openSheet(forceOpen){const s=$('sheet');s.hidden=forceOpen?false:!s.hidden;$('menuBtn').setAttribute('aria-expanded',String(!s.hidden));if(forceOpen)$('newName').focus()}
 $('menuBtn').addEventListener('click',()=>openSheet(false));
