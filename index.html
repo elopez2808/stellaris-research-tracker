@@ -253,6 +253,16 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--veil)
 .aseg button[data-ta=s][aria-pressed=true]{background:color-mix(in srgb,var(--soc) var(--tint-amt),var(--raise-b))}
 .aseg button[data-ta=e][aria-pressed=true]{background:color-mix(in srgb,var(--eng) var(--tint-amt),var(--raise-b))}
 @media (max-width:520px){.aseg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-self:stretch;width:100%}.aseg button{padding:9px 6px;justify-content:center}.bandtools{flex-direction:column;align-items:stretch}}
+label.pill{cursor:pointer}
+.band .bandhead{cursor:pointer;user-select:none}
+.bcol{flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--muted);display:grid;place-items:center;align-self:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .2s,color .2s}
+.bcol svg{width:18px;height:18px;transition:transform .2s}
+.bcol[aria-expanded=false] svg{transform:rotate(-90deg)}
+.bandhead:hover .bcol{color:var(--fg)}
+.band.collapsed{gap:0}
+.band .bandhead .state{margin-left:auto}
+.linkbtn{border:0;background:none;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.linkbtn:hover{color:var(--fg)}
 </style>
 <header class="bar">
   <p class="mark">Stellaris <span class="markthin">Research</span></p>
@@ -271,6 +281,13 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--veil)
   <button class="pill raised" id="addCamp">Add campaign</button>
   <button class="pill raised warn" id="resetBtn">Reset campaign</button>
   <button class="pill raised warn" id="delBtn">Delete campaign</button>
+  <div class="backup">
+    <span class="lbl">Save file</span>
+    <button class="pill raised" id="fSave">Save campaign to file</button>
+    <label class="pill raised" for="fLoad">Load campaign file</label>
+    <input type="file" id="fLoad" accept=".json,application/json" hidden>
+    <span class="status" id="fMsg"></span>
+  </div>
   <div class="backup">
     <span class="lbl">Backup</span>
     <button class="pill raised" id="bkCopy">Copy backup code</button>
@@ -296,7 +313,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--veil)
     </div>
 
     <div class="opt">
-      <div class="olabel"><span class="n">02</span><span class="k">Tier</span><span class="v" id="tierV">Tier 1</span><span class="aside">Tap to jump</span></div>
+      <div class="olabel"><span class="n">02</span><span class="k">Tier</span><span class="v" id="tierV">Tier 1</span><span class="aside tierctl">Tap to jump · <button type="button" class="linkbtn" id="expAll">Expand all</button> · <button type="button" class="linkbtn" id="colAll">Collapse all</button></span></div>
       <div class="sizes" id="sizes"></div>
     </div>
 
@@ -329,9 +346,9 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--veil)
       <li><b>Tick off what you've researched.</b> Tap a tech card to mark it done; tap again to undo. Starting a new game? Press <em>Mark starting techs</em> first.</li>
       <li><b>Describe your empire.</b> In <em>Your empire</em>, set the year, planets, starbases, authority, ethics, civics, origin and the DLC and mods you play with. As you play, add the traditions and ascension perks you adopt under <em>In-game choices</em>. Every card's odds update as you go.</li>
       <li><b>Read the odds.</b> The big % on each card is the chance that tech shows up among your next research options in that area. <em>Boosted</em> and <em>Reduced</em> list the modifiers working on it now; <em>Could boost</em> shows what would raise it.</li>
-      <li><b>Watch the tiers.</b> A tier opens once you've researched enough techs in the tier below (6 in vanilla; ACOT's tiers 6 to 10 need 2 or 4). Finished tiers grey out, and techs you can't be offered yet are greyed with the reason.</li>
+      <li><b>Watch the tiers.</b> A tier opens once you've researched enough techs in the tier below (6 in vanilla; ACOT's tiers 6 to 10 need 2 or 4). Finished tiers grey out, and techs you can't be offered yet are greyed with the reason. Tap a tier's heading to collapse or expand it; finished tiers and tiers that haven't opened start collapsed.</li>
       <li><b>Filter.</b> Use search and the switches at the top, or the pills on each tier, to see only what's in the draw, what's left, or what you've done. Each tier also has Physics, Society and Engineering buttons so you can switch area without scrolling back up.</li>
-      <li><b>Keep your progress.</b> Use <em>+</em> for a new campaign. If you're signed in to Claude your progress is saved to your account; otherwise it stays in this browser. To move it to another device, use <em>Copy backup code</em> in the <em>≡</em> menu.</li>
+      <li><b>Keep your progress.</b> Use <em>+</em> for a new campaign. If you're signed in to Claude your progress is saved to your account; otherwise it stays in this browser. To move it to another device, use <em>Copy backup code</em> in the <em>≡</em> menu. To keep a copy or share a campaign, open the <em>≡</em> menu and use <em>Save campaign to file</em>; <em>Load campaign file</em> brings it back as a campaign.</li>
     </ol>
     <p class="note left">Odds are estimates built from the game's own research weights. Events, special projects, debris and a few rare situations aren't modelled, and other mods you run can change things.</p>
   </details>
@@ -2325,6 +2342,9 @@ const ICO=(()=>{try{
 function iconHTML(x){const r=ICO(x);return r?`<img class="ticon${r[1]?' cat':''}" src="${r[0]}" alt="" width="40" height="40" loading="lazy" decoding="async">`:'<span class="ticon none"></span>'}
 const TICK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 const F={hideDone:false,hideRare:false,readyOnly:false,byOdds:true};
+const TC={}; /* collapsed tiers: key area+tier -> bool */
+try{Object.assign(TC,JSON.parse(localStorage.getItem('stellaris-tech-tracker-v1-tc')||'{}'))}catch(_){}
+function saveTC(){try{localStorage.setItem('stellaris-tech-tracker-v1-tc',JSON.stringify(TC))}catch(_){}}
 const TF={}; /* per-tier filter: key area+tier -> all | todo | ready | done */
 const TFOPT=[['all','All'],['todo','To research'],['ready','Can research'],['done','Researched']];
 
@@ -2405,8 +2425,10 @@ function renderBands(){
     else if(dn)state=`<b>Complete</b> · Tier ${t+1} unlocked · ${inPool} in the draw`;
     else if(t===mt)state=`<b>${c}</b> researched · ${inPool} in the draw`;
     else state=`<b>${c} / ${req(t+1)}</b> · ${req(t+1)-c} more to unlock Tier ${t+1} · ${inPool} in the draw`;
-    h+=`<section class="panel band${dn?' done':''}${lk&&!dn?' closed':''}" data-a="${a}" id="tier${t}">
-      <div class="bandhead"><div><p class="eyebrow">${AREAS[a]} · ${TV.filter(x=>x.a===a&&x.t===t).length} techs</p><h2>${t===0?'Starting <b>techs</b>':'Tier <b>'+t+'</b>'}</h2></div><div class="state${cls}">${state}</div></div>
+    const ck=a+t, col=(ck in TC)?TC[ck]:(dn||(lk&&!dn)||(t===0&&c>0));
+    h+=`<section class="panel band${dn?' done':''}${lk&&!dn?' closed':''}${col?' collapsed':''}" data-a="${a}" id="tier${t}">
+      <div class="bandhead"><div><p class="eyebrow">${AREAS[a]} · ${TV.filter(x=>x.a===a&&x.t===t).length} techs</p><h2>${t===0?'Starting <b>techs</b>':'Tier <b>'+t+'</b>'}</h2></div><div class="state${cls}">${state}</div><button class="bcol" data-ck="${ck}" aria-expanded="${!col}" aria-label="${col?'Expand':'Collapse'} ${t===0?'starting techs':'tier '+t}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>`;
+    if(!col){h+=`
       <div class="bandtools"><div class="aseg" role="group" aria-label="Switch area">${['p','s','e'].map(k=>`<button data-ta="${k}" data-tt="${t}" aria-pressed="${k===a}"><span class="dot ${k}"></span>${AREAS[k]}</button>`).join('')}</div>
       <div class="tseg" role="group" aria-label="Filter tier ${t}">${TFOPT.map(([kk,l])=>`<button data-tk="${a+t}" data-m="${kk}" aria-pressed="${(TF[a+t]||'all')===kk}">${l}</button>`).join('')}</div></div>`;
     if(!list.length)h+=`<div class="empty">${(TF[a+t]||'all')==='all'?'No techs match the current filters.':'Nothing here with this tier filter.'}</div>`;
@@ -2444,6 +2466,7 @@ function renderBands(){
           ${x.u?`<span class="un">${esc(x.u)}</span>`:''}${pre0}${paL}${anyL}${onlyL}${modL}</div>`;
       }
       h+='</div>';
+    }
     }
     h+='</section>';
   }
@@ -2539,6 +2562,8 @@ function renderAll(){renderCamps();renderTop();renderBands();renderEmpire()}
 function toggle(i){done.has(i)?done.delete(i):done.add(i);commit();renderTop();
   const y=window.scrollY;renderBands();window.scrollTo(0,y)}
 $('bands').addEventListener('click',e=>{
+  const hd=e.target.closest('.bandhead');
+  if(hd&&!e.target.closest('a')){const btn=hd.querySelector('.bcol'),sec=hd.closest('.band'),top=sec.getBoundingClientRect().top;const ck=btn.dataset.ck;TC[ck]=btn.getAttribute('aria-expanded')==='true';saveTC();renderBands();const n=$(sec.id);if(n&&top<0)window.scrollBy(0,n.getBoundingClientRect().top-top);return}
   const ab=e.target.closest('.aseg button');
   if(ab){const k=ab.dataset.ta,tt=+ab.dataset.tt,top=ab.closest('.band').getBoundingClientRect().top;if(k===S.area)return;selectArea(k);
     let n=null;for(let x=tt;x>=0&&!n;x--)n=$('tier'+x);if(n)window.scrollBy(0,n.getBoundingClientRect().top-top);return}
@@ -2585,7 +2610,7 @@ $('seg').addEventListener('click',e=>{if(dragJustEnded){dragJustEnded=false;retu
   };
   seg.addEventListener('pointerup',end);seg.addEventListener('pointercancel',end);
 })();
-$('sizes').addEventListener('click',e=>{const b=e.target.closest('.size');if(!b)return;const el=$('tier'+b.dataset.t);el&&el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
+$('sizes').addEventListener('click',e=>{const b=e.target.closest('.size');if(!b)return;if(TC[S.area+b.dataset.t]!==false){TC[S.area+b.dataset.t]=false;saveTC();renderBands()}const el=$('tier'+b.dataset.t);el&&el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
 for(const k in F)$(k).addEventListener('click',()=>{F[k]=!F[k];renderTop();renderBands()});
 $('q').addEventListener('input',renderBands);
 $('camp').addEventListener('change',e=>{S.cur=e.target.value;loadDone();commit();renderAll()});
@@ -2630,6 +2655,35 @@ $('bkRestore').addEventListener('click',()=>{
   const v=$('bkIn').value.trim();
   try{if(!v.startsWith('STR1:'))throw 0;const o=JSON.parse(b64d(v.slice(5)));if(!o.camps)throw 0;adopt(o);commit();renderAll();$('bkIn').value='';$('bkMsg').textContent='Progress restored'}
   catch(_){$('bkMsg').textContent="That isn't a valid backup code"}
+});
+$('colAll').addEventListener('click',()=>{for(let x=0;x<=10;x++)TC[S.area+x]=true;saveTC();renderBands()});
+$('expAll').addEventListener('click',()=>{for(let x=0;x<=10;x++)TC[S.area+x]=false;saveTC();renderBands()});
+/* ---------- save / load campaign files ---------- */
+function fMsg(s){$('fMsg').textContent=s}
+function slug(s){return (s.normalize('NFKD').replace(/[^\w\- ]+/g,'').trim().replace(/\s+/g,'-').toLowerCase()||'campaign')}
+$('fSave').addEventListener('click',async()=>{
+  commit();
+  const data=JSON.stringify({app:'stellaris-research-tracker',version:1,savedAt:new Date().toISOString(),name:S.cur,perTier:S.thr,campaign:S.camps[S.cur]},null,1);
+  const fn='stellaris-'+slug(S.cur)+'-'+new Date().toISOString().slice(0,10)+'.json';
+  let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(_){dl=null}
+  if(dl){try{await dl.save({filename:fn,data});fMsg('Saved '+fn)}catch(e){fMsg(e&&e.code==='declined'?'Save cancelled':'Saving files isn’t available here')}return}
+  try{const url=URL.createObjectURL(new Blob([data],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=fn;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(url);a.remove()},1500);fMsg('Saved '+fn)}
+  catch(_){fMsg('Saving files isn’t available here')}
+});
+$('fLoad').addEventListener('change',async e=>{
+  const f=e.target.files&&e.target.files[0];e.target.value='';if(!f)return;
+  try{
+    const o=JSON.parse(await f.text());
+    if(o&&o.camps&&o.cur){ // full backup file
+      Object.entries(o.camps).forEach(([n,c])=>{let k=n,i=2;while(S.camps[k])k=n+' ('+(i++)+')';S.camps[k]=c});
+      fMsg('Loaded '+Object.keys(o.camps).length+' campaigns');
+    }else{
+      if(!o||o.app!=='stellaris-research-tracker'||!o.campaign)throw 0;
+      const base=(o.name||'Loaded campaign').slice(0,60);let k=base,i=2;while(S.camps[k])k=base+' ('+(i++)+')';
+      S.camps[k]=o.campaign;S.cur=k;fMsg('Loaded “'+k+'”');
+    }
+    loadDone();commit();renderAll();
+  }catch(_){fMsg("That file isn't a saved campaign")}
 });
 /* ---------- boot ---------- */
 adopt(lsGet());
