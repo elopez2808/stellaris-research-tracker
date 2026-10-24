@@ -304,6 +304,24 @@ html.pmlock{overflow:hidden}
 .card .mod,.card .pre,.card .un,.card .odds,.pmsub,.pmlist li{overflow-wrap:anywhere;word-break:normal;white-space:normal}
 .qhint{flex-basis:100%;font-size:13px;color:var(--muted);padding:2px 4px}
 .qhint b{color:var(--fg)}
+.fsearch{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:30;width:min(560px,calc(100% - 24px));display:flex;align-items:center;gap:8px;padding:6px 8px 6px 16px;border-radius:999px;background:color-mix(in srgb,var(--panel) 86%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.1);backdrop-filter:blur(16px) saturate(1.1);border:1px solid color-mix(in srgb,var(--edge) 70%,transparent);box-shadow:var(--sh);animation:fsin .18s ease-out}
+.fsearch[hidden]{display:none}
+@keyframes fsin{from{opacity:0;transform:translate(-50%,-8px)}to{opacity:1;transform:translate(-50%,0)}}
+@media (prefers-reduced-motion:reduce){.fsearch{animation:none}}
+.fsearch svg{width:18px;height:18px;color:var(--muted);flex:0 0 auto}
+.fsearch input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;font-size:15px;padding:8px 2px;outline:none}
+.fsearch input::-webkit-search-cancel-button{display:none}
+.q2hint{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:45%}
+.fsearch button{flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--fg);-webkit-tap-highlight-color:transparent}
+.fsearch button[hidden]{display:none}
+html.fs-on .bandtools{top:72px}
+@media (max-width:520px){.q2hint{display:none}}
+@media (min-width:1180px){
+  .fsearch{left:auto;transform:none;top:10px;height:57px;box-sizing:border-box;right:calc((100vw - min(100vw,1180px))/2 + 16px + clamp(20px,3.4vw,46px));width:clamp(260px,calc(min(100vw,1180px) - 32px - 2*clamp(20px,3.4vw,46px) - 760px),380px);animation-name:fsinr}
+  html.fs-on .bandtools{top:10px}
+  .q2hint{max-width:38%}
+}
+@keyframes fsinr{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 </style>
 <header class="bar">
   <p class="mark">Stellaris <span class="markthin">Research</span></p>
@@ -487,7 +505,7 @@ Global Pacification|p|1|5|96|o|r|Component: Global Pacifier||tech_pk_shielder
 Neutron Sweeping|p|0|5|96|o|r|Component: Neutron Sweep||tech_pk_neutron
 Divine Stimulus|s|b|5|96|o|r|Component: Divine Enforcer||tech_pk_godray
 Atmospheric Nanobot Dispersal|e|5|5|96|o|r|Component: Nanobot Diffuser||tech_pk_nanobots
-Btc 1|e|5|5|96||r|||tech_btc_1
+Star Cracker|e|5|5|96||r|||tech_btc_1
 Planet Smelting|e|5|5|96|o|r|Component: Planet Smelter||tech_pk_smelter
 Rift Sphere|p|1|2|20||r|||tech_rift_sphere
 Astral Harvesting|p|0|2|8|||Feature : Astral Actions +1||tech_astral_harvesting
@@ -703,8 +721,8 @@ Nourishment Complex|s|7|5|280||rd|Building: Nourishment Complex||tech_fe_nourish
 Nourishment Center|s|7|5|280|6q|rd|Building: Nourishment Center||tech_fe_nourishment_2
 Dimensional Replicator|e|4|5|280||rd|Building: Dimensional Replicator||tech_fe_fabricator_1
 Dimensional Fabricator|e|4|5|280|6s|rd|Building: Dimensional Fabricator||tech_fe_fabricator_2
-Class-3 Singularity|p|0|5|280||rd|Building: Class-3 Singularity||tech_fe_singularity_1
-Class-4 Singularity|p|0|5|280|6u|rd|Building: Class-4 Singularity||tech_fe_singularity_2
+Prototype Class-4 Singularity Generator|p|0|5|280||rd|Building: Class-3 Singularity||tech_fe_singularity_1
+Class-4 Singularity Generator|p|0|5|280|6u|rd|Building: Class-4 Singularity||tech_fe_singularity_2
 Hyper-Forge|e|3|5|280||rd|Building: Hyper-Forge||tech_fe_forge_1
 Auto-Forge|e|3|5|280|6w|rd|Building: Auto-Forge||tech_fe_forge_2
 Sky Dome|s|a|5|280||rd|Building: Sky Dome||tech_fe_dome_1
@@ -782,7 +800,7 @@ Omega Theory|p|0|3|40|8v,8w|rd|||tech_akx_worm_3
 Artificial Dragonscales|e|4|5|240||r|||tech_dragon_armor
 Enigmatic Encoder|p|2|5|240||r|||tech_enigmatic_encoder
 Enigmatic Decoder|p|2|5|240||r|||tech_enigmatic_decoder
-Identity Copy|e|3|4|32|||||tech_identity_copy
+Identity Copies|e|3|4|32|||||tech_identity_copy
 Identity Fusion|e|3|4|40|||||tech_identity_fusion
 Identity Initialization|e|3|4|40|||||tech_identity_initialization
 Cetana's Thought|p|2|5|64||r|Research Speed +20%||tech_synth_queen_knowledge
@@ -839,7 +857,7 @@ Waystations|e|5|0|0|59|s|||tech_waystation_1
 Improved Wayline Logistics|e|5|2|10|ai||||tech_waystation_2
 Advanced Wayline Logistics|e|5|3|20|aj||||tech_waystation_3
 Planetary Engineering|e|3|2|8|aq,4l||||tech_planetary_engineering
-Dyson Gun|e|4|3|24|ck,cu|r|||tech_dyson_gun
+Stellar Cannon|e|4|3|24|ck,cu|r|||tech_dyson_gun
 Quantum Catapult|p|0|3|32||r|Mega-Structure: Quantum Catapult +3||tech_quantum_catapult
 Orbital Rings|e|5|3|20|3p,g2,g3||||tech_orbital_ring_tier_1
 Hyper Relays|p|0|2|12|ci|r|Edict: Networked Relays +1||tech_hyper_relays
@@ -2255,7 +2273,10 @@ async function pushRemote(){
 /* ---------- counting ---------- */
 let TV=T;
 function vis(x){if(!x.mod)return true;const c=S.camps[S.cur];const m=(c&&c.emp&&c.emp.mods)||{};return m[x.mod]!==false}
-function refreshVis(){TV=T.filter(vis)}
+/* names ACOT changes (its localisation replaces vanilla's); vanilla names are shown when ACOT is switched off */
+const MODREN={tech_dark_matter_deflector:['Dark Matter Deflectors','a'],tech_dark_matter_power_core:['Dark Matter Power','a'],tech_dark_matter_propulsion:['Dark Matter Propulsion','a'],tech_fe_singularity_1:['Class-3 Singularity','a'],tech_fe_singularity_2:['Class-4 Singularity','a']};
+T.forEach(x=>{x.n0=x.n});
+function refreshVis(){const c=S.camps[S.cur];const m=(c&&c.emp&&c.emp.mods)||{};T.forEach(x=>{const r=MODREN[x.k];x.n=(r&&m[r[1]]===false)?r[0]:x.n0});TV=T.filter(vis)}
 function req(n){return n<=1?0:n<=5?S.thr:n===6?2:4}
 function maxTier(a){return MAXT[a]||5}
 let CNT={},ALLC={},MAXT={};
@@ -2676,7 +2697,7 @@ function qHint(switched){
   parts.push(`<b>${r[a].n}</b> in ${AREAS[a]}`);
   ['p','s','e'].filter(k=>k!==a&&r[k].n).forEach(k=>parts.push(`<button type="button" class="linkbtn" data-qa="${k}">${r[k].n} in ${AREAS[k]}</button>`));
   hint.innerHTML=(switched?`Switched to ${AREAS[a]} · `:'')+parts.join(' · ')+(r[a].n?` · <button type="button" class="linkbtn" id="qgo">Show results ↓</button>`:'');
-  hint.hidden=false;
+  hint.hidden=false;if(window.__fsSync)window.__fsSync();
 }
 $('q').addEventListener('input',()=>qUpdate(true));
 $('q').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const c=document.querySelector('#bands .card');if(c){c.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});c.focus({preventScroll:true})}}});
@@ -2825,6 +2846,24 @@ bandsEl.addEventListener('pointermove',e=>{if(LP&&Math.hypot(e.clientX-LP.x,e.cl
 bandsEl.addEventListener('click',e=>{if(LP_FIRED&&e.target.closest('.card')){LP_FIRED=false;e.stopImmediatePropagation();e.preventDefault()}},true);
 bandsEl.addEventListener('contextmenu',e=>{const c=e.target.closest('.card');if(!c)return;e.preventDefault();if(PATH_OPEN==null){lpCancel();openPath(+c.dataset.i)}});
 bandsEl.addEventListener('keydown',e=>{const c=e.target.closest('.card');if(c&&e.key==='Enter'&&e.shiftKey){e.preventDefault();e.stopImmediatePropagation();openPath(+c.dataset.i)}},true);
+/* ---------- floating search ---------- */
+(function(){
+  const fs=document.createElement('div');fs.id='fsearch';fs.className='fsearch';fs.hidden=true;
+  fs.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input type="search" id="q2" placeholder="Search techs" aria-label="Search techs" autocomplete="off"><span id="q2hint" class="q2hint"></span><button type="button" id="q2x" aria-label="Clear search" hidden>✕</button>';
+  document.body.appendChild(fs);
+  const q=$('q'),q2=$('q2');
+  const toBands=()=>{const b=$('bands');const top=b.getBoundingClientRect().top;if(top<0||top>innerHeight*0.6)window.scrollBy(0,top-80)};
+  const sync=()=>{$('q2x').hidden=!q2.value;const h=$('qhint');$('q2hint').textContent=(!q.value.trim()||h.hidden)?'':h.innerText.replace(/\s*·\s*Show results ↓\s*$/,'').replace(/^Switched to [A-Za-z]+ · /,'')};
+  q2.addEventListener('input',()=>{q.value=q2.value;qUpdate(true);sync();toBands()});
+  q2.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const c=document.querySelector('#bands .card');if(c){c.scrollIntoView({block:'center'});c.focus({preventScroll:true})}}if(e.key==='Escape'){q2.value='';q.value='';qUpdate(false);sync()}});
+  $('q2x').addEventListener('click',()=>{q2.value='';q.value='';qUpdate(false);sync();q2.focus()});
+  q.addEventListener('input',()=>{q2.value=q.value;sync()});
+  document.addEventListener('click',e=>{if(e.target.closest('#qhint'))setTimeout(sync,0)});
+  window.__fsSync=sync;
+  const set=v=>{if(fs.hidden===!v)return;fs.hidden=!v;document.documentElement.classList.toggle('fs-on',v);if(v){q2.value=q.value;sync()}};
+  let raf=0;const check=()=>{raf=0;set(q.getBoundingClientRect().bottom<0)};
+  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(check)},{passive:true});addEventListener('resize',check);check();
+})();
 /* ---------- save / load campaign files ---------- */
 function fMsg(s){$('fMsg').textContent=s}
 function slug(s){return (s.normalize('NFKD').replace(/[^\w\- ]+/g,'').trim().replace(/\s+/g,'-').toLowerCase()||'campaign')}
