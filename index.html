@@ -263,6 +263,9 @@ label.pill{cursor:pointer}
 .band .bandhead .state{margin-left:auto}
 .linkbtn{border:0;background:none;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .linkbtn:hover{color:var(--fg)}
+.mark{display:flex;align-items:center;gap:10px}
+.beta{display:inline-flex;align-items:center;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1;padding:5px 9px;border-radius:999px;color:var(--rare);border:1px solid color-mix(in srgb,var(--rare) 45%,transparent);background:color-mix(in srgb,var(--rare) 10%,transparent);vertical-align:middle;white-space:nowrap}
+.h1beta{font-size:12px;letter-spacing:.14em;vertical-align:.55em;margin-left:6px;-webkit-text-stroke:0}
 </style>
 <header class="bar">
   <p class="mark">Stellaris <span class="markthin">Research</span></p>
@@ -302,7 +305,7 @@ label.pill{cursor:pointer}
     <div>
       <p class="eyebrow">Tech tracker · your installed game · ACOT + Giga</p>
       <div class="hero">
-        <h1>Research log <b id="areaTitle">Physics</b></h1>
+        <h1>Research log <span class="beta h1beta" title="Still in development: odds and data may change">Beta</span> <b id="areaTitle">Physics</b></h1>
         <div class="big"><span id="bigCount">0</span><small id="bigOf">of 0 researched</small></div>
       </div>
     </div>
