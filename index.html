@@ -8,7 +8,7 @@
 <body>
 <title>Stellaris Research Tracker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,700&display=swap">
 <style>
 /* Layout: soft-grey shop-style shell — wordmark bar with pill campaign picker, one raised control panel (numbered option groups), then tier panels of raised tech tiles */
 :root{
@@ -367,6 +367,180 @@ html.fs-on .bandtools{top:72px}
 .imp.warn .imst{color:var(--fg);font-style:normal}
 @media (max-width:560px){.imp{display:grid;grid-template-columns:26px 1fr;gap:8px 12px}.imp .pill{width:auto}.imp .imtx{grid-column:2}}
 .umthumb{display:block;width:100%;max-height:150px;object-fit:cover;border-radius:14px;margin-bottom:10px}
+.egrp>.umhelp,.egrp>p.umhelp{flex:none}
+/* M3-SKIN */
+/* ================= Material 3 skin (flat, tonal surfaces) ================= */
+:root{
+  --m-primary:#4355b9;--m-on-primary:#fff;--m-primary-c:#dee0ff;--m-on-primary-c:#00105c;
+  --m-sec-c:#e1e0f9;--m-on-sec-c:#191a2c;--m-ter-c:#fdd7fa;--m-on-ter-c:#2a132a;
+  --m-surface:#fbf8fd;--m-sc-lowest:#ffffff;--m-sc-low:#f5f2f7;--m-sc:#efedf1;--m-sc-high:#e9e7ec;--m-sc-highest:#e4e1e6;
+  --m-on-surface:#1b1b1f;--m-on-sv:#46464f;--m-outline:#767680;--m-outline-v:#c6c5d0;
+  --m-scrim:rgba(0,0,0,.32);--m-hover:rgba(27,27,31,.08);--m-press:rgba(27,27,31,.12);
+  --m-e1:0 1px 2px rgba(0,0,0,.3),0 1px 3px 1px rgba(0,0,0,.15);--m-e3:0 1px 3px rgba(0,0,0,.3),0 4px 8px 3px rgba(0,0,0,.15);
+  --fg:var(--m-on-surface);--muted:var(--m-on-sv);--faint:var(--m-outline);--line:var(--m-outline-v);--panel:var(--m-sc-low);
+  --ink:var(--m-primary);--on-ink:var(--m-on-primary);--press:var(--m-sc-highest);--raise-a:var(--m-sc-high);--raise-b:var(--m-sc-high);--edge:transparent;--gloss:transparent;
+  --phy:#2f62c9;--soc:#1f8a55;--eng:#a86a00;--rare:#7a4fc0;--danger:#ba1a1a;--tint-amt:22%;
+  --sh:none;--sh-s:none;
+  --f:"Roboto Flex","Roboto",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --m-primary:#bac3ff;--m-on-primary:#08218a;--m-primary-c:#293ca0;--m-on-primary-c:#dee0ff;
+  --m-sec-c:#444559;--m-on-sec-c:#e1e0f9;--m-ter-c:#5c3f5b;--m-on-ter-c:#fdd7fa;
+  --m-surface:#131316;--m-sc-lowest:#0e0e11;--m-sc-low:#1b1b1f;--m-sc:#1f1f23;--m-sc-high:#2a292d;--m-sc-highest:#353438;
+  --m-on-surface:#e4e1e6;--m-on-sv:#c6c5d0;--m-outline:#90909a;--m-outline-v:#46464f;
+  --m-hover:rgba(228,225,230,.08);--m-press:rgba(228,225,230,.12);
+  --phy:#8fb2ff;--soc:#6fd79c;--eng:#ffb95c;--rare:#cbb0ff;--danger:#ffb4ab}}
+:root[data-theme="dark"]{
+  --m-primary:#bac3ff;--m-on-primary:#08218a;--m-primary-c:#293ca0;--m-on-primary-c:#dee0ff;
+  --m-sec-c:#444559;--m-on-sec-c:#e1e0f9;--m-ter-c:#5c3f5b;--m-on-ter-c:#fdd7fa;
+  --m-surface:#131316;--m-sc-lowest:#0e0e11;--m-sc-low:#1b1b1f;--m-sc:#1f1f23;--m-sc-high:#2a292d;--m-sc-highest:#353438;
+  --m-on-surface:#e4e1e6;--m-on-sv:#c6c5d0;--m-outline:#90909a;--m-outline-v:#46464f;
+  --m-hover:rgba(228,225,230,.08);--m-press:rgba(228,225,230,.12);
+  --phy:#8fb2ff;--soc:#6fd79c;--eng:#ffb95c;--rare:#cbb0ff;--danger:#ffb4ab}
+
+body{font-family:var(--f);font-size:15px;letter-spacing:.01em}
+/* no glass: solid tonal surfaces, backdrop stays behind them */
+.panel,.bar,.sheet,.bandtools,.fsearch,.vlog,.pmov{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.panel{background:var(--m-sc-low);border:0;border-radius:28px;box-shadow:none;padding:clamp(20px,3vw,32px);gap:22px}
+.bar{background:var(--m-surface);border-bottom:0;padding-block:12px}
+.wrap{gap:16px;padding-block:16px 70px}
+
+/* type: sentence case, Material scale */
+.mark{text-transform:none;font-weight:500;font-size:22px;letter-spacing:0}
+.markthin{font-weight:400;color:var(--m-on-sv)}
+.eyebrow{text-transform:none;letter-spacing:.1px;font-size:14px;font-weight:500;color:var(--m-primary)}
+h1{text-transform:none;font-size:clamp(30px,4vw,45px);letter-spacing:0;font-weight:400;line-height:1.15}
+h1 b{font-weight:400;color:var(--m-primary)}
+.big{font-size:clamp(30px,4vw,45px);letter-spacing:0}
+.big small{text-transform:none;letter-spacing:.25px;font-size:14px}
+.h2,.bandhead h2{text-transform:none;letter-spacing:0;font-size:clamp(24px,3vw,32px);font-weight:400;line-height:1.2}
+.h2 b,.bandhead h2 b{font-weight:500}
+.olabel,.ehead{text-transform:none}
+.olabel .k,.ehead .k,.egrp .olabel .k{letter-spacing:.1px;font-weight:500;color:var(--m-on-surface)}
+.olabel .n{color:var(--m-primary);font-weight:500;letter-spacing:0}
+.olabel .v,.ehead .v{color:var(--m-on-sv);font-weight:400}
+.state{text-transform:none;letter-spacing:.25px;font-size:14px}
+.meta{text-transform:none;letter-spacing:.4px;font-size:12px}
+.stepper .lbl,.backup .lbl,.pmbox h3,.pmbox h4{text-transform:none;letter-spacing:.1px;font-size:13px;font-weight:500}
+.ccard .eyebrow{font-size:12px}
+
+/* buttons: tonal + filled, no gloss or shadow */
+.raised{background:var(--m-sec-c);color:var(--m-on-sec-c);box-shadow:none;border:0}
+.pill{border-radius:20px;padding:10px 24px;font-weight:500;font-size:14px;letter-spacing:.1px;min-height:40px;display:inline-flex;align-items:center}
+.pill.warn{background:transparent;border:1px solid var(--m-outline);color:var(--danger)}
+.round{width:48px;height:48px;background:transparent;color:var(--m-on-sv)}
+.round:hover{background:var(--m-hover)}
+#addOpen{background:var(--m-primary-c);color:var(--m-on-primary-c);border-radius:16px;width:56px;height:56px}
+.buy{background:var(--m-primary);color:var(--m-on-primary);text-transform:none;letter-spacing:.1px;font-weight:500;font-size:16px;border-radius:28px;padding:8px 8px 8px 24px;min-height:56px}
+.buy .disc{background:color-mix(in srgb,var(--m-on-primary) 18%,transparent);color:var(--m-on-primary);width:40px;height:40px}
+.buy:active,.round:active,.pill:active{box-shadow:none;filter:brightness(.94)}
+.pill:hover,.buy:hover{box-shadow:var(--m-e1)}
+.camp{background:var(--m-sc-high);color:var(--m-on-surface);border-radius:28px}
+.camp select{text-transform:none;letter-spacing:0}
+.camp .ico{background:var(--m-sc-highest);box-shadow:none}
+.linkbtn{color:var(--m-primary)}
+.bcol,.pmx{border:0;background:transparent}
+.bcol:hover,.pmx:hover{background:var(--m-hover)}
+
+/* inputs */
+.search,.txt{border:0;background:var(--m-sc-high);border-radius:28px;min-height:48px}
+.search:focus,.txt:focus{outline:2px solid var(--m-primary);outline-offset:0}
+.stepper{border-color:var(--m-outline-v)}
+.num{border:0;background:var(--m-sc);border-radius:12px}
+
+/* segmented area switch */
+.seg{background:transparent;box-shadow:none;border:1px solid var(--m-outline);padding:0;gap:0;overflow:hidden}
+.seg button{border-radius:0;padding:12px 10px;font-weight:500;font-size:14px;color:var(--m-on-surface)}
+.seg button+button{border-left:1px solid var(--m-outline)}
+.seg .thumb{box-shadow:none!important;background-image:none!important;border-radius:0}
+.seg[data-on] .thumb{--tint:var(--m-sec-c)}
+.seg[data-on=p] .thumb{--tint:color-mix(in srgb,var(--phy) 24%,var(--m-surface))}
+.seg[data-on=s] .thumb{--tint:color-mix(in srgb,var(--soc) 24%,var(--m-surface))}
+.seg[data-on=e] .thumb{--tint:color-mix(in srgb,var(--eng) 24%,var(--m-surface))}
+@media (max-width:560px){.seg{border-radius:20px}.seg button+button{border-left:0;border-top:1px solid var(--m-outline)}}
+.tseg,.aseg{border-color:var(--m-outline);padding:0;gap:0;overflow:hidden}
+.tseg button,.aseg button{border-radius:0;padding:9px 14px;font-weight:500;color:var(--m-on-surface)}
+.tseg button+button,.aseg button+button{border-left:1px solid var(--m-outline)}
+.tseg button[aria-pressed=true],.aseg button[aria-pressed=true]{background:var(--m-sec-c);color:var(--m-on-sec-c);box-shadow:none}
+.aseg button[data-ta=p][aria-pressed=true]{background:color-mix(in srgb,var(--phy) 24%,var(--m-surface))}
+.aseg button[data-ta=s][aria-pressed=true]{background:color-mix(in srgb,var(--soc) 24%,var(--m-surface))}
+.aseg button[data-ta=e][aria-pressed=true]{background:color-mix(in srgb,var(--eng) 24%,var(--m-surface))}
+@media (max-width:520px){.tseg button+button,.aseg button+button{border-left:0}.tseg button:nth-child(2n){border-left:1px solid var(--m-outline)}.tseg button:nth-child(n+3){border-top:1px solid var(--m-outline)}}
+.bandtools{background:var(--m-sc-low)}
+
+/* filter chips: checkmark instead of a switch */
+.chip{border:1px solid var(--m-outline);border-radius:8px;padding:6px 16px;min-height:32px;font-size:14px;font-weight:500;gap:8px;color:var(--m-on-sv)}
+.chips .chip{padding:6px 12px;font-size:14px}
+.chip:hover{background:var(--m-hover)}
+.chip .sw{width:0;height:18px;background:none;box-shadow:none;border-radius:0;overflow:hidden;transition:width .15s}
+.chip .sw::after{content:"";position:absolute;left:5px;top:2px;width:5px;height:10px;border:solid currentColor;border-width:0 2px 2px 0;border-radius:0;background:none;box-shadow:none;transform:rotate(45deg)}
+.chip[aria-pressed=true]{background:var(--m-sec-c);border-color:var(--m-sec-c);color:var(--m-on-sec-c)}
+.chip[aria-pressed=true] .sw{width:18px;background:none}
+.chip[aria-pressed=true] .sw::after{left:5px;background:none}
+.chip[data-auth][aria-pressed=true]{background:var(--m-sec-c);color:var(--m-on-sec-c);border-color:var(--m-sec-c)}
+
+/* tier jump tiles */
+.size{border:0;background:var(--m-sc);border-radius:12px}
+.size:hover{background:var(--m-sc-high)}
+.size .bar6 i{background:var(--m-outline-v)}
+.size .bar6 i.on{background:var(--m-primary)}
+.size.locked{border:1px dashed var(--m-outline-v);background:transparent}
+
+/* tech cards: filled cards */
+.card{background:var(--m-sc-lowest);box-shadow:none;border-radius:16px;border:0;transition:background-color .15s}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card{background:var(--m-sc-high)}}
+:root[data-theme="dark"] .card{background:var(--m-sc-high)}
+.card:hover{transform:none;box-shadow:none;background:color-mix(in srgb,var(--m-on-surface) 6%,var(--m-sc-lowest))}
+.card.on{background:var(--m-sc);box-shadow:none}
+.card .tick{border:2px solid var(--m-outline);background:transparent;width:28px;height:28px;right:16px;top:16px}
+.card.on .tick{background:var(--m-primary);border-color:var(--m-primary);color:var(--m-on-primary)}
+.card.ready:not(.on)::before{top:16px;bottom:16px;width:4px}
+.card.pressing{box-shadow:0 0 0 2px var(--m-primary)}
+.ticon{border-radius:12px;box-shadow:none}
+.meta .modtag,.pmtag{border-color:var(--m-outline-v);border-radius:6px}
+.offer{background:var(--m-primary);color:var(--m-on-primary);text-transform:none;letter-spacing:.3px;border-radius:6px}
+.beta{color:var(--m-on-ter-c);background:var(--m-ter-c);border:0;border-radius:6px;letter-spacing:.3px;text-transform:none;font-weight:500}
+
+/* misc surfaces */
+.egrp{border-top:1px solid var(--m-outline-v)}
+.ccard{border:0;background:var(--m-sc);border-radius:16px}
+.links a{background:transparent;border:1px solid var(--m-outline);color:var(--m-primary)}
+.sheet{background:var(--m-sc);border-radius:28px;box-shadow:var(--m-e3)}
+.fsearch{background:var(--m-sc-high);box-shadow:var(--m-e3)}
+.fsearch button{border:0}
+.pmov{background:var(--m-scrim)}
+.pmbox{background:var(--m-sc-high);box-shadow:var(--m-e3)}
+.pmsteps li{border:0;background:var(--m-sc);border-radius:12px}
+.pmsteps li.tgt{outline:2px solid var(--m-primary)}
+.vlog{background:var(--m-sc)}
+.imck{border-color:var(--m-outline)}
+.imp.ok .imck{background:var(--m-primary);border-color:var(--m-primary);color:var(--m-on-primary)}
+.imp code{background:var(--m-sc-high)}
+.band.closed{filter:none;opacity:.6}
+.card.wait{filter:saturate(.3)}
+body{margin:0}
+.bar{position:relative;z-index:5}
+/* tiers ahead stay readable; current tier highlighted */
+.band.closed,.band.closed:hover{opacity:1;filter:none}
+.band.current{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--ac) 70%,transparent);overflow:hidden}
+.band.current::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--ac)}
+.band.current::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(120% 60% at 0% 0%,color-mix(in srgb,var(--ac) 12%,transparent),transparent 60%)}
+.curtag{display:inline-block;margin-right:8px;padding:2px 10px;border-radius:999px;background:var(--ac);color:#fff;font-size:12px;font-weight:600;letter-spacing:.2px;vertical-align:1px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .curtag{color:#111}}
+:root[data-theme="dark"] .curtag{color:#111}
+.size.cur{outline:2px solid var(--m-primary);outline-offset:-2px;background:var(--m-primary-c);color:var(--m-on-primary-c)}
+.size.cur .s{color:var(--fg);font-weight:600}
+@media (prefers-reduced-motion:no-preference){.band.current::before{background:linear-gradient(90deg,var(--ac),color-mix(in srgb,var(--ac) 35%,transparent),var(--ac));background-size:200% 100%;animation:curglow 4s linear infinite}}
+@keyframes curglow{to{background-position:-200% 0}}
+.size.done{opacity:1}
+.size.done .s{color:var(--m-primary)}
+/* perf: skip layout/paint for off-screen tiers; compositor-only effects */
+.band{content-visibility:auto;contain-intrinsic-size:auto 900px}
+.band.collapsed{contain-intrinsic-size:auto 120px}
+body::before{will-change:transform;transform:translateZ(0)}
+.band.current::before{right:auto;width:200%;background:linear-gradient(90deg,var(--ac),color-mix(in srgb,var(--ac) 35%,transparent),var(--ac),color-mix(in srgb,var(--ac) 35%,transparent),var(--ac))!important;background-size:100% 100%!important;animation:none}
+@media (prefers-reduced-motion:no-preference){.band.current::before{will-change:transform;animation:curslide 6s linear infinite}}
+@keyframes curslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 </style>
 <header class="bar">
   <p class="mark">Stellaris <span class="markthin">Research</span></p>
@@ -409,7 +583,7 @@ html.fs-on .bandtools{top:72px}
       <li><b>Tick off what you've researched.</b> Quickest way: press <em>Load a save file…</em> just below this guide and pick your save; your research, ethics, civics, origin, traditions, perks and more are filled in for you. Otherwise Tap a tech card to mark it done; tap again to undo. Starting a new game? Press <em>Mark starting techs</em> first. Long-press a card (or right-click it on a computer) to see every step to that tech and how to improve your odds of getting it.</li>
       <li><b>Describe your empire.</b> In <em>Your empire</em>, set the year, planets, starbases, authority, ethics, civics, origin and the DLC and mods you play with. As you play, add the traditions and ascension perks you adopt under <em>In-game choices</em>. Every card's odds update as you go. Playing with other mods? Below this guide, press <em>Add Workshop mods…</em> and pick your Workshop folder (or one mod's folder) to add their techs, then <em>Match my launcher…</em> and pick your Stellaris documents folder so the same mods are on, in the same order. Not playing with ACOT or Giga? Switch it off under <em>Mods</em> and its techs, tiers, civics, origins, traditions, perks and situations are hidden.</li>
       <li><b>Read the odds.</b> The big % on each card is the chance that tech shows up among your next research options in that area. <em>Boosted</em> and <em>Reduced</em> list the modifiers working on it now; <em>Could boost</em> shows what would raise it.</li>
-      <li><b>Watch the tiers.</b> A tier opens once you've researched enough techs in the tier below (6 in vanilla; ACOT's tiers 6 to 10 need 2 or 4). Techs you can't be offered yet are greyed with the reason. Finished tiers stay open while they still have techs in the draw. Tap a tier's heading to collapse or expand it; tiers that haven't opened start collapsed.</li>
+      <li><b>Watch the tiers.</b> A tier opens once you've researched enough techs in the tier below (6 in vanilla; ACOT's tiers 6 to 10 need 2 or 4). Techs you can't be offered yet are greyed with the reason. Finished tiers stay open, and the tier you're working on is highlighted. Tap a tier's heading to collapse or expand it; tiers that haven't opened start collapsed.</li>
       <li><b>Filter.</b> Use search and the switches at the top, or the pills on each tier, to see only what's in the draw, what's left, or what you've done. Each tier also has Physics, Society and Engineering buttons so you can switch area without scrolling back up.</li>
       <li><b>Keep your progress.</b> Use <em>+</em> for a new campaign. Your progress is saved in this browser. To move it to another device, use <em>Copy backup code</em> in the <em>≡</em> menu. To keep a copy or share a campaign, open the <em>≡</em> menu and use <em>Save campaign to file</em>; <em>Load campaign file</em> brings it back as a campaign.</li>
     </ol>
@@ -532,7 +706,7 @@ html.fs-on .bandtools{top:72px}
     </div>
     <p class="note left">Fan-made and unofficial. Not affiliated with or endorsed by Paradox Interactive or the mod authors. Stellaris and its content belong to Paradox Interactive; mod content belongs to its authors. Background image: NGC 7129 from the James Webb Space Telescope (NASA, ESA, CSA, STScI; image processing by Alyssa Pagan, STScI). Tech icons are taken from the game and mod files and used under Paradox Interactive's fan content guidelines. Built from Stellaris v4.5.2 (Cygnus), Ancient Cache of Technologies (Workshop update of 29 September 2026) and Gigastructural Engineering &amp; More 3.40.4 (4.5). Other game or mod versions may differ.</p>
   </section>
-  <details class="appver"><summary>Stellaris Research Tracker <b>v0.27.2</b> · beta · updated 26 Oct 2026 · version history</summary><ol class="vlog"><li><b>v0.27.2</b> Header and data line list the mods you added</li><li><b>v0.25.1</b> Progress saves in your browser only (Claude account saving removed)</li><li><b>v0.27.1</b> Switching ACOT or Giga off also hides their civics, origins, traditions, perks, leader traits and situations</li><li><b>v0.27.0</b> Mods you add get their own credit card with a Workshop link and thumbnail</li><li><b>v0.26.1</b> Check marks in Bring in your game show what loaded: your save, added mods and launcher match</li><li><b>v0.26.0</b> How-to moved to the top, with Load a save file, Add Workshop mods and Match my launcher buttons right below it</li><li><b>v0.25.3</b> Finished tiers stay open while they still have techs in the draw, with the count shown</li><li><b>v0.25.2</b> Smoother search: typing no longer rebuilds every card or recalculates odds on each key press</li><li><b>v0.25.0</b> Load a save file: research, ethics, civics, origin, traditions, perks, planets, starbases, flags, DLC, mods and your current research options filled in automatically</li><li><b>v0.24.0</b> Added mods show their own tech icons (read and converted in your browser)</li><li><b>v0.23.0</b> Added mods get real odds and conditions (including their own scripted triggers), their own situations list, load order controls and launcher mod-list import</li><li><b>v0.22.0</b> Add mods: read any mod's techs, tiers and prerequisites right in your browser</li><li><b>v0.21.1</b> Version number in the footer</li><li><b>v0.21.0</b> Prerequisite check against game files; cards name missing prerequisites; ACOT/Giga versions of vanilla techs they rewrite</li><li><b>v0.20.3</b> Collapse arrow moved to each tier's top-right corner</li><li><b>v0.20.2</b> Tier status shown beside the tier title</li><li><b>v0.20.1</b> Game and mod data versions shown under the title</li><li><b>v0.20.0</b> Empire-specific tech names and icons (Machine Intelligence, Hive Mind, Corporate, origins)</li><li><b>v0.19.3</b> Area pills stay visible with no search results, with match counts</li><li><b>v0.19.2</b> Tech names checked against the full game and mod text files</li><li><b>v0.19.1</b> Floating search lines up with the area pills on wide screens</li><li><b>v0.19.0</b> Floating search bar</li><li><b>v0.18.0</b> Search jumps to the area that has the tech</li><li><b>v0.17.1</b> Card and path text wraps instead of being cut off</li><li><b>v0.17.0</b> Long-press a card for its full research path and ways to raise the odds</li><li><b>v0.16.4</b> Header label reads Vanilla · ACOT + Giga</li><li><b>v0.16.3</b> Renamed to Research tree</li><li><b>v0.16.2</b> Beta tag moved beside the title</li><li><b>v0.16.1</b> Beta tag</li><li><b>v0.16.0</b> Collapsible tiers with Expand all / Collapse all</li><li><b>v0.15.0</b> Save and load campaign files</li><li><b>v0.14.0</b> Area switch on every tier; how-to added</li><li><b>v0.13.0</b> Separate ACOT and Giga situation lists</li><li><b>v0.12.1</b> ACOT reactor-chain steps named to match the ACOT wiki</li><li><b>v0.12.0</b> Traditions and ascension perks moved to In-game choices</li><li><b>v0.11.1</b> Civics and origins filtered by each one's game rules</li><li><b>v0.11.0</b> Every playable civic and origin from the game and mods</li><li><b>v0.10.0</b> All ethics in game order with opposites switched off; finished tiers stay in colour</li><li><b>v0.9.1</b> Readable names for every situation toggle</li><li><b>v0.9.0</b> James Webb NGC 7129 backdrop</li><li><b>v0.8.2</b> Fixed techs showing raw IDs</li><li><b>v0.8.1</b> Remaining Giga icons filled in</li><li><b>v0.8.0</b> Tech icons from the game and mod files</li><li><b>v0.7.0</b> Public version for GitHub with credits, how-to and backup codes</li><li><b>v0.6.0</b> All data rebuilt from the installed game and mod files</li><li><b>v0.5.0</b> Research odds per tech, empire settings, tiers greyed until reachable</li><li><b>v0.4.0</b> Filters on each tier</li><li><b>v0.3.4</b> Area toggle tinted per area</li><li><b>v0.3.3</b> Area toggle can be dragged</li><li><b>v0.3.2</b> No blue flash when tapping toggles</li><li><b>v0.3.1</b> Sliding area toggle</li><li><b>v0.3.0</b> New look</li><li><b>v0.2.0</b> Ancient Cache of Technologies and Gigastructural Engineering techs</li><li><b>v0.1.1</b> Mega-Engineering unlock path fixed</li><li><b>v0.1.0</b> First tracker: tick off techs, tiers grey out after 6</li></ol></details>
+  <details class="appver"><summary>Stellaris Research Tracker <b>v0.28.1</b> · beta · updated 26 Oct 2026 · version history</summary><ol class="vlog"><li><b>v0.28.1</b> Faster: icons load on demand, unchanged cards are reused, off-screen tiers skip drawing, lighter current-tier animation</li><li><b>v0.25.1</b> Progress saves in your browser only (Claude account saving removed)</li><li><b>v0.28.0</b> Material Design look; finished tiers stay open; tiers ahead no longer faded; current tier highlighted</li><li><b>v0.27.2</b> Header and data line list the mods you added</li><li><b>v0.27.1</b> Switching ACOT or Giga off also hides their civics, origins, traditions, perks, leader traits and situations</li><li><b>v0.27.0</b> Mods you add get their own credit card with a Workshop link and thumbnail</li><li><b>v0.26.1</b> Check marks in Bring in your game show what loaded: your save, added mods and launcher match</li><li><b>v0.26.0</b> How-to moved to the top, with Load a save file, Add Workshop mods and Match my launcher buttons right below it</li><li><b>v0.25.3</b> Finished tiers stay open while they still have techs in the draw, with the count shown</li><li><b>v0.25.2</b> Smoother search: typing no longer rebuilds every card or recalculates odds on each key press</li><li><b>v0.25.0</b> Load a save file: research, ethics, civics, origin, traditions, perks, planets, starbases, flags, DLC, mods and your current research options filled in automatically</li><li><b>v0.24.0</b> Added mods show their own tech icons (read and converted in your browser)</li><li><b>v0.23.0</b> Added mods get real odds and conditions (including their own scripted triggers), their own situations list, load order controls and launcher mod-list import</li><li><b>v0.22.0</b> Add mods: read any mod's techs, tiers and prerequisites right in your browser</li><li><b>v0.21.1</b> Version number in the footer</li><li><b>v0.21.0</b> Prerequisite check against game files; cards name missing prerequisites; ACOT/Giga versions of vanilla techs they rewrite</li><li><b>v0.20.3</b> Collapse arrow moved to each tier's top-right corner</li><li><b>v0.20.2</b> Tier status shown beside the tier title</li><li><b>v0.20.1</b> Game and mod data versions shown under the title</li><li><b>v0.20.0</b> Empire-specific tech names and icons (Machine Intelligence, Hive Mind, Corporate, origins)</li><li><b>v0.19.3</b> Area pills stay visible with no search results, with match counts</li><li><b>v0.19.2</b> Tech names checked against the full game and mod text files</li><li><b>v0.19.1</b> Floating search lines up with the area pills on wide screens</li><li><b>v0.19.0</b> Floating search bar</li><li><b>v0.18.0</b> Search jumps to the area that has the tech</li><li><b>v0.17.1</b> Card and path text wraps instead of being cut off</li><li><b>v0.17.0</b> Long-press a card for its full research path and ways to raise the odds</li><li><b>v0.16.4</b> Header label reads Vanilla · ACOT + Giga</li><li><b>v0.16.3</b> Renamed to Research tree</li><li><b>v0.16.2</b> Beta tag moved beside the title</li><li><b>v0.16.1</b> Beta tag</li><li><b>v0.16.0</b> Collapsible tiers with Expand all / Collapse all</li><li><b>v0.15.0</b> Save and load campaign files</li><li><b>v0.14.0</b> Area switch on every tier; how-to added</li><li><b>v0.13.0</b> Separate ACOT and Giga situation lists</li><li><b>v0.12.1</b> ACOT reactor-chain steps named to match the ACOT wiki</li><li><b>v0.12.0</b> Traditions and ascension perks moved to In-game choices</li><li><b>v0.11.1</b> Civics and origins filtered by each one's game rules</li><li><b>v0.11.0</b> Every playable civic and origin from the game and mods</li><li><b>v0.10.0</b> All ethics in game order with opposites switched off; finished tiers stay in colour</li><li><b>v0.9.1</b> Readable names for every situation toggle</li><li><b>v0.9.0</b> James Webb NGC 7129 backdrop</li><li><b>v0.8.2</b> Fixed techs showing raw IDs</li><li><b>v0.8.1</b> Remaining Giga icons filled in</li><li><b>v0.8.0</b> Tech icons from the game and mod files</li><li><b>v0.7.0</b> Public version for GitHub with credits, how-to and backup codes</li><li><b>v0.6.0</b> All data rebuilt from the installed game and mod files</li><li><b>v0.5.0</b> Research odds per tech, empire settings, tiers greyed until reachable</li><li><b>v0.4.0</b> Filters on each tier</li><li><b>v0.3.4</b> Area toggle tinted per area</li><li><b>v0.3.3</b> Area toggle can be dragged</li><li><b>v0.3.2</b> No blue flash when tapping toggles</li><li><b>v0.3.1</b> Sliding area toggle</li><li><b>v0.3.0</b> New look</li><li><b>v0.2.0</b> Ancient Cache of Technologies and Gigastructural Engineering techs</li><li><b>v0.1.1</b> Mega-Engineering unlock path fixed</li><li><b>v0.1.0</b> First tracker: tick off techs, tiers grey out after 6</li></ol></details>
 </div>
 <script type="text/plain" id="techdata">
 Arcane Deciphering|s|c|2|12||r|Feature : Reverse-Engineer Minor Artifacts||tech_arcane_deciphering
@@ -2470,9 +2644,9 @@ function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;
 /* ---------- tech icons ---------- */
 const ICO=(()=>{try{
   const D=JSON.parse(document.getElementById('icondata').textContent);
-  const toURL=u=>{try{const b=atob(u.split(',')[1]),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return URL.createObjectURL(new Blob([a],{type:'image/webp'}))}catch(e){return u}};
-  const F=D.f.map(toURL),C={};for(const k in D.c)C[k]=toURL(D.c[k]);
-  return x=>{if(x.icoU)return [x.icoU,0];const j=x.icoSw!=null?x.icoSw:D.t[x.i];if(j!=null&&j>=0)return [F[j],0];const c=C[x.c.toLowerCase().replace(/ /g,'_')];return c?[c,1]:null};
+  const toURL=u=>{try{const b=atob(u.slice(u.indexOf(',')+1)),n=b.length,a=new Uint8Array(n);for(let i=0;i<n;i++)a[i]=b.charCodeAt(i);return URL.createObjectURL(new Blob([a],{type:'image/webp'}))}catch(e){return u}};
+  const FU=[],CU={};const F={length:D.f.length},C={};const fget=j=>FU[j]||(FU[j]=toURL(D.f[j]));const cget=k=>k in D.c?(CU[k]||(CU[k]=toURL(D.c[k]))):undefined;
+  return x=>{if(x.icoU)return [x.icoU,0];const j=x.icoSw!=null?x.icoSw:D.t[x.i];if(j!=null&&j>=0)return [fget(j),0];const c=cget(x.c.toLowerCase().replace(/ /g,'_'));return c?[c,1]:null};
 }catch(e){return ()=>null}})();
 function iconHTML(x){const r=ICO(x);return r?`<img class="ticon${r[1]?' cat':''}" src="${r[0]}" alt="" width="40" height="40" loading="lazy" decoding="async">`:'<span class="ticon none"></span>'}
 const TICK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
@@ -2525,7 +2699,7 @@ function renderTop(){
     let bars='';
     if(t>=1&&t<mt){bars='<span class="bar6">';for(let k=0;k<need;k++)bars+=`<i class="${k<c?'on':''}"></i>`;bars+='</span>'}
     const sub=t===0?`${c} start`:dn?'Complete':lk?`Opens ${tierCount(a,t-1)}/${req(t)}`:t===mt?`${c} done`:`${c}/${need}`;
-    h+=`<button class="size${dn?' done':''}${lk?' locked':''}" data-t="${t}">${t===0?'T0':'T'+t}${bars}<span class="s">${sub}</span></button>`;
+    h+=`<button class="size${dn?' done':''}${lk?' locked':''}${t===ct&&!lk?' cur':''}" data-t="${t}">${t===0?'T0':'T'+t}${bars}<span class="s">${sub}</span></button>`;
   }
   $('sizes').innerHTML=h;
   const on=[F.hideDone&&'Hide researched',F.hideRare&&'No rare',F.readyOnly&&'Can research now'].filter(Boolean);
@@ -2533,12 +2707,12 @@ function renderTop(){
   for(const k in F)$(k).setAttribute('aria-pressed',F[k]);
 }
 function asegHTML(a,t,q){const qc=q?qScan(q):null;return `<div class="aseg" role="group" aria-label="Switch area">${['p','s','e'].map(k=>`<button data-ta="${k}" data-tt="${t}" aria-pressed="${k===a}"><span class="dot ${k}"></span>${AREAS[k]}${qc?`<span class="qc${qc[k].n?'':' zero'}">${qc[k].n}</span>`:''}</button>`).join('')}</div>`}
-let CARDS=new Map(),CARDS_A=null;
+let CARDS=new Map(),CARDS_A=null,CARDS_G=0;
 /* fast=true: only the search text changed, so odds/counts are reused and existing card elements are moved, not rebuilt */
 function renderBands(fast){
   const a=S.area, q=$('q').value.trim().toLowerCase();
-  if(fast!==true||CARDS_A!==a){refreshVis();rebuildCounts();computeOdds(a);CARDS=new Map();CARDS_A=a}
-  const mt=maxTier(a);
+  const FAST=fast===true&&CARDS_A===a;if(!FAST){refreshVis();rebuildCounts();computeOdds(a);CARDS_A=a;CARDS_G++}const NEWH=new Map();
+  const mt=maxTier(a);const CUR_T=currentTier(a);
   const E=emp(), k=optionCount(E);
   let h='';
   for(let t=0;t<=mt;t++){
@@ -2565,9 +2739,9 @@ function renderBands(fast){
     else if(t===mt)state=`<b>${c}</b> researched · ${inPool} in the draw`;
     else state=`<b>${c} / ${req(t+1)}</b> · ${req(t+1)-c} more to unlock Tier ${t+1} · ${inPool} in the draw`;
     if(q&&!list.length)continue;
-    const ck=a+t, offerHere=list.some(x=>svOffered(x)&&!done.has(x.i)), col=q?false:(ck in TC)?TC[ck]:(offerHere||inPool>0?false:(dn||(lk&&!dn)||(t===0&&c>0)));
-    h+=`<section class="panel band${dn?' done':''}${lk&&!dn?' closed':''}${col?' collapsed':''}" data-a="${a}" id="tier${t}">
-      <div class="bandhead"><div><p class="eyebrow">${AREAS[a]} · ${TV.filter(x=>x.a===a&&x.t===t).length} techs</p><h2>${t===0?'Starting <b>techs</b>':'Tier <b>'+t+'</b>'}</h2></div><div class="state${cls}">${state}</div><button class="bcol" data-ck="${ck}" aria-expanded="${!col}" aria-label="${col?'Expand':'Collapse'} ${t===0?'starting techs':'tier '+t}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>`;
+    const ck=a+t, offerHere=list.some(x=>svOffered(x)&&!done.has(x.i)), col=q?false:(ck in TC)?TC[ck]:(lk&&!dn), cur=t===CUR_T&&!lk;
+    h+=`<section class="panel band${dn?' done':''}${lk&&!dn?' closed':''}${col?' collapsed':''}${cur?' current':''}" data-a="${a}" id="tier${t}">
+      <div class="bandhead"><div><p class="eyebrow">${cur?'<span class="curtag">Current tier</span>':''}${AREAS[a]} · ${TV.filter(x=>x.a===a&&x.t===t).length} techs</p><h2>${t===0?'Starting <b>techs</b>':'Tier <b>'+t+'</b>'}</h2></div><div class="state${cls}">${state}</div><button class="bcol" data-ck="${ck}" aria-expanded="${!col}" aria-label="${col?'Expand':'Collapse'} ${t===0?'starting techs':'tier '+t}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>`;
     if(!col){h+=`
       <div class="bandtools">${asegHTML(a,t,q)}
       <div class="tseg" role="group" aria-label="Filter tier ${t}">${TFOPT.map(([kk,l])=>`<button data-tk="${a+t}" data-m="${kk}" aria-pressed="${(TF[a+t]||'all')===kk}">${l}</button>`).join('')}</div></div>`;
@@ -2575,7 +2749,7 @@ function renderBands(fast){
     else{
       h+='<div class="grid">';
       for(const x of list){
-        if(CARDS.has(x.i)){h+=`<i data-slot="${x.i}"></i>`;continue}
+        {const o=CARDS.get(x.i);if(FAST&&o&&o.g===CARDS_G){h+=`<i data-slot="${x.i}"></i>`;continue}}
         const on=done.has(x.i), st=ODDS[x.i]||{}, pool=st.state==='pool', grey=!on&&!pool;
         const tn=p=>done.has(p)?`<i>${esc(T[p].n)}</i>`:`<em>${esc(T[p].n)}</em> (${AREAS[T[p].a][0]}${T[p].t})`;
         const anyL=x.any.length?`<div class="pre">Plus one of: ${x.any.map(tn).join(' or ')}</div>`:'';
@@ -2605,6 +2779,7 @@ function renderBands(fast){
           <span class="meta">${svOffered(x)&&!on?'<span class="offer">On offer</span>':''}${x.mod?`<span class="modtag">${MODNAMES[x.mod]}</span>`:''}<span>${esc(x.c)}</span><span>${x.cost.toLocaleString()}</span>${x.r?'<span class="r">Rare</span>':''}${x.d?'<span class="d">Dangerous</span>':''}</span>
           <span class="nmrow">${iconHTML(x)}<span class="nm">${esc(x.n)}</span></span>${odds}
           ${x.u?`<span class="un">${esc(x.u)}</span>`:''}${pre0}${paL}${anyL}${onlyL}${modL}</div>`;
+        {const k=h.lastIndexOf('<div class="card'),ch=h.slice(k),o=CARDS.get(x.i);if(o&&o.h===ch){o.g=CARDS_G;h=h.slice(0,k)+`<i data-slot="${x.i}"></i>`}else NEWH.set(x.i,ch)}
       }
       h+='</div>';
     }
@@ -2613,17 +2788,20 @@ function renderBands(fast){
   }
   if(q&&!h)h=`<section class="panel band" data-a="${a}"><div class="bandtools">${asegHTML(a,0,q)}</div><div class="empty">No ${AREAS[a]} techs match “${esc(q)}”${F.hideDone||F.hideRare||F.readyOnly?' with the current filters':''}.</div></section>`;
   const B=$('bands');B.innerHTML=h;
-  B.querySelectorAll('i[data-slot]').forEach(el=>el.replaceWith(CARDS.get(+el.dataset.slot)));
-  B.querySelectorAll('.card').forEach(el=>CARDS.set(+el.dataset.i,el));
+  B.querySelectorAll('i[data-slot]').forEach(el=>{const o=CARDS.get(+el.dataset.slot);o.el.classList.remove('pressing');el.replaceWith(o.el)});
+  B.querySelectorAll('.card').forEach(el=>{const i=+el.dataset.i,ch=NEWH.get(i);if(ch!=null)CARDS.set(i,{h:ch,el,g:CARDS_G})});
   if(typeof renderSaveNote==='function')renderSaveNote();
   $('optsNote').textContent=`${k} options per area`+(k>(E.num.opts||3)?' (incl. Self-Evolving Logic)':'');
 }
 /* ---------- empire panel ---------- */
+let AU_CACHE=null;
 function atomsUsed(kind){
+  if(AU_CACHE&&AU_CACHE[kind])return AU_CACHE[kind];
   const cnt={};
   const walk=(n,set)=>{if(!n)return;if(n[0]==='a'&&ATOMS[n[1]][0]===kind)set.add(n[1]);else if(n[0]==='and'||n[0]==='or'||n[0]==='not')n.slice(1).forEach(c=>walk(c,set));else if(n[0]==='cnt')n.slice(2).forEach(c=>walk(c,set))};
   for(const x of T){const s=new Set();x.m.forEach(m=>walk(m[2],s));x.pot.forEach(p=>walk(p,s));s.forEach(id=>cnt[id]=(cnt[id]||0)+1)}
-  return Object.keys(cnt).map(Number).sort((a,b)=>cnt[b]-cnt[a]||ATOMS[a][1].localeCompare(ATOMS[b][1])).map(id=>[id,cnt[id]]);
+  const r=Object.keys(cnt).map(Number).sort((a,b)=>cnt[b]-cnt[a]||ATOMS[a][1].localeCompare(ATOMS[b][1])).map(id=>[id,cnt[id]]);
+  if(AU_CACHE)AU_CACHE[kind]=r;return r;
 }
 const ETH_AX=[['Authoritarian','Egalitarian'],['Xenophobe','Xenophile'],['Militarist','Pacifist'],['Spiritualist','Materialist']];
 const ETH_ORDER=ETH_AX.flatMap(p=>p.flatMap(e=>['Fanatic '+e,e]));
@@ -2650,7 +2828,8 @@ function othSrc(id){
   return OTHSRC[id]||'v'}
 const EGROUPS=[['ethic','Ethics'],['trad','Traditions'],['perk','Ascension perks'],['trait','Council leader traits'],['civic','Civics'],['origin','Origin'],['dlc','DLC you own'],['other','Other situations'],['other@a','ACOT situations'],['other@g','Giga situations']];
 let EOPEN={};
-function renderEmpire(){
+function renderEmpire(){AU_CACHE={};try{renderEmpire0()}finally{AU_CACHE=null}}
+function renderEmpire0(){
   const E=emp();let h='';{const um=$('umMsg');if(um){um.textContent=UMMSG||'';um.hidden=!UMMSG}}if(typeof renderImports==='function')renderImports();if(typeof renderUMCredits==='function')renderUMCredits();if(typeof renderModLabels==='function')renderModLabels();
   h+=`<div class="nums">${NUMS.map(([k,l,d,mn,mx])=>`<label class="num"><span>${l}</span><span class="stepper sm"><button type="button" data-step="${k}" data-d="-1" aria-label="Decrease ${l}">–</button><input type="number" inputmode="numeric" id="n_${k}" data-num="${k}" min="${mn}" max="${mx}" value="${E.num[k]}"><button type="button" data-step="${k}" data-d="1" aria-label="Increase ${l}">+</button></span></label>`).join('')}</div>`;
   h+=`<div class="egrp"><div class="olabel"><span class="k">Mods</span><span class="aside">Hide a mod's techs for vanilla playthroughs</span></div><div class="chips">${Object.entries(MODNAMES).map(([k,l])=>`<button class="chip" data-mod="${k}" aria-pressed="${E.mods[k]!==false}"><span class="sw"></span>${esc(MODFULL[k]||l)}</button>`).join('')}</div>
@@ -2760,7 +2939,11 @@ $('seg').addEventListener('click',e=>{if(dragJustEnded){dragJustEnded=false;retu
   };
   seg.addEventListener('pointerup',end);seg.addEventListener('pointercancel',end);
 })();
-$('sizes').addEventListener('click',e=>{const b=e.target.closest('.size');if(!b)return;if(TC[S.area+b.dataset.t]!==false){TC[S.area+b.dataset.t]=false;saveTC();renderBands()}const el=$('tier'+b.dataset.t);el&&el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
+/* scroll to an element; far jumps go instantly and re-settle, since off-screen tiers only get their real height once drawn */
+function jumpTo(el,block){if(!el)return;block=block||'start';const calm=matchMedia('(prefers-reduced-motion: reduce)').matches,r=el.getBoundingClientRect();
+  if(!calm&&Math.abs(r.top)<innerHeight*1.5){el.scrollIntoView({behavior:'smooth',block});return}
+  el.scrollIntoView({block});let n=0;const fix=()=>{const y=el.getBoundingClientRect().top;el.scrollIntoView({block});if(Math.abs(el.getBoundingClientRect().top-y)>1&&++n<4)requestAnimationFrame(fix);else if(++n<4)requestAnimationFrame(fix)};requestAnimationFrame(fix)}
+$('sizes').addEventListener('click',e=>{const b=e.target.closest('.size');if(!b)return;if(TC[S.area+b.dataset.t]!==false){TC[S.area+b.dataset.t]=false;saveTC();renderBands()}const el=$('tier'+b.dataset.t);jumpTo(el,'start')});
 for(const k in F)$(k).addEventListener('click',()=>{F[k]=!F[k];renderTop();renderBands()});
 function qText(x){return x._qt||(x._qt=(x.n+' '+(x.alln||'')+' '+x.n0+' '+x.c+' '+x.u+' '+x.only+' '+(MODNAMES[x.mod]||'')).toLowerCase())}
 function qScan(q){const r={p:{n:0,name:0,best:0},s:{n:0,name:0,best:0},e:{n:0,name:0,best:0}};
