@@ -337,6 +337,36 @@ html.fs-on .bandtools{top:72px}
 .appver summary:hover{color:#fff}
 .vlog{list-style:none;margin:12px auto 0;padding:14px 18px;max-width:640px;text-align:left;font-size:12.5px;letter-spacing:0;line-height:1.55;display:flex;flex-direction:column;gap:3px;border-radius:18px;background:color-mix(in srgb,var(--panel) 82%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--muted);text-shadow:none}
 .vlog b{color:var(--fg);display:inline-block;min-width:56px}
+.umbar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-top:12px}
+.umhelp{font-size:12.5px;color:var(--muted);flex:1 1 260px}
+.ummsg{margin:8px 0 0;font-size:13px;color:var(--fg)}
+.umlist{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13.5px}
+.umlist li{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}
+.umlist span{color:var(--muted)}
+.umord{margin-left:auto;display:flex;gap:12px;align-items:baseline}
+.umord .linkbtn{text-decoration:none;font-size:15px}
+.umord .linkbtn[disabled]{opacity:.3;cursor:default}
+.umord .rm{color:var(--danger);text-decoration:underline;font-size:13px}
+.svrow{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+.svnote{margin:-8px 0 0;font-size:13px;line-height:1.5;color:var(--fg)}
+.svnote .svstate{color:var(--muted)}
+.svnote .svstate.ok{color:var(--soc)}
+.offer{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:999px;color:#fff;background:var(--ac)}
+.imprt{display:flex;flex-direction:column;gap:12px}
+.imp{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.imp .pill{width:212px;box-sizing:border-box;justify-content:center;text-align:center}
+.imp code{font-size:11.5px;background:color-mix(in srgb,var(--fg) 8%,transparent);padding:1px 5px;border-radius:6px;word-break:break-all}
+#imports .svnote{margin:0}
+.imck{flex:0 0 auto;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:2px solid color-mix(in srgb,var(--muted) 55%,transparent);color:transparent;transition:background .2s,border-color .2s,color .2s}
+.imck svg{width:15px;height:15px}
+.imp.ok .imck{background:var(--soc);border-color:var(--soc);color:#fff}
+.imtx{display:flex;flex-direction:column;gap:3px;flex:1 1 260px;min-width:0}
+.imtx .umhelp{flex:none}
+.imst{font-size:12.5px;color:var(--muted);font-style:italic}
+.imp.ok .imst{color:var(--fg);font-style:normal;font-weight:600}
+.imp.warn .imst{color:var(--fg);font-style:normal}
+@media (max-width:560px){.imp{display:grid;grid-template-columns:26px 1fr;gap:8px 12px}.imp .pill{width:auto}.imp .imtx{grid-column:2}}
+.umthumb{display:block;width:100%;max-height:150px;object-fit:cover;border-radius:14px;margin-bottom:10px}
 </style>
 <header class="bar">
   <p class="mark">Stellaris <span class="markthin">Research</span></p>
@@ -372,16 +402,41 @@ html.fs-on .bandtools{top:72px}
 </div>
 
 <div class="wrap">
+  <details class="panel howto" id="howto" open>
+    <summary><span class="eyebrow">New here?</span><span class="h2">How to <b>use it</b></span><span class="chev" aria-hidden="true">+</span></summary>
+    <ol class="steps">
+      <li><b>Pick an area.</b> Tap Physics, Society or Engineering, or drag the slider between them.</li>
+      <li><b>Tick off what you've researched.</b> Quickest way: press <em>Load a save file…</em> just below this guide and pick your save; your research, ethics, civics, origin, traditions, perks and more are filled in for you. Otherwise Tap a tech card to mark it done; tap again to undo. Starting a new game? Press <em>Mark starting techs</em> first. Long-press a card (or right-click it on a computer) to see every step to that tech and how to improve your odds of getting it.</li>
+      <li><b>Describe your empire.</b> In <em>Your empire</em>, set the year, planets, starbases, authority, ethics, civics, origin and the DLC and mods you play with. As you play, add the traditions and ascension perks you adopt under <em>In-game choices</em>. Every card's odds update as you go. Playing with other mods? Below this guide, press <em>Add Workshop mods…</em> and pick your Workshop folder (or one mod's folder) to add their techs, then <em>Match my launcher…</em> and pick your Stellaris documents folder so the same mods are on, in the same order. Not playing with ACOT or Giga? Switch it off under <em>Mods</em> and its techs, tiers, civics, origins, traditions, perks and situations are hidden.</li>
+      <li><b>Read the odds.</b> The big % on each card is the chance that tech shows up among your next research options in that area. <em>Boosted</em> and <em>Reduced</em> list the modifiers working on it now; <em>Could boost</em> shows what would raise it.</li>
+      <li><b>Watch the tiers.</b> A tier opens once you've researched enough techs in the tier below (6 in vanilla; ACOT's tiers 6 to 10 need 2 or 4). Techs you can't be offered yet are greyed with the reason. Finished tiers stay open while they still have techs in the draw. Tap a tier's heading to collapse or expand it; tiers that haven't opened start collapsed.</li>
+      <li><b>Filter.</b> Use search and the switches at the top, or the pills on each tier, to see only what's in the draw, what's left, or what you've done. Each tier also has Physics, Society and Engineering buttons so you can switch area without scrolling back up.</li>
+      <li><b>Keep your progress.</b> Use <em>+</em> for a new campaign. Your progress is saved in this browser. To move it to another device, use <em>Copy backup code</em> in the <em>≡</em> menu. To keep a copy or share a campaign, open the <em>≡</em> menu and use <em>Save campaign to file</em>; <em>Load campaign file</em> brings it back as a campaign.</li>
+    </ol>
+    <p class="note left">Odds are estimates built from the game's own research weights. Events, special projects, debris and a few rare situations aren't modelled, and other mods you run can change things.</p>
+  </details>
+
+  <section class="panel" id="imports">
+    <div class="bandhead"><div><p class="eyebrow">Optional · read in your browser, nothing is uploaded</p><h2>Bring in your <b>game</b></h2></div></div>
+    <div class="imprt">
+      <div class="imp" id="imp_sv"><span class="imck" id="ck_sv" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l4 4L18 8"/></svg></span><label class="pill raised" for="svIn">Load a save file…</label><input type="file" id="svIn" accept=".sav" hidden><span class="imtx"><span class="umhelp">Pick a <b>.sav</b> from <code>Documents/Paradox Interactive/Stellaris/save games</code>. Fills in your research, empire, traditions, perks and current options.</span><span class="imst" id="st_sv">Not loaded yet</span></span></div>
+      <div class="imp" id="imp_ws"><span class="imck" id="ck_ws" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l4 4L18 8"/></svg></span><label class="pill raised" for="umIn">Add Workshop mods…</label><input type="file" id="umIn" webkitdirectory directory multiple hidden><span class="imtx"><span class="umhelp">Pick your Steam Workshop folder for Stellaris, <code>steamapps/workshop/content/281990</code>, or one mod's folder inside it. Adds the mods' techs to the tree.</span><span class="imst" id="st_ws">Not loaded yet</span></span></div>
+      <div class="imp" id="imp_ln"><span class="imck" id="ck_ln" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l4 4L18 8"/></svg></span><label class="pill raised" for="umIn2">Match my launcher…</label><input type="file" id="umIn2" webkitdirectory directory multiple hidden><span class="imtx"><span class="umhelp">Pick <code>Documents/Paradox Interactive/Stellaris</code>. Switches mods on or off and sets the load order to match your launcher. Add your Workshop mods first.</span><span class="imst" id="st_ln">Not loaded yet</span></span></div>
+    </div>
+    <p class="ummsg" id="umMsg" hidden></p>
+    <p class="svnote" id="svNote" hidden></p>
+  </section>
+
   <section class="panel">
     <div>
-      <p class="eyebrow">Tech tracker · Vanilla · ACOT + Giga</p>
+      <p class="eyebrow" id="modLabel">Tech tracker · Vanilla · ACOT + Giga</p>
       <div class="hero">
         <h1>Research tree <span class="beta h1beta" title="Still in development: odds and data may change">Beta</span> <b id="areaTitle">Physics</b></h1>
         <div class="big"><span id="bigCount">0</span><small id="bigOf">of 0 researched</small></div>
       </div>
     </div>
 
-    <p class="dataver" title="The game and mod files this tracker's techs, odds and names were read from">Data from <b>Stellaris v4.5.2</b> <span>(Cygnus)</span> · <b>Ancient Cache of Technologies</b> <span>(Workshop update 29 Sep 2026)</span> · <b>Gigastructural Engineering &amp; More 3.40.4</b> <span>(for 4.5, updated 7 Oct 2026)</span></p>
+    <p class="dataver" title="The game and mod files this tracker's techs, odds and names were read from">Data from <b>Stellaris v4.5.2</b> <span>(Cygnus)</span><span id="dvA"> · <b>Ancient Cache of Technologies</b> <span>(Workshop update 29 Sep 2026)</span></span><span id="dvG"> · <b>Gigastructural Engineering &amp; More 3.40.4</b> <span>(for 4.5, updated 7 Oct 2026)</span></span><span id="dvU"></span></p>
 
     <div class="opt">
       <div class="olabel"><span class="n">01</span><span class="k">Area</span><span class="v" id="areaV">Physics</span><span class="aside status" id="saveStatus">Loading…</span></div>
@@ -414,21 +469,8 @@ html.fs-on .bandtools{top:72px}
       </div>
       <button class="buy raised" id="starting"><span>Mark starting techs</span><span class="disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
     </div>
+    <p class="svnote" id="svNote" hidden></p>
   </section>
-
-  <details class="panel howto" id="howto" open>
-    <summary><span class="eyebrow">New here?</span><span class="h2">How to <b>use it</b></span><span class="chev" aria-hidden="true">+</span></summary>
-    <ol class="steps">
-      <li><b>Pick an area.</b> Tap Physics, Society or Engineering, or drag the slider between them.</li>
-      <li><b>Tick off what you've researched.</b> Tap a tech card to mark it done; tap again to undo. Starting a new game? Press <em>Mark starting techs</em> first. Long-press a card (or right-click it on a computer) to see every step to that tech and how to improve your odds of getting it.</li>
-      <li><b>Describe your empire.</b> In <em>Your empire</em>, set the year, planets, starbases, authority, ethics, civics, origin and the DLC and mods you play with. As you play, add the traditions and ascension perks you adopt under <em>In-game choices</em>. Every card's odds update as you go.</li>
-      <li><b>Read the odds.</b> The big % on each card is the chance that tech shows up among your next research options in that area. <em>Boosted</em> and <em>Reduced</em> list the modifiers working on it now; <em>Could boost</em> shows what would raise it.</li>
-      <li><b>Watch the tiers.</b> A tier opens once you've researched enough techs in the tier below (6 in vanilla; ACOT's tiers 6 to 10 need 2 or 4). Finished tiers grey out, and techs you can't be offered yet are greyed with the reason. Tap a tier's heading to collapse or expand it; finished tiers and tiers that haven't opened start collapsed.</li>
-      <li><b>Filter.</b> Use search and the switches at the top, or the pills on each tier, to see only what's in the draw, what's left, or what you've done. Each tier also has Physics, Society and Engineering buttons so you can switch area without scrolling back up.</li>
-      <li><b>Keep your progress.</b> Use <em>+</em> for a new campaign. If you're signed in to Claude your progress is saved to your account; otherwise it stays in this browser. To move it to another device, use <em>Copy backup code</em> in the <em>≡</em> menu. To keep a copy or share a campaign, open the <em>≡</em> menu and use <em>Save campaign to file</em>; <em>Load campaign file</em> brings it back as a campaign.</li>
-    </ol>
-    <p class="note left">Odds are estimates built from the game's own research weights. Events, special projects, debris and a few rare situations aren't modelled, and other mods you run can change things.</p>
-  </details>
 
   <section class="panel" id="empire">
     <div class="bandhead"><div><p class="eyebrow">Sets the research odds · saved per campaign</p><h2>Your <b>empire</b></h2></div><div class="state"><b id="optsNote">3 options per area</b></div></div>
@@ -490,7 +532,7 @@ html.fs-on .bandtools{top:72px}
     </div>
     <p class="note left">Fan-made and unofficial. Not affiliated with or endorsed by Paradox Interactive or the mod authors. Stellaris and its content belong to Paradox Interactive; mod content belongs to its authors. Background image: NGC 7129 from the James Webb Space Telescope (NASA, ESA, CSA, STScI; image processing by Alyssa Pagan, STScI). Tech icons are taken from the game and mod files and used under Paradox Interactive's fan content guidelines. Built from Stellaris v4.5.2 (Cygnus), Ancient Cache of Technologies (Workshop update of 29 September 2026) and Gigastructural Engineering &amp; More 3.40.4 (4.5). Other game or mod versions may differ.</p>
   </section>
-  <details class="appver"><summary>Stellaris Research Tracker <b>v0.21.1</b> · beta · updated 24 Oct 2026 · version history</summary><ol class="vlog"><li><b>v0.21.1</b> Version number in the footer</li><li><b>v0.21.0</b> Prerequisite check against game files; cards name missing prerequisites; ACOT/Giga versions of vanilla techs they rewrite</li><li><b>v0.20.3</b> Collapse arrow moved to each tier's top-right corner</li><li><b>v0.20.2</b> Tier status shown beside the tier title</li><li><b>v0.20.1</b> Game and mod data versions shown under the title</li><li><b>v0.20.0</b> Empire-specific tech names and icons (Machine Intelligence, Hive Mind, Corporate, origins)</li><li><b>v0.19.3</b> Area pills stay visible with no search results, with match counts</li><li><b>v0.19.2</b> Tech names checked against the full game and mod text files</li><li><b>v0.19.1</b> Floating search lines up with the area pills on wide screens</li><li><b>v0.19.0</b> Floating search bar</li><li><b>v0.18.0</b> Search jumps to the area that has the tech</li><li><b>v0.17.1</b> Card and path text wraps instead of being cut off</li><li><b>v0.17.0</b> Long-press a card for its full research path and ways to raise the odds</li><li><b>v0.16.4</b> Header label reads Vanilla · ACOT + Giga</li><li><b>v0.16.3</b> Renamed to Research tree</li><li><b>v0.16.2</b> Beta tag moved beside the title</li><li><b>v0.16.1</b> Beta tag</li><li><b>v0.16.0</b> Collapsible tiers with Expand all / Collapse all</li><li><b>v0.15.0</b> Save and load campaign files</li><li><b>v0.14.0</b> Area switch on every tier; how-to added</li><li><b>v0.13.0</b> Separate ACOT and Giga situation lists</li><li><b>v0.12.1</b> ACOT reactor-chain steps named to match the ACOT wiki</li><li><b>v0.12.0</b> Traditions and ascension perks moved to In-game choices</li><li><b>v0.11.1</b> Civics and origins filtered by each one's game rules</li><li><b>v0.11.0</b> Every playable civic and origin from the game and mods</li><li><b>v0.10.0</b> All ethics in game order with opposites switched off; finished tiers stay in colour</li><li><b>v0.9.1</b> Readable names for every situation toggle</li><li><b>v0.9.0</b> James Webb NGC 7129 backdrop</li><li><b>v0.8.2</b> Fixed techs showing raw IDs</li><li><b>v0.8.1</b> Remaining Giga icons filled in</li><li><b>v0.8.0</b> Tech icons from the game and mod files</li><li><b>v0.7.0</b> Public version for GitHub with credits, how-to and backup codes</li><li><b>v0.6.0</b> All data rebuilt from the installed game and mod files</li><li><b>v0.5.0</b> Research odds per tech, empire settings, tiers greyed until reachable</li><li><b>v0.4.0</b> Filters on each tier</li><li><b>v0.3.4</b> Area toggle tinted per area</li><li><b>v0.3.3</b> Area toggle can be dragged</li><li><b>v0.3.2</b> No blue flash when tapping toggles</li><li><b>v0.3.1</b> Sliding area toggle</li><li><b>v0.3.0</b> New look</li><li><b>v0.2.0</b> Ancient Cache of Technologies and Gigastructural Engineering techs</li><li><b>v0.1.1</b> Mega-Engineering unlock path fixed</li><li><b>v0.1.0</b> First tracker: tick off techs, tiers grey out after 6</li></ol></details>
+  <details class="appver"><summary>Stellaris Research Tracker <b>v0.27.2</b> · beta · updated 26 Oct 2026 · version history</summary><ol class="vlog"><li><b>v0.27.2</b> Header and data line list the mods you added</li><li><b>v0.25.1</b> Progress saves in your browser only (Claude account saving removed)</li><li><b>v0.27.1</b> Switching ACOT or Giga off also hides their civics, origins, traditions, perks, leader traits and situations</li><li><b>v0.27.0</b> Mods you add get their own credit card with a Workshop link and thumbnail</li><li><b>v0.26.1</b> Check marks in Bring in your game show what loaded: your save, added mods and launcher match</li><li><b>v0.26.0</b> How-to moved to the top, with Load a save file, Add Workshop mods and Match my launcher buttons right below it</li><li><b>v0.25.3</b> Finished tiers stay open while they still have techs in the draw, with the count shown</li><li><b>v0.25.2</b> Smoother search: typing no longer rebuilds every card or recalculates odds on each key press</li><li><b>v0.25.0</b> Load a save file: research, ethics, civics, origin, traditions, perks, planets, starbases, flags, DLC, mods and your current research options filled in automatically</li><li><b>v0.24.0</b> Added mods show their own tech icons (read and converted in your browser)</li><li><b>v0.23.0</b> Added mods get real odds and conditions (including their own scripted triggers), their own situations list, load order controls and launcher mod-list import</li><li><b>v0.22.0</b> Add mods: read any mod's techs, tiers and prerequisites right in your browser</li><li><b>v0.21.1</b> Version number in the footer</li><li><b>v0.21.0</b> Prerequisite check against game files; cards name missing prerequisites; ACOT/Giga versions of vanilla techs they rewrite</li><li><b>v0.20.3</b> Collapse arrow moved to each tier's top-right corner</li><li><b>v0.20.2</b> Tier status shown beside the tier title</li><li><b>v0.20.1</b> Game and mod data versions shown under the title</li><li><b>v0.20.0</b> Empire-specific tech names and icons (Machine Intelligence, Hive Mind, Corporate, origins)</li><li><b>v0.19.3</b> Area pills stay visible with no search results, with match counts</li><li><b>v0.19.2</b> Tech names checked against the full game and mod text files</li><li><b>v0.19.1</b> Floating search lines up with the area pills on wide screens</li><li><b>v0.19.0</b> Floating search bar</li><li><b>v0.18.0</b> Search jumps to the area that has the tech</li><li><b>v0.17.1</b> Card and path text wraps instead of being cut off</li><li><b>v0.17.0</b> Long-press a card for its full research path and ways to raise the odds</li><li><b>v0.16.4</b> Header label reads Vanilla · ACOT + Giga</li><li><b>v0.16.3</b> Renamed to Research tree</li><li><b>v0.16.2</b> Beta tag moved beside the title</li><li><b>v0.16.1</b> Beta tag</li><li><b>v0.16.0</b> Collapsible tiers with Expand all / Collapse all</li><li><b>v0.15.0</b> Save and load campaign files</li><li><b>v0.14.0</b> Area switch on every tier; how-to added</li><li><b>v0.13.0</b> Separate ACOT and Giga situation lists</li><li><b>v0.12.1</b> ACOT reactor-chain steps named to match the ACOT wiki</li><li><b>v0.12.0</b> Traditions and ascension perks moved to In-game choices</li><li><b>v0.11.1</b> Civics and origins filtered by each one's game rules</li><li><b>v0.11.0</b> Every playable civic and origin from the game and mods</li><li><b>v0.10.0</b> All ethics in game order with opposites switched off; finished tiers stay in colour</li><li><b>v0.9.1</b> Readable names for every situation toggle</li><li><b>v0.9.0</b> James Webb NGC 7129 backdrop</li><li><b>v0.8.2</b> Fixed techs showing raw IDs</li><li><b>v0.8.1</b> Remaining Giga icons filled in</li><li><b>v0.8.0</b> Tech icons from the game and mod files</li><li><b>v0.7.0</b> Public version for GitHub with credits, how-to and backup codes</li><li><b>v0.6.0</b> All data rebuilt from the installed game and mod files</li><li><b>v0.5.0</b> Research odds per tech, empire settings, tiers greyed until reachable</li><li><b>v0.4.0</b> Filters on each tier</li><li><b>v0.3.4</b> Area toggle tinted per area</li><li><b>v0.3.3</b> Area toggle can be dragged</li><li><b>v0.3.2</b> No blue flash when tapping toggles</li><li><b>v0.3.1</b> Sliding area toggle</li><li><b>v0.3.0</b> New look</li><li><b>v0.2.0</b> Ancient Cache of Technologies and Gigastructural Engineering techs</li><li><b>v0.1.1</b> Mega-Engineering unlock path fixed</li><li><b>v0.1.0</b> First tracker: tick off techs, tiers grey out after 6</li></ol></details>
 </div>
 <script type="text/plain" id="techdata">
 Arcane Deciphering|s|c|2|12||r|Feature : Reverse-Engineer Minor Artifacts||tech_arcane_deciphering
@@ -2234,6 +2276,9 @@ Anti-Celestial Prototype|e|5|5|160|1c8|r||g|giga_tech_nomad_war_moon
 Super-Planetary Counter Doctrine|e|5|5|320|9v,1c9|r||g|giga_tech_nomad_war_planet
 Miniature Kugelblitz Containment|p|0|4|40|ak,bv|||g|giga_tech_kugelblitz_nomad
 </script>
+<script type="application/json" id="vanis">{"technologies/cosmic_storms_technologies_weight_modifiers":"modifier = {\n\tfactor = 1.2\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_shared_knowledge\"\n}\n\nmodifier = {\n\tfactor = 1.5\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_protection_initiative\"\n}\n\nmodifier = {\n\tfactor = 1.75\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_galactic_management\"\n}\n\nmodifier = {\n\tfactor = 10000 # Make the storm tech \"guaranteed\" to be discovered\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_utilization_protocols\"\n}\n\nmodifier = {\n\tfactor = 10000 # Make the storm tech \"guaranteed\" to be discovered\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_manipulation_mandate\"\n}\n\nmodifier = { # Modifier from Storm Callers Councilor skill level\n\tfactor = value:storm_callers_councilor_tech_discovery_chance_multiplier\n\tany_owned_leader = {\n\t\tis_councilor = yes\n\t\tOR = {\n\t\t\tis_councilor_type = councilor_storm_callers\n\t\t\tis_councilor_type = councilor_storm_callers_megacorp\n\t\t}\n\t}\t\n}\n\nmodifier = { # Storm Chaser origin has increased storm tech chance.\n\tfactor = @storm_chasers_storm_tech_weight_mult\n\thas_origin = origin_storm_chasers\n}","technologies/add_experimental_testing_tech_progress":"modifier = {\n\tfactor = 0\n\tOR = {\n\t\thas_technology = $TECH$\n\t\tNOT = { can_research_technology = $TECH$ }\n\t\thas_$TECH$_prerequisites = no\n\t}\n}\nadd_tech_progress = {\n\ttech = $TECH$\n\tprogress = value:experimental_testing_insight_gain\n}\n\nset_country_flag = experimental_testing_insight_given\n\nset_variable = {\n\twhich = experimental_progress\n\tvalue = value:experimental_testing_insight_gain_percentage\n}\ncreate_message = {\n\ttype = EXPERIMENT_TESTING_TECH_OPTION_MESSAGE_TYPE\n\tlocalization = EXPERIMENT_TESTING_TECH_OPTION_DESC\n\tvariable = {\n\t\ttype = key\n\t\tvalue = $TECH$\n\t\tlocalization = TECH\n\t}\n\tvariable = {\n\t\ttype = variable\n\t\tlocalization = VAL\n\t\tvarname = this.experimental_progress\n\t\tscope = this\n\t}\n}\nclear_variable = experimental_progress\n","technologies/cosmic_storms_technologies_cost_modifiers":"# From resolution_category_space_weather_exploitation_stances\nmodifier = {\n\tfactor = 0.75\n\tis_galactic_community_member = yes\n\tOR = {\n\t\tis_active_resolution = \"resolution_cosmic_storms_shared_knowledge\"\n\t\tis_active_resolution = \"resolution_cosmic_storms_protection_initiative\"\n\t}\n}\nmodifier = {\n\tfactor = 0.5\n\tis_galactic_community_member = yes\n\tOR = {\n\t\tis_active_resolution = \"resolution_cosmic_storms_galactic_management\"\n\t\tis_active_resolution = \"resolution_cosmic_storms_utilization_protocols\"\n\t}\n}\nmodifier = {\n\tfactor = 0.2\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_manipulation_mandate\"\n}\n\n# From resolution_category_storm_environmentalists_stances\nmodifier = {\n\tfactor = 1.2\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_advanced_storm_studies\"\n}\nmodifier = {\n\tfactor = 1.30\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_galactic_emergency_relief\"\n}\nmodifier = {\n\tfactor = 1.5\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_storm_encouragement_mandate\"\n}\nmodifier = {\n\tfactor = 1.65\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_control_restrictions\"\n}\nmodifier = {\n\tfactor = 1.80\n\tis_galactic_community_member = yes\n\tis_active_resolution = \"resolution_cosmic_storms_preservation_initiative\"\n}\n","technologies/rare_technologies_weight_modifiers":"modifier = {\n\tfactor = @federation_perk_factor\n\thas_federation = yes\n\tfederation = {\n\t\thas_federation_perk = rare_tech_boost\n\t\tany_member = { has_technology = $TECHNOLOGY$ }\n\t}\n}\n","technology/archaeotech_weight":"modifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeoshield\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeoarmor\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_detection_scrambler\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_titan_beam\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_pk_devolving_beam\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_mass_drivers\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_lasers\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_point_defence\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_missiles\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_mass_accelerator\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_strike_crafts\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_rampart\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_overcharger\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}\n\nmodifier = {\n\tfactor = 0.85\n\thas_technology = tech_archaeo_refinery\n\tNOT = { has_ascension_perk = ap_archaeoengineers }\n}"}</script>
+<script type="application/json" id="keylbl">{"ap_archaeoengineers":"Archaeo-Engineers","origin_here_be_dragons":"Here Be Dragons","ap_hydrocentric":"Hydrocentric","origin_ocean_paradise":"Ocean Paradise","origin_ocean_machines":"Subaquatic Machines","civic_anglers":"Anglers","civic_machine_anglers":"Marine Machines","civic_corporate_anglers":"Trawling Operations","civic_corporate_machine_anglers":"Maritime Robotics","origin_riftworld":"Riftworld","civic_hyperspace_specialty":"Hyperspace Specialty","civic_hive_hyperspace_specialty":"Hyperspace Synchronicity","civic_machine_hyperspace_specialty":"Hyperspace Calculations","civic_corporate_hyperspace_specialty":"Hyperspace Trade","civic_dimensional_worship":"Dimensional Worship","civic_corporate_dimensional_worship":"Dimensional Enterprise","civic_dark_consortium":"Dark Consortium","civic_corporate_dark_consortium":"Shadow Corporation","civic_sovereign_guardianship":"Sovereign Guardianship","civic_hive_sovereign_guardianship":"Guardian Cluster","civic_machine_sovereign_guardianship":"Guardian Matrix","civic_corporate_sovereign_guardianship":"Corporate Protectorate","origin_evolutionary_predators":"Evolutionary Predators","origin_starlit_citadel":"Starlit Citadel","civic_genetic_identification":"Genetic Identification","civic_corporate_genetic_identification":"Sequenced Securities","civic_crowdsourcing":"Crowdsourcing","civic_corporate_crowdsourcing":"Decentralized R&D","civic_civil_education":"Civil Education","civic_hive_familiar_face":"Familiar Face","civic_wilderness_familiar_face":"Familiar Face","civic_hive_shared_genetics":"Shared Genetics","civic_wilderness_shared_genetics":"Shared Genetics","civic_hive_aerospace_adaptation":"Aerospace Adaptation","civic_machine_stalwart_network":"Stalwart Network","civic_hive_bodysnatcher":"Bodysnatcher","civic_fragmented_command":"Fragmented Command","civic_hyper_aggressive_drones":"Hyper-Aggressive Drones","civic_unstable_drones":"Unstable Drones","civic_stunted_drones":"Stunted Drones","civic_restored_mind":"Restored Mind","civic_ancient_memories_of_war":"Ancient Memories of War","civic_ancient_memories_of_growth":"Ancient Memories of Growth","civic_ancient_memories_of_control":"Ancient Memories of Control","ap_weather_control":"Galactic Weather Control","civic_astrometeorology":"Astrometeorology","civic_astrometeorology_hive":"Climate Modeling","civic_astrometeorology_machine":"Climate Modeling","civic_astrometeorology_megacorp":"Weather Exploitation","civic_storm_callers":"Storm Devotion","civic_storm_callers_megacorp":"Storm Influencers","civic_environmental_architects":"Planetscapers","civic_environmental_architects_hive":"Cultivation Drones","civic_environmental_architects_machine":"Gardening Protocols","civic_environmental_architects_megacorp":"Geo-Engineering Inc.","origin_storm_chasers":"Storm Chasers","origin_storm_chasers_nomadic":"Storm Chasers","origin_default":"Prosperous Unification","origin_default_nomadic":"Prosperous Unification","origin_mechanists":"Mechanist","origin_syncretic_evolution":"Syncretic Evolution","origin_life_seeded":"Life-Seeded","origin_post_apocalyptic":"Post-Apocalyptic","origin_life_seeded_ai_only":"Life-Seeded","origin_post_apocalyptic_machines":"Radioactive Rovers","origin_shattered_ring":"Shattered Ring","origin_remnants":"Remnants","origin_tree_of_life":"Tree of Life","origin_lithoid":"Calamitous Birth","origin_machine":"Resource Consolidation","civic_hive_empath":"Empath","origin_galactic_doorstep":"Galactic Doorstep","origin_shoulders_of_giants":"On the Shoulders of Giants","origin_void_dwellers":"Void Dwellers","origin_void_machines":"Voidforged","origin_scion":"Scion","origin_common_ground":"Common Ground","origin_common_ground_npc":"Common Ground","origin_hegemon":"Hegemon","origin_doomsday":"Doomsday","origin_lost_colony":"Lost Colony","origin_primal_calling":"Primal Calling","origin_treasure_hunters":"Treasure Hunters","civic_galactic_curators":"Galactic Curators","civic_corporate_galactic_curators":"Antiquarian Expertise","civic_hive_galactic_curators":"Caretaker Network","civic_machine_galactic_curators":"Caretaker Network","civic_beastmasters":"Beastmasters","civic_machine_beastmasters":"Biodrones","civic_hive_beastmasters":"Wild Swarm","civic_wilderness_beastmasters":"Wild Swarm","civic_corporate_beastmasters":"Space Ranchers","tradition_domestication":"Domestication","origin_red_giant":"Red Giant","origin_cosmic_dawn":"Cosmic Dawn","civic_hive_galvanic_symbiosis":"Galvanic Symbiosis","civic_selective_kinship":"Selective Kinship","civic_void_hive":"Void Hive","ap_cosmogenesis":"Cosmogenesis","origin_cybernetic_creed":"Cybernetic Creed","civic_augmentation_bazaars":"Augmentation Bazaars","origin_arc_welders":"Arc Welders","origin_arc_welders_nomadic":"Arc Welders","origin_synthetic_fertility":"Synthetic Fertility","civic_machine_diplomatic_protocols":"Diplomatic Protocols","civic_machine_tactical_algorithms":"Tactical Algorithms","civic_natural_design":"Natural Design","civic_hive_natural_design":"Innate Design","civic_wilderness_natural_design":"Innate Design","civic_guided_sapience":"Genesis Guides","civic_hive_guided_sapience":"Genesis Symbiotes","civic_machine_guided_sapience":"Genesis Architects","civic_corporate_guided_sapience":"Astrogenesis Technologies","civic_machine_obsessional_directive":"Obsessional Directive","civic_toxic_baths_individual_machine":"Lubrication Tanks","civic_corporate_toxic_baths_individual_machine":"Luxury Lubrication Pools","civic_individual_machine_predictive_analysis":"Static Research Analysis","civic_individual_machine_warbots":"Warbots","civic_individual_machine_replication":"Rapid Replicator","civic_awakened_machine":"Reactivated Custodian Matrix","civic_malfunctioning_custodian":"Corrupted Defense Directives","civic_final_defense_protocols":"Final Defense Directives","civic_machine_remnants":"Fallen Machine Intelligence","civic_custodian_directives":"Custodian Matrix","leader_trait_spark_of_genius":"Spark of Genius","leader_trait_maniacal":"Maniacal","leader_trait_expertise_materials":"Expertise: Materials","leader_trait_expertise_voidcraft":"Expertise: Voidcraft","leader_trait_expertise_industry":"Expertise: Industry","leader_trait_expertise_field_manipulation":"Expertise: Field Manipulation","leader_trait_expertise_particles":"Expertise: Particles","leader_trait_expertise_psionics":"Expertise: Psionics","leader_trait_expertise_computing":"Expertise: Computing","leader_trait_expertise_new_worlds":"Expertise: New Worlds","leader_trait_expertise_statecraft":"Expertise: Statecraft","leader_trait_expertise_biology":"Expertise: Biology","leader_trait_curator":"Curator","ethic_authoritarian":"Authoritarian","ethic_fanatic_authoritarian":"Fanatic Authoritarian","ethic_egalitarian":"Egalitarian","ethic_fanatic_egalitarian":"Fanatic Egalitarian","ethic_xenophobe":"Xenophobe","ethic_fanatic_xenophobe":"Fanatic Xenophobe","ethic_xenophile":"Xenophile","ethic_fanatic_xenophile":"Fanatic Xenophile","ethic_militarist":"Militarist","ethic_fanatic_militarist":"Fanatic Militarist","ethic_pacifist":"Pacifist","ethic_fanatic_pacifist":"Fanatic Pacifist","ethic_spiritualist":"Spiritualist","ethic_fanatic_spiritualist":"Fanatic Spiritualist","ethic_materialist":"Materialist","ethic_fanatic_materialist":"Fanatic Materialist","ethic_gestalt_consciousness":"Gestalt Consciousness","civic_feudal_realm":"Feudal Society","civic_imperial_cult":"Imperial Cult","civic_corvee_system":"Corvée System","civic_beacon_of_liberty":"Beacon of Liberty","civic_exalted_priesthood":"Exalted Priesthood","civic_philosopher_king":"Philosopher King","civic_meritocracy":"Meritocracy","civic_citizen_service":"Citizen Service","civic_technocracy":"Technocracy","civic_police_state":"Police State","civic_idealistic_foundation":"Idealistic Foundation","civic_environmentalist":"Environmentalist","civic_slaver_guilds":"Slaver Guilds","civic_inwards_perfection":"Inward Perfection","civic_warrior_culture":"Warrior Culture","civic_distinguished_admiralty":"Distinguished Admiralty","civic_free_haven":"Free Haven","civic_cutthroat_politics":"Cutthroat Politics","civic_corporate_dominion":"Corporate Dominion","civic_agrarian_idyll":"Agrarian Idyll","civic_shadow_council":"Shadow Council","civic_mining_guilds":"Mining Guilds","civic_parliamentary_system":"Parliamentary System","civic_efficient_bureaucracy":"Efficient Bureaucracy","civic_nationalistic_zeal":"Nationalistic Zeal","civic_functional_architecture":"Functional Architecture","civic_aristocratic_elite":"Aristocratic Elite","civic_shared_burden":"Shared Burdens","civic_fanatic_purifiers":"Fanatic Purifiers","civic_lethargic_leadership":"Lethargic Leadership","civic_empire_in_decline":"Empire in Decline","civic_revanchist_fervor":"Revanchist Fervor","civic_ancient_caches_of_technology":"Ancient Caches of Technology","civic_secret_of_fire":"Secret of Fire","civic_the_wheel":"The Wheel","civic_landed_nobility":"Landed Nobility","civic_flat_world_theory":"Flat World Theory","civic_increasing_urbanization":"Increasing Urbanization","civic_atmospheric_pollution":"Atmospheric Pollution","civic_hive_secret_of_fire":"Secret of Fire","civic_hive_the_wheel":"The Wheel","civic_hive_burgeoning_nodes":"Burgeoning Nodes","civic_hive_flat_world_theory":"Flat World Theory","civic_hive_centralized_consciousness":"Centralized Consciousness","civic_hive_atmospheric_pollution":"Atmospheric Pollution","civic_ancient_preservers":"Ancient Preservers","civic_trading_conglomerate":"Trading Conglomerate","civic_artist_collective":"Artist Collective","civic_military_order":"Military Order","civic_ancient_machine_intelligence":"Ancient Machine Intelligence","civic_hive_subspace_ephapse":"Subspace Ephapse","civic_wilderness_subspace_ephapse":"Subspace Ephapse","civic_hive_natural_neural_network":"Natural Neural Network","civic_wilderness_natural_neural_network":"Natural Neural Network","civic_hive_ascetic":"Ascetic","civic_wilderness_ascetic":"Ascetic","civic_hive_one_mind":"One Mind","civic_wilderness_one_mind":"One Mind","civic_hive_divided_attention":"Divided Attention","civic_wilderness_divided_attention":"Divided Attention","civic_hive_strength_of_legions":"Strength of Legions","civic_hive_subsumed_will":"Subsumed Will","civic_hive_pooled_knowledge":"Pooled Knowledge","civic_wilderness_pooled_knowledge":"Pooled Knowledge","civic_hive_devouring_swarm":"Devouring Swarm","civic_machine_servitor":"Rogue Servitor","civic_machine_terminator":"Determined Exterminator","civic_machine_assimilator":"Driven Assimilator","civic_machine_builder":"Constructobot","civic_machine_unitary_cohesion":"Unitary Cohesion","civic_machine_factory_overclock":"Factory Overclocking","civic_machine_rockbreakers":"Rockbreakers","civic_machine_built_to_last":"Built to Last","civic_machine_zero_waste_protocols":"Zero-Waste Protocols","civic_machine_ota_updates":"OTA Updates","civic_machine_warbots":"Warbots","civic_machine_introspective":"Introspective","civic_machine_delegated_functions":"Delegated Functions","civic_machine_predictive_analysis":"Static Research Analysis","civic_machine_replication":"Rapid Replicator","civic_machine_maintenance_protocols":"Maintenance Protocols","civic_life_seeded":"Life-Seeded","civic_barbaric_despoilers":"Barbaric Despoilers","civic_byzantine_bureaucracy":"Byzantine Bureaucracy","civic_merchant_guilds":"Merchant Guilds","civic_franchising":"Franchising","civic_trading_posts":"Trading Posts","civic_media_conglomerate":"Media Conglomerate","civic_naval_contractors":"Naval Contractors","civic_free_traders":"Free Traders","civic_private_prospectors":"Private Prospectors","civic_gospel_of_the_masses":"Gospel of the Masses","civic_ruthless_competition":"Ruthless Competition","civic_criminal_heritage":"Criminal Heritage","civic_private_military_companies":"Private Military Companies","civic_indentured_assets":"Indentured Assets","civic_brand_loyalty":"Brand Loyalty","civic_diplomatic_corps":"Diplomatic Corps","civic_public_relations_specialists":"Public Relations Specialists","civic_death_cult":"Death Cult","civic_death_cult_corporate":"Corporate Death Cult","civic_memorialist":"Memorialists","civic_hive_memorialist":"Memorialist","civic_wilderness_memorialist":"Memorialist","civic_machine_memorialist":"Memorialist","civic_crafters":"Masterful Crafters","civic_pleasure_seekers":"Pleasure Seekers","civic_corporate_hedonism":"Corporate Hedonism","civic_corporate_crafters":"Mastercraft Inc.","civic_pompous_purists":"Pompous Purists","civic_ascensionists":"Ascensionists","civic_corporate_ascensionists":"Gigacorp","civic_hive_ascensionists":"Elevational Contemplations","civic_machine_ascensionists":"Elevational Hypotheses","civic_worker_coop":"Worker Cooperative","civic_machine_spybots":"Spyware Directives","civic_machine_astromining_drones":"Astro-Mining Drones","ap_arcology_project":"Arcology Project","civic_caravaneer_fleet1":"Orlan Topless Pyramid","civic_caravaneer_fleet2":"Mercantile Priesthood","civic_caravaneer_fleet3":"Absolute Commodifiers","origin_necrophage":"Necrophage","civic_reanimated_armies":"Reanimators","civic_permanent_employment":"Permanent Employment","civic_hive_cordyceptic_drones":"Cordyceptic Drones","origin_default_nomads":"Voidfarers","origin_heirs_of_the_khan":"Heirs of the Khan","origin_forever_cruise":"Forever Cruise","civic_champions_forge_enclave":"Broadcasting Enclave","origin_sacred_path":"The Sacred Path","civic_caravan_masters":"Caravan Masters","civic_caravan_masters_corporate":"Dynamic Logistics","civic_deep_sleep":"Deep Sleep","civic_corporate_deep_sleep":"Frozen Assets","civic_hive_deep_sleep":"Alternating Torpor","civic_machine_deep_sleep":"Standby Protocols","civic_void_reavers":"Void Reavers","civic_flight_schools":"Flight Schools","civic_corporate_flight_schools":"Star Liner Academy","civic_hired_guns":"Hired Guns","civic_corporate_hired_guns":"Asset Protection Specialists","ap_eternal_vigilance_nomads":"Eternal Vigilance","origin_shroud_forged":"Shroud-Forged","origin_progenitor_hive":"Progenitor Hive","origin_subterranean":"Subterranean","origin_subterranean_machines":"Subterranean Machines","origin_shroudwalker_apprentice":"Teachers of the Shroud","origin_star_slingshot":"Slingshot to the Stars","origin_imperial_vassal":"Imperial Fiefdom","civic_private_military_companies_ove":"Private Military Companies","civic_naval_contractors_ove":"Naval Contractors","civic_barbaric_despoilers_ove":"Barbaric Despoilers","civic_warrior_culture_ove":"Warrior Culture","ap_lord_of_war":"Lord of War","leader_trait_psionic":"Psychic","leader_trait_whisperers_chosen":"Chosen of the Whisperers","leader_trait_composer_chosen":"Chosen of the Composer","leader_trait_instrument_chosen":"Chosen of the Instrument","civic_memory_vault":"Vaults of Knowledge","civic_memory_vault_corporate":"Knowledge Mentorship","civic_memory_vault_machine":"Experience Cache","civic_memory_vault_hive":"Neural Vaults","civic_memory_vault_wilderness":"Neural Vaults","civic_crusader_spirit":"Crusader Spirit","civic_crusader_spirit_corporate":"Letters of Marque","civic_task_delegation_corporate":"Precision Cogs","civic_private_healthcare_corporate":"Pharma State","civic_machine_upkeep_twister":"Sovereign Circuits","civic_hive_upkeep_twister":"Autonomous Drones","civic_heroic_tales":"Heroic Past","civic_dystopian_society":"Oppressive Autocracy","origin_legendary_leader":"Under One Rule","origin_legendary_leader_imperial":"Under One Rule","origin_legendary_leader_dictatorial":"Under One Rule","origin_legendary_leader_death":"Broken Rule","leader_trait_expertise_materials_hive":"Expertise: Materials","leader_trait_expertise_voidcraft_hive":"Expertise: Voidcraft","leader_trait_expertise_industry_hive":"Expertise: Industry","leader_trait_expertise_field_manipulation_hive":"Expertise: Field Manipulation","leader_trait_expertise_particles_hive":"Expertise: Particles","leader_trait_expertise_psionics_hive":"Expertise: Psionics","leader_trait_expertise_computing_hive":"Expertise: Computing","leader_trait_expertise_new_worlds_hive":"Expertise: New Worlds","leader_trait_expertise_statecraft_hive":"Expertise: Statecraft","leader_trait_expertise_biology_hive":"Expertise: Biology","leader_trait_expertise_materials_machine":"Expertise: Materials","leader_trait_expertise_voidcraft_machine":"Expertise: Voidcraft","leader_trait_expertise_industry_machine":"Expertise: Industry","leader_trait_expertise_field_manipulation_machine":"Expertise: Field Manipulation","leader_trait_expertise_particles_machine":"Expertise: Particles","leader_trait_expertise_psionics_machine":"Expertise: Psionics","leader_trait_expertise_computing_machine":"Expertise: Computing","leader_trait_expertise_new_worlds_machine":"Expertise: New Worlds","leader_trait_expertise_statecraft_machine":"Expertise: Statecraft","leader_trait_expertise_biology_machine":"Expertise: Biology","origin_fruitful":"Fruitful Partnership","civic_idyllic_bloom":"Idyllic Bloom","civic_hive_idyllic_bloom":"Mycorrhizal Ideal","civic_wilderness_idyllic_bloom":"Mycorrhizal Ideal","civic_catalytic_processing":"Catalytic Processing","civic_corporate_catalytic_processing":"Catalytic Recyclers","civic_hive_catalytic_processing":"Organic Reprocessing","civic_machine_catalytic_processing":"Organic Retrofitting","civic_entropy_drinkers":"Entropy Drinkers","civic_entropy_drinkers_machine":"Energy Extractors","civic_entropy_drinkers_hive_mind":"Parasitic Caste","civic_entropy_drinkers_corporate":"Corporate Vampires","civic_superstitious_beliefs":"Superstitious Beliefs","civic_machine_superstitious_beliefs":"Pattern Finders","civic_hive_superstitious_beliefs":"Zodiac Nexus","civic_corporate_superstitious_beliefs":"Fortune Enterprise","civic_twisted_experimenters":"Experimental Sentencing","civic_twisted_experimenters_hive_mind":"Corrective Consciousness","civic_twisted_experimenters_corporate":"Judicial R&D","civic_secret_societies":"Secret Societies","civic_secret_societies_corporate":"Influential Cartel","civic_chosen":"Chosen","civic_hive_chosen":"Chosen Many","civic_machine_chosen":"Apostle Network","civic_corporate_chosen":"Chosen Executives","civic_tankbound":"Tankbound","civic_tankbound_corporate":"Corporate Thinktank","tradition_psionics_shroud":"Psionics","civic_mindwarden_enclave":"Mindwarden Enclave","origin_mindwardens":"$MINDWARDEN_plural$","origin_endbringers":"Endbringers","origin_toxic_knights":"Knights of the Toxic God","origin_toxic_knights_nomadic":"Knights of the Toxic God","origin_overtuned":"Overtuned","civic_toxic_baths":"Mutagenic Spas","civic_corporate_toxic_baths":"Mutagenic Luxury","civic_hive_toxic_baths":"Permutation Pools","civic_machine_toxic_baths":"Hyper Lubrication Basin","civic_relentless_industrialists":"Relentless Industrialists","civic_corporate_relentless_industrialists":"Shareholder Values","civic_scavengers":"Scavengers","civic_corporate_scavengers":"Refurbishment Division","tradition_expansion":"Expansion","tradition_domination":"Domination","tradition_harmony":"Harmony","tradition_synchronicity":"Synchronicity","tradition_supremacy":"Supremacy","tradition_diplomacy":"Diplomacy","tradition_adaptability":"Adaptability","tradition_discovery":"Discovery","tradition_prosperity":"Prosperity","tradition_subterfuge":"Subterfuge","tradition_unyielding":"Fortification","tradition_psionics":"Psionics","tradition_genetics":"Genetics","tradition_cybernetics":"Cybernetics","tradition_cybernetics_assimilator":"Cybernetics","tradition_synthetics":"Synthetics","tradition_enmity":"Enmity","ap_engineered_evolution":"Biomorphosis","ap_the_flesh_is_weak":"The Flesh is Weak","ap_synthetic_evolution":"Synthetic Evolution","ap_world_shaper":"World Shaper","ap_mind_over_matter":"Mind Over Matter","ap_master_builders":"Master Builders","ap_imperial_prerogative":"Imperial Prerogative","ap_one_vision":"One Vision","ap_galactic_force_projection":"Galactic Force Projection","ap_defender_of_the_galaxy":"Defender of the Galaxy","ap_defender_of_the_galaxy_nomads":"Defender of the Galaxy","ap_galactic_contender":"Galactic Contender","ap_technological_ascendancy":"Technological Ascendancy","ap_mastery_of_nature":"Mastery of Nature","ap_galactic_wonders":"Galactic Wonders","ap_interstellar_dominion":"Interstellar Dominion","ap_eternal_vigilance":"Eternal Vigilance","ap_grasp_the_void":"Grasp the Void","ap_synthetic_age":"Synthetic Age","ap_machine_worlds":"Machine Worlds","ap_hive_worlds":"Hive Worlds","ap_mastery_of_nature_nomads":"Mastery of Nature","ap_colossus":"Colossus Project","ap_enigmatic_engineering":"Enigmatic Engineering","ap_enigmatic_engineering_cloaking":"Enigmatic Engineering","ap_galactic_wonders_utopia":"Galactic Wonders","ap_galactic_wonders_megacorp":"Galactic Wonders","ap_galactic_wonders_utopia_and_megacorp":"Galactic Wonders","ap_organo_machine_interfacing":"Organo-Machine Interfacing","ap_organo_machine_interfacing_assimilator":"Organo-Machine Interfacing","ap_mechromancy":"Mechromancy","civic_psionic_sovereign":"Divine Sovereign","civic_psionic_sovereign_organic_gestalt":"Divine Sovereign","civic_psionic_sovereign_machine_non_gestalt":"Divine Sovereign","civic_psionic_sovereign_machine_gestalt":"Divine Sovereign","origin_wilderness":"Wilderness","ap_mastery_of_nature_wilderness":"Mastery of Nature","ap_engineered_evolution_wilderness":"Biomorphosis","origin_frameworld":"Frame World","origin_alderson":"Alderson Disk","origin_birch":"Decaying Birch World","origin_incohesive":"Away On An Island","ap_supermassive_ehof":"Unshackled Transportation","origin_gas_giant":"Gas Giant Liftoff","origin_gas_giant_robot":"Gas Giant Liftoff","origin_elysium":"Elysian Overseers","origin_equatorial_shipyard":"Equatorial Shipyard","origin_squareworld":"Squareworld","origin_flat_world":"Flat World","origin_planetary_computer":"Central Processing","origin_great_ring":"The Great Ring","origin_interstellar_ring":"Interstellar Dwellers","origin_penrose_ring":"Broken Horizon","civic_against_hyperweapon":"The Eternal Bastion","civic_giga_common_cause":"Pangalactic Common Cause","ap_vast_expanses":"Vast Expanses","ap_gigastructural_constructs":"Gigastructural Constructs","ap_qso":"A Weapon to Pierce the Heavens","civic_spirit_of_the_kaiser":"Spirit of the Kaiser","civic_laurandar_aaron":"The Laurnaise System","civic_reunited_imperium_socialist":"Reunited Imperium - Galactic Revolution","civic_reunited_imperium_republic":"Reunited Imperium - Grand Republic","civic_reunited_imperium_junta":"Reunited Imperium - New Order","civic_reunited_imperium_realm":"Reunited Imperium - Peaceful Ways","civic_reunited_imperium_player":"Reunited Imperium","ap_celestial_printing":"A Celestial Armada","tradition_gigaengineering":"Gigaconstruction","tradition_macroengineering":"Macroengineering","tradition_gigabulwark":"Entrenchment","civic_disinterested_gamers":"Disinterested Gamers","civic_lethargic_gamers":"Slothful Defenders","civic_experienced_gamers":"Baleful Attackers","civic_bogged_down_researchers":"Bogged-Down Researchers","civic_deranged_researchers":"Deranged Technomaniacs","origin_tier_one_start":"The Stars Await","civic_acot_tier_1_start":"Tier 1 Start: The Stars Await","origin_tier_two_start":"Born to Explore","civic_acot_tier_2_start":"Tier 2 Start: Born to Explore","origin_tier_three_start":"Ahead of the Curve","civic_acot_tier_3_start":"Tier 3 Start: Ahead of the Curve","origin_tier_four_start":"Age of Empire","civic_acot_tier_4_start":"Tier 4 Start: Age of Empire","origin_tier_five_start":"Command and Conquer","civic_acot_tier_5_start":"Tier 5 Start: Command and Conquer","origin_tier_dm_start":"Legacy of the Void","civic_acot_tier_dm_start":"Tier 6 Start: Legacy of the Void","origin_tier_ae_start":"The Alphaspace","civic_acot_tier_ae_start":"Tier 7 Start: The Alphaspace","origin_acot_oracle_start":"Relics of the Past","origin_acot_grimdark":"The Final Spark","civic_acot_phanon_corps":"Phanon Corps","civic_acot_phanon_fleet":"Indomitable Fleet","civic_acot_rogue_precursor":"Ancient Databank Intelligence","civic_acot_rogue_precursor_fleet":"Ancient Databank Command Network","civic_acot_rogue_precursor_data":"Ancient Databank Archive"}</script>
+<script type="application/json" id="vanvars">{"@discovery_weight":3.0,"@hab_districts_per_major_body":0.25,"@hab_districts_per_major_body_tier2":0.5,"@hab_districts_per_major_body_tier3":0.75,"@hab_districts_per_major_body_tier4":1.0,"@faction_improved_output":0.15,"@faction_base_output":0.1,"@faction_major_output":0.05,"@faction_minor_output":0.025,"@faction_extortion_energy_ratio":2.0,"@faction_extortion_minerals_ratio":1.5,"@faction_extortion_food_ratio":1.5,"@faction_extortion_alloys_ratio":0.5,"@faction_extortion_consumer_goods_ratio":1.0,"@faction_extortion_research_ratio":0.125,"@media_conglomerate_multiplier":3.0,"@crowdsourcing_multiplier":2.5,"@crowdsourcing_manifesti_multiplier":5.0,"@faction_extortion_crowdsourcing_ratio":3.75,"@resettlement_energy":100.0,"@resettlement_energy_reduced":50.0,"@resettlement_unity":10.0,"@resettlement_unity_high":25.0,"@EdictHighPrio":100.0,"@EdictMedPrio":10.0,"@EdictLowPrio":3.0,"@civic_default_random_weight":5.0,"@civic_uncommon_random_weight":3.0,"@civic_rare_random_weight":1.0,"@tier1materialreward":6.0,"@tier1materialmin":100.0,"@tier1materialmax":1000.0,"@tier2materialreward":12.0,"@tier2materialmin":150.0,"@tier2materialmax":2000.0,"@tier3materialreward":18.0,"@tier3materialmin":250.0,"@tier3materialmax":5000.0,"@tier4materialreward":24.0,"@tier4materialmin":350.0,"@tier4materialmax":10000.0,"@tier5materialreward":48.0,"@tier5materialmin":700.0,"@tier5materialmax":30000.0,"@tier1influencereward":6.0,"@tier1influencemin":40.0,"@tier1influencemax":100.0,"@tier2influencereward":12.0,"@tier2influencemin":80.0,"@tier2influencemax":175.0,"@tier3influencereward":18.0,"@tier3influencemin":125.0,"@tier3influencemax":250.0,"@tier4influencereward":24.0,"@tier4influencemin":150.0,"@tier4influencemax":300.0,"@tier5influencereward":36.0,"@tier5influencemin":250.0,"@tier5influencemax":500.0,"@tier6influencereward":48.0,"@tier6influencemin":300.0,"@tier6influencemax":600.0,"@tier1researchreward":12.0,"@tier1researchmin":250.0,"@tier1researchmax":100000.0,"@tier2researchreward":18.0,"@tier2researchmin":350.0,"@tier2researchmax":100000.0,"@tier3researchreward":24.0,"@tier3researchmin":500.0,"@tier3researchmax":1000000.0,"@tier4researchreward":48.0,"@tier4researchmin":1000.0,"@tier4researchmax":1000000.0,"@tier5researchreward":96.0,"@tier5researchmin":2000.0,"@tier5researchmax":2000000.0,"@tier1unityreward":6.0,"@tier1unitymin":100.0,"@tier1unitymax":100000.0,"@tier2unityreward":12.0,"@tier2unitymin":150.0,"@tier2unitymax":100000.0,"@tier3unityreward":18.0,"@tier3unitymin":250.0,"@tier3unitymax":1000000.0,"@tier4unityreward":24.0,"@tier4unitymin":350.0,"@tier4unitymax":1000000.0,"@tier5unityreward":48.0,"@tier5unitymin":700.0,"@tier5unitymax":2000000.0,"@tier1influencecontact":6.0,"@tier1influencecontactxenophile":9.0,"@tier1influencecontactmin":20.0,"@tier1influencecontactminxenophile":30.0,"@tier1influencecontactmax":80.0,"@tier1influencecontactmaxxenophile":120.0,"@tier2influencecontact":10.0,"@tier2influencecontactxenophile":15.0,"@tier2influencecontactmin":40.0,"@tier2influencecontactminxenophile":60.0,"@tier2influencecontactmax":100.0,"@tier2influencecontactmaxxenophile":150.0,"@unityreward":6.0,"@unitymin":50.0,"@unitymax":1000.0,"@raidcooldown":600.0,"@largemercallow":9000.0,"@largemerccost":-9000.0,"@mediummercallow":6500.0,"@mediummerccost":-6500.0,"@smallmercallow":4000.0,"@smallmerccost":-4000.0,"@tributeallow":500.0,"@tributecost":-500.0,"@tributefoodallow":500.0,"@tributefoodcost":-500.0,"@tributeallowraided":1000.0,"@tributecostraided":-1000.0,"@tributefoodallowraided":1000.0,"@tributefoodcostraided":-1000.0,"@leaderallow":2000.0,"@leadercost":-2000.0,"@raidallow":3000.0,"@raidcost":-3000.0,"@raidhighallow":5000.0,"@raidhighcost":-5000.0,"@stabilitylevel1":10.0,"@stabilitylevel2":25.0,"@stabilitylevel3":40.0,"@shroudreq1":3000.0,"@shroudreq2":2500.0,"@shroudreq3":2000.0,"@shroudreq4":1500.0,"@shroudreq5":1000.0,"@shroudcost1":-3000.0,"@shroudcost2":-2500.0,"@shroudcost3":-2000.0,"@shroudcost4":-1500.0,"@shroudcost5":-1000.0,"@planet_standard_scale":11.0,"@habitable_planet_max_size":25.0,"@habitable_planet_min_size":12.0,"@habitable_moon_max_size":15.0,"@habitable_moon_min_size":10.0,"@habitable_min_distance":60.0,"@habitable_max_distance":100.0,"@habitable_spawn_odds":0.3,"@habitable_volcanic_spawn_odds":0.2,"@carry_cap_high":600.0,"@carry_cap_normal":400.0,"@carry_cap_low":300.0,"@civilians_counter":4.0,"@civilians_gamestart":500.0,"@volcanic_min_distance":40.0,"@volcanic_max_distance":80.0,"@deposit_chance_high":16.0,"@deposit_chance_med":8.0,"@deposit_chance_low":4.0,"@deposit_chance_high_rare":2.0,"@deposit_chance_med_rare":1.0,"@deposit_chance_low_rare":0.5,"@deposit_chance_gaia_bonus":2.0,"@deposit_chance_planet_type_bonus":1.5,"@distance":50.0,"@base_moon_distance":10.0,"@spawn_system_rare":0.1,"@spawn_system_uncommon":0.5,"@spawn_system_base":1.0,"@spawn_system_slightlycommon":2.0,"@spawn_system_common":4.0,"@spawn_system_verycommon":8.0,"@spawn_system_extreme":16.0,"@spawn_system_max":99999.0,"@spawn_system_enclave":100.0,"@tier0cost1":500.0,"@tier0cost2":625.0,"@tier0cost3":750.0,"@tier1cost1":1000.0,"@tier1cost2":1250.0,"@tier1cost3":1500.0,"@tier2cost1":2000.0,"@tier2cost2":2500.0,"@tier2cost3":3000.0,"@tier3cost1":4000.0,"@tier3cost2":5000.0,"@tier3cost3":6000.0,"@tier4cost1":8000.0,"@tier4cost2":10000.0,"@tier4cost3":12000.0,"@tier5cost1":16000.0,"@tier5cost2":20000.0,"@tier5cost3":24000.0,"@tier1weight1":100.0,"@tier1weight2":95.0,"@tier1weight3":90.0,"@tier2weight1":85.0,"@tier2weight2":75.0,"@tier2weight3":70.0,"@tier3weight1":65.0,"@tier3weight2":60.0,"@tier3weight3":50.0,"@tier4weight1":45.0,"@tier4weight2":40.0,"@tier4weight3":35.0,"@tier5weight1":30.0,"@tier5weight2":25.0,"@tier5weight3":20.0,"@repeatableTechBaseCost":50000.0,"@repeatableTechLevelCost":5000.0,"@repeatableTechTier":5.0,"@repeatableTechWeight":15.0,"@repatableTechFactor":0.5,"@fallentechcost":70000.0,"@fallentechtier":5.0,"@horizontechcost1":4000.0,"@horizontechcost2":10000.0,"@horizontechtier":3.0,"@guardiantechcost":60000.0,"@guardiantechtier":5.0,"@traderDealDuration":3600.0,"@traderOpinion1":1.0,"@traderOpinion2":2.0,"@traderOpinion3":3.0,"@b0_time":180.0,"@b0_minerals":200.0,"@b0_upkeep":1.0,"@b0_jobs":200.0,"@b1_time":360.0,"@b1_minerals":400.0,"@b1_upkeep":2.0,"@b1_jobs":200.0,"@b1_alloy_upkeep":2.0,"@b1_rare_cost":10.0,"@b2_time":480.0,"@b2_minerals":600.0,"@b2_upkeep":5.0,"@b2_rare_cost":50.0,"@b2_rare_upkeep":1.0,"@b2_jobs":400.0,"@b2_alloy_upkeep":3.0,"@b3_time":600.0,"@b3_minerals":800.0,"@b3_upkeep":8.0,"@b3_rare_cost":100.0,"@b3_rare_upkeep":2.0,"@b3_jobs":600.0,"@b3_alloy_upkeep":5.0,"@b4_time":900.0,"@b4_minerals":2000.0,"@b4_upkeep":10.0,"@b4_rare_cost":200.0,"@b4_rare_upkeep":4.0,"@b4_alloy_upkeep":7.0,"@b5_time":1200.0,"@b5_minerals":3000.0,"@b5_upkeep":12.0,"@b5_rare_cost":250.0,"@b5_rare_upkeep":3.0,"@b1_biomass":100.0,"@b2_biomass":200.0,"@b3_biomass":400.0,"@b4_biomass":800.0,"@b1_max_districts_add":2.0,"@b2_max_districts_add":4.0,"@b3_max_districts_add":6.0,"@b4_max_districts_add":8.0,"@natural_equilibrium_happiness":0.02,"@feupkeep":4.0,"@feproduction":12.0,"@fecost":500.0,"@fetime":720.0,"@fe_jobs":600.0,"@fe2_jobs":1200.0,"@fe_alloy_cost_0":1000.0,"@fe_alloy_cost_1":1500.0,"@fe_alloy_cost_2":2500.0,"@fe_sr_cost_1":300.0,"@fe_sr_cost_2":500.0,"@fe_rr_cost_0":20.0,"@fe_rr_cost_1":50.0,"@fe_rr_cost_2":80.0,"@fe_sr_upkeep_1":2.0,"@fe_sr_upkeep_2":5.0,"@fe_rr_upkeep_1":1.0,"@fe_rr_upkeep_2":2.0,"@fe_energy_upkeep_1":15.0,"@fe_energy_upkeep_2":30.0,"@fe_energy_upkeep_3":50.0,"@fe_energy_upkeep_4":75.0,"@fe_energy_upkeep_5":100.0,"@ap_grasp_the_void_travel_tech":1.5,"@federation_perk_factor":2.0,"@eager_explorer_effect":5.0,"@lithoid_trait_resource_production":0.01,"@drake_scaled_trait_resource_production":0.5,"@plantoid_budding_rate":0.02,"@lithoid_crater_budding_rate":0.03,"@tiyanki_budding_rate":0.1,"@tiyanki_trophy_pop_growth":1.0,"@armies_for_declaring_war":6.0,"@origin_shoulders_multiplier":3.0,"@archaeostudies_base_jobs":3.0,"@archaeostudies_ap_jobs":2.0,"@resolution_weight_hated":3.0,"@resolution_weight_disliked":4.0,"@resolution_weight_unpopular":5.0,"@resolution_weight_normal":6.0,"@resolution_weight_popular":6.5,"@resolution_weight_loved":7.0,"@resolution_cost_t1":100.0,"@resolution_cost_t2":150.0,"@resolution_cost_t3":200.0,"@resolution_cost_t4":250.0,"@resolution_cost_t5":300.0,"@resolution_cost_denounce":25.0,"@resolution_flag_timer":360.0,"@energy_grid_ai_factor":5.0,"@technician_ai_factor":2.0,"@physics_research_ai_factor":2.0,"@ai_physics_tech_speed_factor":1.0,"@ai_research_lab_factor":5.0,"@ai_mining_factor":2.0,"@ai_mining_building_factor":5.0,"@ai_engineering_tech_speed_factor":1.0,"@ai_alloy_factor_factor":5.0,"@ai_civilian_factory_factor":5.0,"@ai_ship_types_factor":5.0,"@ai_starbase_types_factor":5.0,"@farming_ai_weight_factor":2.0,"@farming_building_ai_weight_factor":2.0,"@society_research_ai_factor":2.0,"@capital_tech_ai_factor":5.0,"@pop_growth_tech_ai_factor":3.0,"@terraforming_tech_ai_factor":2.0,"@ai_society_tech_speed_factor":1.0,"@favored_weapon_ai_tech_factor":1.5,"@disfavored_weapon_ai_tech_factor":0.75,"@favored_defense_ai_tech_factor":1.5,"@disfavored_defense_ai_tech_factor":0.75,"@favored_ship_role_ai_tech_factor":1.5,"@disfavored_ship_role_ai_tech_factor":0.75,"@doctrine_composition_strong_favored":2.0,"@doctrine_composition_favored":1.5,"@doctrine_composition_minor":1.25,"@doctrine_composition_neutral":1.0,"@doctrine_composition_minor_disfavored":0.7,"@doctrine_composition_disfavored":0.5,"@weapon_pref_composition_favored":1.5,"@composition_tech_taper":0.7,"@special_ship_composition_preference":10.0,"@strategic_resource_ai_tech_factor":3.0,"@best_megastructure_ai_tech_factor":100.0,"@robots_ai_tech_factor":2.0,"@housing_ai_tech_factor":1.5,"@building_slots_ai_tech_factor":1.5,"@shattered_ring_ai_tech_factor":5.0,"@zone_clear_ai_tech_factor":5.0,"@amenity_ai_limit":500.0,"@ranger_small_production":0.5,"@ranger_large_production":1.0,"@ai_civic_default_base_weight":5.0,"@ai_civic_uncommon_base_weight":3.0,"@ai_civic_rare_base_weight":1.0,"@ai_civic_personality_match_factor":3.0,"@ai_civic_personality_mismatch_factor":0.2,"@ai_civic_personality_forbid_factor":0.0,"@exotic_metabolism":0.125,"@inorganic_breath":0.02,"@overtuned_consequences":0.2,"@overtuned_consequences_hive":0.5,"@economic_plan_rare_resource_target":1.0,"@economic_plan_rare_resource_limit":10.0,"@economic_plan_energy_target":10.0,"@economic_plan_energy_target_nomads":-50.0,"@economic_plan_mineral_target":25.0,"@economic_plan_mineral_target_nomads":-50.0,"@economic_plan_trade_target":10.0,"@economic_plan_unity_target":20.0,"@economic_plan_alloy_target":20.0,"@economic_plan_fleet_cap_alloy_target":50.0,"@economic_plan_machine_empire_alloy_target":30.0,"@economic_plan_pops_target":10000.0,"@economic_plan_food_target":10.0,"@economic_plan_bio_ships_empire_food_target":50.0,"@economic_plan_fleet_cap_food_target":100.0,"@economic_plan_consumer_goods_target":10.0,"@economic_plan_research_target":35.0,"@economic_plan_scaling_research_target":10.0,"@economic_plan_scaling_research_base_limit":300.0,"@economic_plan_late_research_target":5000.0,"@economic_plan_late_scaling_research_target":500.0,"@economic_plan_scaling_consumer_goods_target":1.0,"@economic_plan_scaling_rare_resource_target":0.2,"@economic_plan_scaling_unity_target":8.0,"@economic_plan_scaling_alloy_target":10.0,"@economic_plan_scaling_trade_target":5.0,"@economic_plan_scaling_pops_target":10000.0,"@economic_plan_stockpile_threshold":2500.0,"@economic_plan_stockpile_threshold_high":25000.0,"@economic_plan_stockpile_threshold_very_high":35000.0,"@economic_plan_scaling_energy_limit":40.0,"@economic_plan_scaling_energy_limit_nomads":-75.0,"@economic_plan_scaling_minerals_limit":50.0,"@economic_plan_scaling_minerals_limit_nomads":-75.0,"@economic_plan_scaling_food_limit":50.0,"@economic_plan_scaling_food_bioship_limit":200.0,"@economic_plan_scaling_alloy_limit":100.0,"@economic_plan_scaling_alloy_bioship_limit":50.0,"@economic_plan_scaling_trade_limit":25.0,"@economic_plan_scaling_unity_limit":50.0,"@economic_plan_scaling_consumer_goods_limit":100.0,"@economic_plan_scaling_obsessional_consumer_goods_limit_base":50.0,"@economic_plan_scaling_obsessional_consumer_goods_limit_advanced":100.0,"@economic_plan_naval_cap_target":100.0,"@economic_plan_intermediate_naval_cap_target":100.0,"@economic_plan_advanced_naval_cap_target":200.0,"@economic_plan_mature_naval_cap_target":250.0,"@economic_plan_endgame_naval_cap_target":300.0,"@economic_plan_beyond_endgame_naval_cap_target":350.0,"@economic_plan_nomad_energy_focus":25.0,"@economic_plan_nomad_naval_cap_target":50.0,"@economic_plan_intermediate_energy_target":40.0,"@economic_plan_intermediate_energy_target_nomads":-75.0,"@economic_plan_intermediate_mineral_target":50.0,"@economic_plan_intermediate_mineral_target_nomads":-75.0,"@economic_plan_intermediate_alloy_target":50.0,"@economic_plan_intermediate_non_bioship_alloy_target":50.0,"@economic_plan_intermediate_trade_target":25.0,"@economic_plan_intermediate_research_target":150.0,"@economic_plan_intermediate_unity_target":50.0,"@economic_plan_intermediate_pops_target":25000.0,"@economic_plan_intermediate_scaling_research_limit":400.0,"@economic_plan_intermediate_bioship_food_target":200.0,"@economic_plan_intermediate_scaling_research_target":50.0,"@economic_plan_advanced_energy_target":100.0,"@economic_plan_advanced_energy_target_nomads":-100.0,"@economic_plan_advanced_mineral_target":150.0,"@economic_plan_advanced_mineral_target_nomads":-100.0,"@economic_plan_advanced_alloy_target":150.0,"@economic_plan_advanced_scaling_alloy_target":100.0,"@economic_plan_advanced_scaling_alloy_limit":400.0,"@economic_plan_advanced_scaling_food_bioship_target":50.0,"@economic_plan_advanced_scaling_food_bioship_limit":800.0,"@economic_plan_advanced_trade_target":50.0,"@economic_plan_advanced_research_target":400.0,"@economic_plan_advanced_scaling_research_target":100.0,"@economic_plan_advanced_scaling_research_limit":1000.0,"@economic_plan_advanced_unity_target":100.0,"@economic_plan_advanced_scaling_unity_target":50.0,"@economic_plan_advanced_scaling_unity_limit":200.0,"@economic_plan_advanced_pops_target":100000.0,"@economic_plan_advanced_bioship_food_target":300.0,"@economic_plan_advanced_obsessional_consumer_goods_target":50.0,"@economic_plan_mature_energy_target":150.0,"@economic_plan_mature_energy_target_nomads":-125.0,"@economic_plan_mature_mineral_target":200.0,"@economic_plan_mature_mineral_target_nomads":-125.0,"@economic_plan_mature_alloy_target":200.0,"@economic_plan_mature_non_bioship_alloy_target":200.0,"@economic_plan_mature_trade_target":75.0,"@economic_plan_mature_research_target":1000.0,"@economic_plan_mature_unity_target":200.0,"@economic_plan_mature_pops_target":175000.0,"@economic_plan_mature_scaling_research_limit":2500.0,"@economic_plan_mature_bioship_food_target":800.0,"@economic_plan_mature_scaling_research_target":200.0,"@economic_plan_endgame_energy_target":200.0,"@economic_plan_endgame_energy_target_nomads":-150.0,"@economic_plan_endgame_mineral_target":300.0,"@economic_plan_endgame_mineral_target_nomads":-150.0,"@economic_plan_beyond_endgame_energy_target":300.0,"@economic_plan_beyond_endgame_energy_target_nomads":-175.0,"@economic_plan_beyond_endgame_mineral_target":500.0,"@economic_plan_beyond_endgame_mineral_target_nomads":-175.0,"@ai_ship_budget_desired_min_per_year":3.0,"@ai_component_strategic_stockpile_min":150.0,"@ai_nomad_alloys_planet_desired_min":500.0,"@ai_nomad_strategic_planet_desired_min":100.0,"@ai_nomad_strategic_planet_desired_max":300.0,"@ai_nomad_strategic_starbase_desired_min":500.0,"@ai_nomad_strategic_starbase_desired_max":500.0,"@noxious_happiness_penalty":-0.01,"@noxious_happiness_bonus":0.02,"@cyborg_energy_upkeep":0.5,"@instrument_upkeep_common":0.1,"@instrument_upkeep_rare":0.075,"@instrument_upkeep_very_rare":0.02,"@instrument_upkeep_legendary":0.005,"@instrument_upkeep_epic":0.0025,"@kaleidoscopeHappy":15.0,"@kaleidoscopeAngry":5.0,"@planet_empire_size":-0.02,"@sector_empire_size":-0.01,"@planet_job_mult":0.02,"@sector_job_mult":0.01,"@negative_planet_job_mult":-0.02,"@negative_sector_job_mult":-0.01,"@planet_job_mult_high":0.04,"@sector_job_mult_high":0.02,"@activation_cost":3000.0,"@triumph_duration":3600.0,"@triumph_duration_short":1800.0,"@triumph_duration_veryshort":900.0,"@triumph_duration_years":10.0,"@evopred_small_progress":10.0,"@evopred_medium_progress":20.0,"@evopred_large_progress":40.0,"@ap_pending_tech_boost":10.0,"@ap_pending_tradition_suppress":0.01,"@zone_urban":100.0,"@EnigmaticEngineeringDraw":0.025,"@tech_gene_tailoring_POINTS":2.0,"@tech_gene_expressions_POINTS":1.0}</script>
 <script type="application/json" id="modalt">{"365":{"mod":"g","van":{"t":5,"cost":24000,"p":[355],"pa":[],"w":0.0,"m":[],"pot":[["and",["not",["a",29]],["not",["a",26]]]],"r":true,"d":false}},"355":{"mod":"g","van":{"t":5,"cost":24000,"p":[427],"pa":[[135,369],[114,46]],"w":5.0,"m":[[0,1.5,["or",["a",5],["a",31],["a",31],["a",31]]],[0,2.0,["and",["a",3],["a",237]]],[0,1.5,["n","starhold",">=",1]],[0,1.5,["n","starhold",">=",2]],[0,1.5,["n","starhold",">=",3]],[0,1.5,["n","starhold",">=",4]],[0,1.5,["n","starhold",">=",5]],[0,1.5,["n","starhold",">=",6]],[0,1.5,["n","citadel",">=",1]],[0,1.5,["n","citadel",">=",2]],[0,1.5,["n","citadel",">=",3]],[0,1.5,["n","citadel",">=",4]],[0,1.5,["n","citadel",">=",5]],[0,1.5,["n","citadel",">=",6]],[0,2.0,["a",126]],[0,1.5,["a",238]],[0,20.0,["or",["a",239],["a",240]]],[0,1.5,["and",["a",26],["a",241]]],[0,1.5,["and",["a",26],["a",242]]],[0,1.5,["and",["a",26],["a",243]]],[0,1.5,["and",["a",26],["a",244]]],[0,1.5,["and",["a",26],["a",245]]],[0,20.0,["and",["a",26],["a",246]]]],"pot":[],"r":true,"d":false}},"675":{"mod":"a","van":{"t":2,"cost":2500,"p":[],"pa":[],"w":112.5,"m":[],"pot":[["or",["a",159],["a",148]]],"r":false,"d":false}},"676":{"mod":"a","van":{"t":4,"cost":10000,"p":[675],"pa":[],"w":40.0,"m":[[0,0.1,["not",["or",["a",333],["a",5]]]],[0,2.0,["and",["a",3],["a",465]]]],"pot":[["or",["a",159],["a",148]]],"r":true,"d":false}},"129":{"mod":"a","van":{"t":5,"cost":20000,"p":[115],"pa":[],"w":25.0,"m":[[0,0.25,["not",["or",["a",5],["a",80],["a",80],["a",32]]]],[0,2.0,["and",["a",3],["a",117]]],[0,1.25,["a",63]]],"pot":[],"r":true,"d":false}},"130":{"mod":"a","van":{"t":5,"cost":24000,"p":[129],"pa":[],"w":20.0,"m":[[0,0.25,["not",["or",["a",5],["a",80],["a",80],["a",32]]]],[0,2.0,["and",["a",3],["a",118]]],[0,1.25,["a",63]]],"pot":[],"r":true,"d":false}}}</script>
 <script type="application/json" id="swapdata">{"2":[["Archaeostudies",["a",29],null]],"10":[["Ancient Suspension Field",["a",61],1811]],"11":[["Ancient Pulse Armor",["a",61],1798]],"15":[["Ancient Macro Shard Batteries",["a",61],1723]],"16":[["Ancient Cavitation Collapser",["a",61],1790]],"17":[["Ancient Web Slinger",["a",61],1806]],"19":[["Ancient Fragmentor Artillery",["a",61],1803]],"20":[["Ancient Driller Drones",["a",61],1774]],"24":[["Colossi",["a",61],1795]],"51":[["Advanced Growth Chamber",["a",26],null]],"94":[["Planetary Storm Negation",["a",29],1768]],"108":[["Nanite Quill Battery",["a",61],1720]],"109":[["Nanite-Infused Barb Artillery",["a",61],1787]],"115":[["Titans",["a",26],null],["Titans",["a",61],1718]],"116":[["Juggernaut",["a",26],null],["Juggernaut",["a",61],1738]],"117":[["Standardized Small-Scale Cloning",["a",208],1821]],"118":[["Improved Small Space Fauna Tissues",["a",208],1771]],"119":[["Advanced Small Space Fauna Tissues",["a",208],1714]],"120":[["Standardized Medium-Scale Cloning",["a",208],1712]],"121":[["Improved Medium Space Fauna Tissues",["a",208],1772]],"122":[["Advanced Medium Space Fauna Tissues",["a",208],1829]],"123":[["Standardized Large-Scale Cloning",["a",208],1719]],"124":[["Improved Large Space Fauna Tissues",["a",208],1762]],"125":[["Advanced Large Space Fauna Tissues",["a",208],1732]],"126":[["Standardized Huge-Scale Cloning",["a",208],1805]],"127":[["Improved Huge Space Fauna Tissues",["a",208],1816]],"128":[["Advanced Huge Space Fauna Tissues",["a",208],1831]],"129":[["Improved Gigantic Space Fauna Tissues",["a",208],1807]],"130":[["Advanced Gigantic Space Fauna Tissues",["a",208],1730]],"141":[["Basic Fighter Wing",["a",61],1753]],"142":[["Improved Fighter Wing",["a",61],1744]],"143":[["Advanced Fighter Wing",["a",61],1818]],"144":[["Skravird Strike Craft",["a",61],1761]],"146":[["Nanocomposite Materials",["a",61],1717]],"147":[["Ceramo-Metal Materials",["a",61],1789]],"148":[["Plasteel Materials",["a",61],1801]],"149":[["Durasteel Materials",["a",61],1782]],"150":[["Neutronium Materials",["a",61],1716]],"155":[["Chemical Stellar Motor Organs",["a",61],1731]],"156":[["Ion Stellar Motor Organs",["a",61],1733]],"157":[["Plasma Stellar Motor Organs",["a",61],1814]],"158":[["Impulse Stellar Motor Organs",["a",61],1728]],"161":[["Industrial Base",["a",29],1830]],"163":[["Powered Exoskeletons",["a",29],null],["Improved Servomotors",["a",159],null]],"164":[["Zero-G Refineries",["a",26],null]],"165":[["Long-Range Mineral Scanners",["a",26],null]],"166":[["Mineral Cutting Beams",["a",26],null]],"167":[["Autonomous Mining Drones",["a",26],null]],"168":[["Nanite Mineral Probes",["a",26],null]],"169":[["Geothermal Fracking",["a",29],null],["Geothermal Fracking",["a",26],null]],"170":[["Deep Core Mining",["a",26],null]],"171":[["Mineral Isolation",["and",["a",26],["not",["a",1408]]],null],["Mineral Isolation",["a",1408],null],["Mineral Isolation",["and",["a",26],["a",1408]],null]],"172":[["Mineral Purification",["a",29],1729]],"173":[["Advanced Mineral Purification",["a",29],1817]],"174":[["Holographic Casts",["a",29],1758]],"175":[["Nano-Separators",["a",29],1776]],"189":[["Zero-G Engineering",["a",26],null]],"192":[["Assembly Patterns",["a",1409],null]],"193":[["Construction Templates",["a",1409],null]],"206":[["Shard Accelerator",["a",61],1828]],"207":[["Bio-Coil Shard Accelerator",["a",61],1710]],"208":[["Shard Rail Accelerator",["a",61],1836]],"209":[["Advanced Shard Rail Accelerator",["a",61],1800]],"210":[["Shard Gauss Accelerator",["a",61],1740]],"211":[["Chitin Battery",["a",61],1715]],"212":[["Chitin Artillery",["a",61],1734]],"213":[["Mega Cannon",["a",61],1764]],"214":[["Giga Cannon",["a",61],1742]],"215":[["Quill Battery",["a",61],1822]],"216":[["Ripper Quill Battery",["a",61],1791]],"217":[["Stormfire Quill Battery",["a",61],1770]],"218":[["Barb Batteries",["a",61],1837]],"219":[["Barb Cannons",["a",61],1754]],"220":[["Barb Artillery",["a",61],1835]],"226":[["Bio-Swarmer Missiles",["a",61],1727]],"227":[["Bio-Whirlwind Missiles",["a",61],1756]],"237":[["Dark Matter Dimensional Deflector",["a",61],1781]],"238":[["Dark Matter Metabolism",["a",61],1713]],"239":[["Dark Matter Stellar Motor Organs",["a",61],1735]],"284":[["Atmospheric Orbital Mechanics",["a",26],null]],"288":[["Alien Topography",["or",["a",26],["a",1410]],null]],"300":[["Voidworm Immunity",["a",1411],1824]],"302":[["Artificial Breeding",["a",208],1757]],"303":[["Improved Incubators",["a",208],1725]],"304":[["Metabolic Gases",["a",208],1736]],"306":[["Controlled Mutations",["a",1412],1726]],"307":[["Advanced Controlled Mutations",["a",1412],1796]],"322":[["Artificial Dragonscales",["a",61],1834]],"379":[["Improved Wayline Logistics",["a",106],null]],"380":[["Advanced Wayline Logistics",["a",106],null]],"388":[["Exotic Materials Labs",["a",29],1741]],"389":[["Multi-Dimensional Studies",["and",["a",29],["not",["a",1408]]],1788],["Multi-Dimensional Studies",["and",["not",["a",29]],["a",1408]],null],["Multi-Dimensional Studies",["and",["a",29],["a",1408]],1788]],"393":[["Zero-G Laboratories",["a",26],null]],"394":[["Miniature Containment Fields",["a",26],null]],"395":[["Quantum Probes",["a",26],null]],"396":[["Autonomous Station Protocols",["a",26],null]],"397":[["Multi-Dimensional Analysis",["a",26],null]],"401":[["Administrative AI",["a",296],null],["Academic Optimization",["a",159],null],["Synaptic Enhancers",["a",76],null]],"402":[["Seedling Incubation",["a",29],null],["Colony Fabrication Drones",["a",159],null]],"403":[["Permanent Incubation",["a",29],null]],"404":[["Self-Evolving Logic",["a",296],null],["Autonomous Synapses",["a",76],null]],"406":[["Positronic AI",["a",296],null]],"423":[["Fission Metabolism",["a",61],1786]],"424":[["Fusion Metabolism",["a",61],1783]],"425":[["Cold Fusion Metabolism",["a",61],1794]],"426":[["Antimatter Metabolism",["a",61],1767]],"427":[["Zero Point Metabolism",["a",61],1755]],"431":[["Deflectors",["a",61],1819]],"432":[["Improved Deflectors",["a",61],1840]],"433":[["Shields",["a",61],1813]],"434":[["Advanced Shields",["a",61],1832]],"435":[["Hyper Shields",["a",61],1792]],"439":[["Shield Amplifier",["a",26],1826],["Planetary Shields",["a",29],1709]],"440":[["Gravitic Sensors",["and",["a",61],["not",["a",26]]],null],["Gravitic Sensors",["and",["a",26],["a",61]],null],["Gravitic Sensors",["and",["a",26],["not",["a",61]]],null]],"441":[["Subspace Sensors",["a",61],null]],"442":[["Tachyon Sensors",["a",61],null]],"444":[["Field Modulation",["a",26],null]],"445":[["Quantum Energy States",["a",26],null]],"446":[["Quantum Field Manipulation",["and",["a",26],["not",["a",1408]]],null],["Quantum Field Manipulation",["a",1408],null],["Quantum Field Manipulation",["and",["a",26],["a",1408]],null]],"447":[["Global Energy Management",["a",29],1799]],"448":[["Planetary Power Grid",["a",29],1810]],"449":[["Hyperspace Travel",["a",61],1759]],"450":[["Hyperlane Breach Points",["a",61],1745]],"451":[["Hyperspace Slipstreams",["a",1408],null],["Hyperspace Slipstreams",["a",61],1737],["Hyperspace Slipstreams",["and",["a",61],["a",1408]],1737]],"453":[["Jump Organ",["a",61],1804]],"460":[["Red Beam Projector",["a",61],1808]],"461":[["Blue Beam Projector",["a",61],1760]],"462":[["UV Beam Projector",["a",61],1763]],"463":[["X-Ray Beam Projector",["a",61],1748]],"464":[["Gamma Beam Projector",["a",61],1743]],"465":[["Particle Beam",["a",61],1751]],"466":[["Tachyon Beam",["a",61],1809]],"467":[["Bio-Plasma Thrower",["a",61],1825]],"468":[["Bio-Plasma Accelerator",["a",61],1815]],"469":[["Bio-Plasma Cannon",["a",61],1841]],"470":[["Lightning Emitter",["a",61],1739]],"471":[["Focused Lightning Emitter",["a",61],1797]],"472":[["Molecular Disruptor",["a",61],1765]],"473":[["Ion Molecular Disruptor",["a",61],1777]],"474":[["Phased Molecular Disruptor",["a",61],1769]],"475":[["Proton Thrower",["a",61],1778]],"476":[["Neutron Thrower",["a",61],1724]],"477":[["Sentinel Snapper Gun",["a",61],1747]],"478":[["Barrier Snapper Gun",["a",61],1823]],"479":[["Guardian Snapper Gun",["a",61],1721]],"481":[["Mining Beam Projector",["a",61],1802]],"491":[["Psionic Bombers",["a",61],1838]],"492":[["Psionic Lightning",["a",61],1773]],"493":[["Psionic Disruptors",["a",61],1812]],"494":[["Zro Launchers",["a",61],1780]],"495":[["Arkship Defenses",["a",26],null],["Planetary Defenses",["a",29],1839]],"507":[["Food Processing",["a",29],1775]],"508":[["Advanced Food Processing",["a",29],1784]],"513":[["New Worlds Initiative",["a",29],null]],"531":[["Terrestrial Sculpting",["a",29],null]],"536":[["Genome Mapping",["a",29],null]],"543":[["Gene Tailoring",["a",740],null]],"555":[["Hatchery Optimization",["a",208],1833]],"563":[["Ground Defense Planning",["a",29],null]],"564":[["Global Defense Grid",["a",29],1722]],"566":[["Telepathy",["a",159],null],["Telepathy",["and",["a",76],["not",["a",29]]],null],["Telepathy",["a",29],null]],"568":[["Thought Pre-Emption",["a",147],null]],"569":[["Psionic Jump Organ",["a",61],1827]],"575":[["Unified Government",["a",29],1749],["Unified Instantiation",["a",159],null],["Unified Plexus",["a",76],null]],"577":[["Colonial Centralization",["a",29],1752]],"578":[["Galactic Administration",["a",29],1779]],"579":[["Ceramo-Metal Infrastructure",["a",29],null],["Ceramo-Metal Infrastructure",["a",26],null]],"580":[["Durasteel Infrastructure",["a",29],null],["Durasteel Infrastructure",["a",26],null]],"615":[["Psionic Barrier",["a",61],1711],["Psionic Barrier",["and",["a",147],["not",["a",1159]]],null],["Psionic Barrier",["a",1159],null]],"616":[["Psionic Shields",["a",61],1785],["Psionic Shields",["and",["a",147],["not",["a",1159]]],null],["Psionic Shields",["a",1159],null]],"636":[["Rudimentary Node Culling",["a",434],null]],"657":[["Improved Living Metal",["a",26],null]],"659":[["Improved Mote Stabilization",["a",26],null]],"660":[["Volatile Material Plants",["a",29],1766]],"661":[["Improved Exotic Gas Extraction",["a",26],null]],"662":[["Exotic Gas Refining",["a",29],1793]],"663":[["Improved Rare Crystal Mining",["a",26],null]],"664":[["Rare Crystal Manufacturing",["a",29],1746]],"665":[["Zro Distillation",["and",["a",147],["a",1413]],null],["Zro Distillation",["and",["not",["a",147]],["a",1413]],null],["Zro Distillation",["and",["a",76],["not",["a",29]]],null],["Zro Distillation",["a",29],null]],"666":[["Dark Matter Drawing",["a",1408],null]],"1478":[["Planetary Scale Computing Complexes",["not",["a",29]],null],["Planetary Ecosystem Collective Computing",["a",29],null]],"1587":[["Sentient Metal Armor",["a",61],1820]],"1589":[["Negative Mass Shields",["a",61],1750]],"1608":[["E.H.O.F. Alpha",["a",26],null]],"1620":[["Horizon Drive Omega",["a",26],null]],"1626":[["Horizon Drive Ultima",["a",26],null]],"1634":[["Negative Mass Protection",["a",26],null]],"1699":[["Ultimate Strongpoint Defense Adaptations",["a",29],null]],"140":[["Optimized Station Construction",["a",159],null]],"188":[["Adaptive Cybernetics",["a",159],null]],"405":[["Autonomous Exploration Algorithms",["a",159],null]],"407":[["Positronic Processors",["a",159],null]],"520":[["Modular Components",["a",159],null]],"521":[["Intelligent Factories",["a",159],null]],"561":[["Maintenance Command",["a",159],null],["Drone Command Centers",["a",76],null]],"562":[["Field Repairs",["a",159],null]],"576":[["Uniform Data Standards",["a",159],null],["Evolutionary Convergence",["a",76],null]],"584":[["Positronic CPUs",["a",159],null]],"602":[["Planetary Communications",["a",159],null],["Focus-Tested Management",["a",236],null]],"603":[["Post-Relativistic Synergizing",["a",236],null]],"604":[["Alpha Hub",["a",159],null],["Vault of Acquisitions",["a",236],null]]}</script>
 <script type="application/json" id="civmeta">{"1079":["standard"],"1080":["standard"],"689":["standard"],"1081":["standard"],"1082":["standard"],"1083":["standard"],"1084":["standard"],"591":["standard"],"1085":["standard"],"402":["standard"],"1086":["standard"],"1087":["standard"],"1088":["standard"],"423":["standard"],"651":["standard"],"1089":["standard"],"1090":["standard"],"1091":["standard"],"161":["standard"],"1093":["standard"],"1094":["standard"],"1095":["standard"],"1096":["standard"],"1097":["standard"],"1098":["standard"],"1099":["standard"],"1100":["standard"],"366":["standard"],"1101":["standard"],"1102":["standard"],"1103":["standard"],"1104":["standard"],"1105":["standard"],"1106":["standard"],"1107":["standard"],"1108":["standard"],"1109":["standard"],"1110":["standard"],"1111":["standard"],"1112":["standard"],"1113":["standard"],"1114":["standard"],"1115":["standard"],"1116":["standard"],"1117":["standard"],"1118":["standard"],"1119":["standard"],"1120":["standard"],"1121":["standard"],"1122":["standard"],"1123":["standard"],"1124":["standard"],"406":["standard"],"1125":["standard"],"1126":["standard"],"373":["standard"],"1127":["standard"],"675":["standard"],"1128":["standard"],"1129":["machine","standard"],"593":["machine","standard"],"649":["machine","standard"],"1130":["standard"],"1131":["standard"],"1132":["standard"],"1133":["standard"],"1134":["standard"],"1135":["standard"],"1136":["standard"],"1137":["standard"],"1138":["standard"],"1139":["standard"],"1140":["standard"],"1141":["standard"],"1142":["standard"],"1143":["standard"],"1144":["standard"],"1145":["standard"],"1146":["standard"],"1147":["standard"],"1148":["standard"],"1149":["standard"],"1150":["standard"],"1151":["standard"],"1152":["standard"],"1153":["standard"],"1154":["standard","corporate","hive","machine"],"1155":["standard","corporate","hive","machine"],"1156":["standard","corporate","hive","machine"],"1157":["standard","corporate","hive","machine"],"412":["standard","corporate","hive","machine"],"318":["standard","corporate","hive","machine"],"1158":["standard","corporate","hive","machine"],"1159":["standard","corporate","hive","machine"],"322":["standard","corporate","hive","machine"],"395":["standard","corporate","hive","machine"],"1160":["standard","corporate","hive","machine"],"1161":["standard","corporate","hive","machine"],"29":["standard","corporate","hive","machine"],"1162":["standard","corporate","hive","machine"],"1163":["standard","corporate","hive","machine"],"94":["standard","corporate","hive","machine"],"1164":["standard","corporate","hive","machine"],"296":["standard","corporate","hive","machine"],"1165":["standard","corporate","hive","machine"],"1166":["standard","corporate","hive","machine"],"1167":["corporate","hive","machine","standard"],"1168":["standard","corporate","hive","machine"],"1169":["standard","corporate","hive","machine"],"1170":["standard","corporate","hive","machine"],"1171":["standard","corporate","hive","machine"],"740":["standard","corporate","hive","machine"],"1172":["standard","corporate","hive","machine"],"739":["standard","corporate","hive","machine"],"1173":["standard","corporate","hive","machine"],"1174":["standard","corporate","hive","machine"],"289":["standard","corporate","hive","machine"],"1175":["standard","corporate","hive","machine"],"1176":["standard","corporate","hive","machine"],"1177":["standard","corporate","hive","machine"],"1178":["standard","corporate","hive","machine"],"1179":["standard","corporate","hive","machine"],"154":["standard","corporate","hive","machine"],"1180":["standard","corporate","hive","machine"],"240":["standard","corporate","hive","machine"],"1181":["standard","corporate","hive","machine"],"1182":["standard","corporate","hive","machine"],"1183":["standard","corporate","hive","machine"],"1184":["standard","corporate","hive","machine"],"1185":["standard","corporate","hive","machine"],"1186":["standard","corporate","hive","machine"],"1187":["standard","corporate","hive","machine"],"1188":["standard","corporate","hive","machine"],"358":["standard","corporate","hive","machine"],"1189":["standard","corporate","hive","machine"],"1190":["standard","corporate","hive","machine"],"733":["standard","corporate","hive","machine"],"1191":["standard","corporate","hive","machine"],"1192":["standard","corporate","hive","machine"],"149":["standard","corporate","hive","machine"],"1193":["standard","corporate","hive","machine"],"673":["standard","corporate","hive","machine"],"320":["standard","corporate","hive","machine"],"1194":["standard","corporate","hive","machine"],"1195":["standard","corporate","hive","machine"],"1235":["standard","corporate","hive","machine"],"1236":["standard","corporate","hive","machine"],"1237":["standard","corporate","hive","machine"],"1238":["standard","corporate","hive","machine"],"1239":["standard","corporate","hive","machine"],"1245":["hive"],"594":["hive"],"1246":["hive"],"691":["hive"],"1247":["hive"],"810":["hive"],"1248":["hive"],"1249":["hive"],"403":["hive"],"1250":["hive"],"1251":["hive","machine"],"1252":["hive"],"1253":["hive"],"1254":["hive"],"1255":["hive"],"1256":["hive"],"1257":["hive"],"1258":["hive"],"1259":["hive"],"610":["hive"],"1260":["hive"],"1261":["hive"],"374":["hive"],"677":["hive"],"1262":["hive"],"1263":["hive","machine"],"1264":["hive"],"1265":["hive","machine"],"1266":["hive"],"1267":["hive"],"1268":["hive"],"1269":["hive"],"1270":["hive"],"1271":["hive"],"1272":["hive"],"1273":["hive"],"1274":["hive"],"1275":["hive"],"1276":["hive"],"1277":["hive"],"1278":["hive"],"330":["machine"],"404":["machine"],"48":["machine"],"620":["machine"],"1279":["machine"],"692":["machine"],"626":["machine"],"1280":["machine"],"1281":["machine"],"1282":["machine"],"1283":["machine"],"1284":["machine"],"1285":["machine"],"1286":["machine"],"1287":["machine"],"1288":["machine"],"1289":["machine"],"1290":["machine"],"1291":["machine"],"1292":["machine"],"1293":["machine"],"637":["machine"],"1294":["machine"],"1295":["machine"],"363":["machine"],"1296":["machine"],"628":["machine"],"1297":["machine"],"1298":["machine"],"1299":["machine"],"1300":["machine"],"1301":["machine"],"1302":["machine"],"1303":["machine"],"1304":["machine"],"1305":["machine"],"1306":["machine"],"1307":["corporate"],"1308":["corporate"],"1309":["corporate"],"1310":["corporate"],"1311":["corporate"],"1312":["corporate"],"1313":["corporate"],"1314":["corporate"],"1315":["corporate"],"650":["corporate"],"1316":["corporate"],"690":["corporate"],"1317":["corporate"],"1318":["corporate"],"1319":["corporate"],"1320":["corporate"],"1321":["corporate"],"1322":["corporate"],"1323":["corporate"],"1324":["corporate"],"1325":["corporate"],"1326":["corporate"],"1327":["corporate"],"1328":["corporate"],"1329":["corporate"],"1330":["corporate"],"1331":["corporate"],"1332":["corporate"],"1333":["corporate"],"737":["corporate"],"1334":["corporate"],"1335":["corporate"],"1336":["corporate"],"1337":["corporate"],"1338":["corporate"],"676":["corporate"],"1339":["corporate"],"1340":["corporate"],"1341":["corporate"],"1342":["corporate"],"1343":["corporate"],"1344":["corporate"],"1345":["corporate"],"1346":["corporate"],"1347":["corporate"],"1348":["corporate"],"1349":["corporate"],"1350":["corporate"],"1351":["corporate"],"1352":["corporate"],"1353":["corporate"],"1354":["corporate"],"1355":["corporate"],"1356":["corporate"],"1357":["corporate"],"1358":["corporate"],"1359":["corporate"],"1360":["standard","corporate","hive","machine"],"1361":["standard","corporate","hive","machine"],"1363":["standard","corporate","hive","machine"],"1364":["standard","corporate","hive","machine"],"1365":["standard","corporate","hive","machine"],"1371":["standard","corporate","hive","machine"],"1372":["standard","corporate","hive","machine"],"1373":["standard","corporate","hive","machine"],"1374":["standard","corporate","hive","machine"],"1375":["standard","corporate","hive","machine"],"1376":["standard","corporate","hive","machine"],"1377":["standard","corporate","hive","machine"],"1378":["standard","corporate","hive","machine"],"1379":["standard","corporate","hive","machine"],"1380":["standard","corporate","hive","machine"],"1381":["corporate","hive","machine","standard"],"1382":["standard","corporate","hive","machine"],"1383":["standard","corporate","hive","machine"],"1384":["standard","corporate","hive","machine"],"1385":["standard","corporate","hive","machine"],"1387":["standard","corporate","hive","machine"],"1388":["standard","corporate","hive","machine"],"1389":["standard","corporate","hive","machine"],"1390":["standard","corporate","hive","machine"],"1391":["standard","corporate","hive","machine"],"1392":["standard","corporate","hive","machine"],"1393":["standard","corporate","hive","machine"],"1399":["standard","corporate","hive","machine"],"1400":["standard","corporate","hive","machine"],"1401":["standard","corporate","hive","machine"],"1402":["standard","corporate","hive","machine"],"1403":["standard","corporate","hive","machine"],"1404":["standard","corporate","hive","machine"],"1405":["standard","corporate","hive","machine"],"1406":["standard","corporate","hive","machine"],"1407":["standard","corporate","hive","machine"]}</script>
@@ -2260,7 +2305,8 @@ const LS='stellaris-tech-tracker-v1';
 
 let S={cur:'Campaign 1',camps:{'Campaign 1':{dk:''}},thr:6,area:'p',updatedAt:0};
 let done=new Set();
-let docRef=null, saveTimer=null;
+let XKEYS=[]; /* researched techs from mods that aren't loaded right now; kept so nothing is lost */
+
 
 function lsGet(){try{return JSON.parse(localStorage.getItem(LS)||'null')}catch(e){return null}}
 function lsSet(){try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}}
@@ -2272,23 +2318,18 @@ function adopt(o){
 }
 function loadDone(){
   const c=S.camps[S.cur]||{};
-  if(c.dk!=null){done=new Set(c.dk?c.dk.split(',').map(k=>KEYIDX[k]).filter(v=>v!=null):[]);return}
+  if(c.dk!=null){const ks=c.dk?c.dk.split(','):[];XKEYS=ks.filter(k=>KEYIDX[k]==null);done=new Set(ks.map(k=>KEYIDX[k]).filter(v=>v!=null));return}
+  XKEYS=[];
   const str=c.done||'';
   done=new Set(str?str.split(',').map(x=>OLDKEYS[parseInt(x,36)]).map(k=>KEYIDX[k]).filter(v=>v!=null):[]);
 }
 function commit(){
-  S.camps[S.cur]=Object.assign(S.camps[S.cur]||{},{dk:[...done].sort((a,b)=>a-b).map(n=>T[n].k).join(',')});delete S.camps[S.cur].done;
+  S.camps[S.cur]=Object.assign(S.camps[S.cur]||{},{dk:[...[...done].sort((a,b)=>a-b).map(n=>T[n].k),...XKEYS.filter(k=>KEYIDX[k]==null)].join(',')});delete S.camps[S.cur].done;
   S.updatedAt=Date.now();
   lsSet();
-  clearTimeout(saveTimer);
-  saveTimer=setTimeout(pushRemote,700);
+  status('Saved in this browser');
 }
 function status(msg){$('saveStatus').textContent=msg}
-async function pushRemote(){
-  if(!docRef){status('Saved in this browser');return}
-  try{await docRef.set({state:JSON.stringify(S),updatedAt:S.updatedAt});status('Saved to your account · '+new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}))}
-  catch(e){status('Saved in this browser (account save failed: '+(e&&e.code||'error')+')')}
-}
 
 /* ---------- counting ---------- */
 let TV=T;
@@ -2304,8 +2345,8 @@ const MODALT=(()=>{try{return JSON.parse(document.getElementById('modalt').textC
 function applyModAlt(m){for(const i in MODALT){const x=T[i],a=MODALT[i];if(!x)continue;
   if(!x.modv)x.modv={t:x.t,cost:x.cost,p:x.p,pa:x.pa,w:x.w,m:x.m,pot:x.pot,r:x.r,d:x.d};
   const v=m[a.mod]===false?a.van:x.modv;x.t=v.t;x.cost=v.cost;x.p=v.p;x.pa=v.pa||[];x.w=v.w;x.m=v.m;x.pot=v.pot;x.r=v.r;x.d=v.d}}
-function refreshVis(){const c=S.camps[S.cur];const m=(c&&c.emp&&c.emp.mods)||{};let E=null;try{E=emp()}catch(_){}applyModAlt(m);
-  T.forEach(x=>{const r=MODREN[x.k];x.n=(r&&m[r[1]]===false)?r[0]:x.n0;x.icoSw=null;
+function refreshVis(){const c=S.camps[S.cur];const m=(c&&c.emp&&c.emp.mods)||{};let E=null;try{E=emp()}catch(_){}applyModAlt(m);if(typeof umApplyOver==='function')umApplyOver(m);
+  T.forEach(x=>{x._qt=null;const r=MODREN[x.k];x.n=(r&&m[r[1]]===false)?r[0]:x.n0;x.icoSw=null;
     if(x.sw&&E){for(const s of x.sw){let ok=false;try{ok=ev(s[1],E)}catch(_){}if(ok){x.n=s[0];if(s[2]!=null)x.icoSw=s[2];break}}}});
   TV=T.filter(vis)}
 function req(n){return n<=1?0:n<=5?S.thr:n===6?2:4}
@@ -2431,7 +2472,7 @@ const ICO=(()=>{try{
   const D=JSON.parse(document.getElementById('icondata').textContent);
   const toURL=u=>{try{const b=atob(u.split(',')[1]),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return URL.createObjectURL(new Blob([a],{type:'image/webp'}))}catch(e){return u}};
   const F=D.f.map(toURL),C={};for(const k in D.c)C[k]=toURL(D.c[k]);
-  return x=>{const j=x.icoSw!=null?x.icoSw:D.t[x.i];if(j!=null&&j>=0)return [F[j],0];const c=C[x.c.toLowerCase().replace(/ /g,'_')];return c?[c,1]:null};
+  return x=>{if(x.icoU)return [x.icoU,0];const j=x.icoSw!=null?x.icoSw:D.t[x.i];if(j!=null&&j>=0)return [F[j],0];const c=C[x.c.toLowerCase().replace(/ /g,'_')];return c?[c,1]:null};
 }catch(e){return ()=>null}})();
 function iconHTML(x){const r=ICO(x);return r?`<img class="ticon${r[1]?' cat':''}" src="${r[0]}" alt="" width="40" height="40" loading="lazy" decoding="async">`:'<span class="ticon none"></span>'}
 const TICK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
@@ -2492,9 +2533,12 @@ function renderTop(){
   for(const k in F)$(k).setAttribute('aria-pressed',F[k]);
 }
 function asegHTML(a,t,q){const qc=q?qScan(q):null;return `<div class="aseg" role="group" aria-label="Switch area">${['p','s','e'].map(k=>`<button data-ta="${k}" data-tt="${t}" aria-pressed="${k===a}"><span class="dot ${k}"></span>${AREAS[k]}${qc?`<span class="qc${qc[k].n?'':' zero'}">${qc[k].n}</span>`:''}</button>`).join('')}</div>`}
-function renderBands(){
+let CARDS=new Map(),CARDS_A=null;
+/* fast=true: only the search text changed, so odds/counts are reused and existing card elements are moved, not rebuilt */
+function renderBands(fast){
   const a=S.area, q=$('q').value.trim().toLowerCase();
-  refreshVis();rebuildCounts();computeOdds(a);const mt=maxTier(a);
+  if(fast!==true||CARDS_A!==a){refreshVis();rebuildCounts();computeOdds(a);CARDS=new Map();CARDS_A=a}
+  const mt=maxTier(a);
   const E=emp(), k=optionCount(E);
   let h='';
   for(let t=0;t<=mt;t++){
@@ -2517,11 +2561,11 @@ function renderBands(){
     const inPool=TV.filter(x=>x.a===a&&x.t===t&&ODDS[x.i]&&ODDS[x.i].state==='pool').length;
     if(t===0)state=`<b>${c}</b> researched · available from the start`;
     else if(lk&&!dn){state=`<b>Not in the draw yet</b> · opens after ${req(t)} in Tier ${t-1} (${tierCount(a,t-1)}/${req(t)})`;cls=' wait'}
-    else if(dn)state=`<b>Complete</b> · Tier ${t+1} unlocked · ${inPool} in the draw`;
+    else if(dn)state=`<b>Complete</b> · Tier ${t+1} unlocked · ${inPool?`<b>${inPool}</b> still in the draw`:'nothing left in the draw'}`;
     else if(t===mt)state=`<b>${c}</b> researched · ${inPool} in the draw`;
     else state=`<b>${c} / ${req(t+1)}</b> · ${req(t+1)-c} more to unlock Tier ${t+1} · ${inPool} in the draw`;
     if(q&&!list.length)continue;
-    const ck=a+t, col=q?false:(ck in TC)?TC[ck]:(dn||(lk&&!dn)||(t===0&&c>0));
+    const ck=a+t, offerHere=list.some(x=>svOffered(x)&&!done.has(x.i)), col=q?false:(ck in TC)?TC[ck]:(offerHere||inPool>0?false:(dn||(lk&&!dn)||(t===0&&c>0)));
     h+=`<section class="panel band${dn?' done':''}${lk&&!dn?' closed':''}${col?' collapsed':''}" data-a="${a}" id="tier${t}">
       <div class="bandhead"><div><p class="eyebrow">${AREAS[a]} · ${TV.filter(x=>x.a===a&&x.t===t).length} techs</p><h2>${t===0?'Starting <b>techs</b>':'Tier <b>'+t+'</b>'}</h2></div><div class="state${cls}">${state}</div><button class="bcol" data-ck="${ck}" aria-expanded="${!col}" aria-label="${col?'Expand':'Collapse'} ${t===0?'starting techs':'tier '+t}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>`;
     if(!col){h+=`
@@ -2531,6 +2575,7 @@ function renderBands(){
     else{
       h+='<div class="grid">';
       for(const x of list){
+        if(CARDS.has(x.i)){h+=`<i data-slot="${x.i}"></i>`;continue}
         const on=done.has(x.i), st=ODDS[x.i]||{}, pool=st.state==='pool', grey=!on&&!pool;
         const tn=p=>done.has(p)?`<i>${esc(T[p].n)}</i>`:`<em>${esc(T[p].n)}</em> (${AREAS[T[p].a][0]}${T[p].t})`;
         const anyL=x.any.length?`<div class="pre">Plus one of: ${x.any.map(tn).join(' or ')}</div>`:'';
@@ -2557,7 +2602,7 @@ function renderBands(){
         }
         h+=`<div class="card${on?' on':''}${pool?' ready':''}${grey?' wait':''}" role="checkbox" aria-checked="${on}" tabindex="0" data-i="${x.i}" title="${esc(x.u||x.n)}">
           <span class="tick">${TICK}</span>
-          <span class="meta">${x.mod?`<span class="modtag">${MODNAMES[x.mod]}</span>`:''}<span>${esc(x.c)}</span><span>${x.cost.toLocaleString()}</span>${x.r?'<span class="r">Rare</span>':''}${x.d?'<span class="d">Dangerous</span>':''}</span>
+          <span class="meta">${svOffered(x)&&!on?'<span class="offer">On offer</span>':''}${x.mod?`<span class="modtag">${MODNAMES[x.mod]}</span>`:''}<span>${esc(x.c)}</span><span>${x.cost.toLocaleString()}</span>${x.r?'<span class="r">Rare</span>':''}${x.d?'<span class="d">Dangerous</span>':''}</span>
           <span class="nmrow">${iconHTML(x)}<span class="nm">${esc(x.n)}</span></span>${odds}
           ${x.u?`<span class="un">${esc(x.u)}</span>`:''}${pre0}${paL}${anyL}${onlyL}${modL}</div>`;
       }
@@ -2567,7 +2612,10 @@ function renderBands(){
     h+='</section>';
   }
   if(q&&!h)h=`<section class="panel band" data-a="${a}"><div class="bandtools">${asegHTML(a,0,q)}</div><div class="empty">No ${AREAS[a]} techs match “${esc(q)}”${F.hideDone||F.hideRare||F.readyOnly?' with the current filters':''}.</div></section>`;
-  $('bands').innerHTML=h;
+  const B=$('bands');B.innerHTML=h;
+  B.querySelectorAll('i[data-slot]').forEach(el=>el.replaceWith(CARDS.get(+el.dataset.slot)));
+  B.querySelectorAll('.card').forEach(el=>CARDS.set(+el.dataset.i,el));
+  if(typeof renderSaveNote==='function')renderSaveNote();
   $('optsNote').textContent=`${k} options per area`+(k>(E.num.opts||3)?' (incl. Self-Evolving Logic)':'');
 }
 /* ---------- empire panel ---------- */
@@ -2583,11 +2631,13 @@ function ethConflicts(lbl){const base=lbl.replace(/^Fanatic /,'');const ax=ETH_A
 function ethPoints(E){return ETH_ORDER.reduce((s,l)=>s+(E.on['ethic:'+l]?(l.startsWith('Fanatic')?2:1):0),0)}
 const CIVMETA=(()=>{try{return JSON.parse(document.getElementById('civmeta').textContent)}catch(e){return {}}})();
 const AUTHGRP={'Standard':['standard'],'Corporate':['corporate'],'Hive Mind':['hive'],'Machine Intelligence':['machine']};
+const CIVSRC={"1360":"g","1361":"g","1363":"g","1364":"g","1365":"g","1371":"g","1372":"g","1373":"g","1374":"g","1375":"g","1376":"g","1377":"g","1378":"g","1379":"g","1380":"g","1381":"g","1382":"g","1383":"g","1384":"g","1385":"g","1387":"a","1388":"a","1389":"a","1390":"a","1391":"a","1392":"a","1393":"a","1399":"a","1400":"a","1401":"a","1402":"a","1403":"a","1404":"a","1405":"a","1406":"a","1407":"a","578":"g","579":"g","580":"g","581":"g","582":"g","583":"g","584":"g","608":"g","611":"g","613":"g","720":"g","813":"g","821":"g","825":"g","828":"g"};
+function civShown(i,E){const s=CIVSRC[i];return !s||!E.mods||E.mods[s]!==false}
 function allOf(kind,E){const used=Object.fromEntries(atomsUsed(kind));
   const ok=kind==='civic'?(AUTHGRP[E.auth]||['standard']):[({'Standard':'standard','Corporate':'corporate','Hive Mind':'hive','Machine Intelligence':'machine'})[E.auth]||'standard'];
   const ids=Object.keys(CIVMETA).map(Number).filter(i=>ATOMS[i]&&ATOMS[i][0]===kind&&[].concat(CIVMETA[i]).some(g=>ok.includes(g)));
   ATOMS.forEach((a,i)=>{if(a[0]===kind&&E.on[kind+':'+a[1]]&&!ids.includes(i))ids.push(i)});
-  return ids.sort((a,b)=>ANAME(a).localeCompare(ANAME(b))).map(i=>[i,used[i]||0])}
+  return ids.filter(i=>civShown(i,E)).sort((a,b)=>ANAME(a).localeCompare(ANAME(b))).map(i=>[i,used[i]||0])}
 let OTHSRC=null;
 function othSrc(id){
   if(!OTHSRC){OTHSRC={};const users={};
@@ -2601,9 +2651,11 @@ function othSrc(id){
 const EGROUPS=[['ethic','Ethics'],['trad','Traditions'],['perk','Ascension perks'],['trait','Council leader traits'],['civic','Civics'],['origin','Origin'],['dlc','DLC you own'],['other','Other situations'],['other@a','ACOT situations'],['other@g','Giga situations']];
 let EOPEN={};
 function renderEmpire(){
-  const E=emp();let h='';
+  const E=emp();let h='';{const um=$('umMsg');if(um){um.textContent=UMMSG||'';um.hidden=!UMMSG}}if(typeof renderImports==='function')renderImports();if(typeof renderUMCredits==='function')renderUMCredits();if(typeof renderModLabels==='function')renderModLabels();
   h+=`<div class="nums">${NUMS.map(([k,l,d,mn,mx])=>`<label class="num"><span>${l}</span><span class="stepper sm"><button type="button" data-step="${k}" data-d="-1" aria-label="Decrease ${l}">–</button><input type="number" inputmode="numeric" id="n_${k}" data-num="${k}" min="${mn}" max="${mx}" value="${E.num[k]}"><button type="button" data-step="${k}" data-d="1" aria-label="Increase ${l}">+</button></span></label>`).join('')}</div>`;
-  h+=`<div class="egrp"><div class="olabel"><span class="k">Mods</span><span class="aside">Hide a mod's techs for vanilla playthroughs</span></div><div class="chips">${Object.entries(MODNAMES).map(([k,l])=>`<button class="chip" data-mod="${k}" aria-pressed="${E.mods[k]!==false}"><span class="sw"></span>${k==='a'?'Ancient Cache of Technologies':'Gigastructural Engineering'}</button>`).join('')}</div></div>`;
+  h+=`<div class="egrp"><div class="olabel"><span class="k">Mods</span><span class="aside">Hide a mod's techs for vanilla playthroughs</span></div><div class="chips">${Object.entries(MODNAMES).map(([k,l])=>`<button class="chip" data-mod="${k}" aria-pressed="${E.mods[k]!==false}"><span class="sw"></span>${esc(MODFULL[k]||l)}</button>`).join('')}</div>
+    <p class="umhelp" style="margin:8px 0 0">Add more with <em>Add Workshop mods…</em> at the top of the page.</p>
+    ${UM.length?`<ul class="umlist">${UM.map(u=>`<li><b>${esc(u.name)}</b>${u.ver?` <span>v${esc(u.ver)}</span>`:''} <span>· ${u.techs.length} techs${(u.over||[]).length?` · changes ${u.over.length}`:''}</span><span class="umord">${UM.length>1?`<button type="button" class="linkbtn" data-ummv="${esc(u.code)}:-1" aria-label="Load earlier" ${UM.indexOf(u)===0?'disabled':''}>↑</button><button type="button" class="linkbtn" data-ummv="${esc(u.code)}:1" aria-label="Load later" ${UM.indexOf(u)===UM.length-1?'disabled':''}>↓</button>`:''}<button type="button" class="linkbtn rm" data-umrm="${esc(u.code)}">Remove</button></span></li>`).join('')}</ul>${UM.length>1?'<p class="umhelp">Load order: mods lower in the list win when two change the same tech.</p>':''}`:''}</div>`;
   h+=`<div class="egrp"><div class="olabel"><span class="k">Authority</span></div><div class="chips">${AUTHS.map(a=>`<button class="chip" data-auth="${a}" aria-pressed="${E.auth===a}">${a}</button>`).join('')}
     <button class="chip" data-key="other:Country uses biological ships" aria-pressed="${!!E.on['other:Country uses biological ships']}"><span class="sw"></span>Biological ships</button></div></div>`;
   let hMain=h,hGame='';
@@ -2612,6 +2664,7 @@ function renderEmpire(){
     if(sub!=='v'&&E.mods&&E.mods[sub]===false)continue;
     let items=(kind==='civic'||kind==='origin')?allOf(kind,E):atomsUsed(kind);
     if(kind==='auth')continue;
+    if(kind==='trad'||kind==='perk'||kind==='trait')items=items.filter(([id])=>civShown(id,E));
     if(kind==='ethic'){const cnt=Object.fromEntries(items);items=ETH_ORDER.map(l=>ATOMS.findIndex(a=>a[0]==='ethic'&&a[1]===l)).filter(id=>id>=0).map(id=>[id,cnt[id]||0])}
     if(kind==='other')items=items.filter(([id])=>othSrc(id)===sub&&!isFedRare(id)&&ATOMS[id][1]!=='Country uses biological ships'&&!ATOMS[id][1].startsWith('Has to be ture')&&ATOMS[id][1]!=='One must be true');
     const isOn=id=>kind==='dlc'?!E.dlcOff.includes(ATOMS[id][1]):atomVal(id,E);
@@ -2639,7 +2692,7 @@ EMPHOST.addEventListener('click',e=>{
   const E=emp();
   const g=e.target.closest('.ehead');if(g){EOPEN[g.dataset.grp]=!EOPEN[g.dataset.grp];renderEmpire();return}
   const s=e.target.closest('[data-step]');if(s){const k=s.dataset.step,def=NUMS.find(n=>n[0]===k);E.num[k]=Math.max(def[3],Math.min(def[4],(E.num[k]||0)+(+s.dataset.d)*(k==='year'?5:1)));$('n_'+k).value=E.num[k];empChanged();return}
-  const md=e.target.closest('[data-mod]');if(md){E.mods[md.dataset.mod]=E.mods[md.dataset.mod]===false;renderEmpire();commit();renderTop();renderBands();return}
+  const md=e.target.closest('[data-mod]');if(md){E.mods[md.dataset.mod]=E.mods[md.dataset.mod]===false;commit();renderBands();renderTop();renderEmpire();return}
   const au=e.target.closest('[data-auth]');if(au){E.auth=au.dataset.auth;renderEmpire();empChanged();return}
   const c=e.target.closest('.chip[data-key]');if(c){
     const key=c.dataset.key,[kind,...rest]=key.split(':'),label=rest.join(':');
@@ -2709,30 +2762,34 @@ $('seg').addEventListener('click',e=>{if(dragJustEnded){dragJustEnded=false;retu
 })();
 $('sizes').addEventListener('click',e=>{const b=e.target.closest('.size');if(!b)return;if(TC[S.area+b.dataset.t]!==false){TC[S.area+b.dataset.t]=false;saveTC();renderBands()}const el=$('tier'+b.dataset.t);el&&el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
 for(const k in F)$(k).addEventListener('click',()=>{F[k]=!F[k];renderTop();renderBands()});
-function qText(x){return (x.n+' '+(x.alln||'')+' '+x.n0+' '+x.c+' '+x.u+' '+x.only+' '+(MODNAMES[x.mod]||'')).toLowerCase()}
+function qText(x){return x._qt||(x._qt=(x.n+' '+(x.alln||'')+' '+x.n0+' '+x.c+' '+x.u+' '+x.only+' '+(MODNAMES[x.mod]||'')).toLowerCase())}
 function qScan(q){const r={p:{n:0,name:0,best:0},s:{n:0,name:0,best:0},e:{n:0,name:0,best:0}};
   for(const x of TV){if(!qText(x).includes(q))continue;const o=r[x.a];o.n++;const nm=x.n.toLowerCase();const sc=nm===q?3:nm.startsWith(q)?2:nm.includes(q)?1:0;if(sc)o.name++;o.best=Math.max(o.best,sc)}return r}
 function qUpdate(fromTyping){
   const q=$('q').value.trim().toLowerCase(),hint=$('qhint');
-  if(!q){hint.hidden=true;renderBands();return}
+  if(!q){hint.hidden=true;hint.dataset.plain='';renderBands(true);if(window.__fsSync)window.__fsSync();return}
   const r=qScan(q),cur=S.area;
   const others=['p','s','e'].filter(k=>k!==cur);
   const better=others.filter(k=>r[k].best>r[cur].best||(r[cur].n===0&&r[k].n>0)).sort((x,y)=>r[y].best-r[x].best||r[y].n-r[x].n)[0];
   let switched=false;
-  if(fromTyping&&better&&q.length>=3){switched=true;Q_SW=true;selectArea(better);Q_SW=false}else renderBands();
-  qHint(switched);
+  if(fromTyping&&better&&q.length>=3){switched=true;Q_SW=true;selectArea(better);Q_SW=false}else renderBands(true);
+  qHint(switched,r);
 }
 let Q_SW=false;
-function qHint(switched){
-  const q=$('q').value.trim().toLowerCase(),hint=$('qhint');if(!q){hint.hidden=true;return}
-  const r=qScan(q),a=S.area,parts=[];
+function qHint(switched,r){
+  const q=$('q').value.trim().toLowerCase(),hint=$('qhint');if(!q){hint.hidden=true;hint.dataset.plain='';return}
+  r=r||qScan(q);const a=S.area,parts=[];
   parts.push(`<b>${r[a].n}</b> in ${AREAS[a]}`);
   ['p','s','e'].filter(k=>k!==a&&r[k].n).forEach(k=>parts.push(`<button type="button" class="linkbtn" data-qa="${k}">${r[k].n} in ${AREAS[k]}</button>`));
   hint.innerHTML=(switched?`Switched to ${AREAS[a]} · `:'')+parts.join(' · ')+(r[a].n?` · <button type="button" class="linkbtn" id="qgo">Show results ↓</button>`:'');
+  hint.dataset.plain=[`${r[a].n} in ${AREAS[a]}`,...['p','s','e'].filter(k=>k!==a&&r[k].n).map(k=>`${r[k].n} in ${AREAS[k]}`)].join(' · ');
   hint.hidden=false;if(window.__fsSync)window.__fsSync();
 }
-$('q').addEventListener('input',()=>qUpdate(true));
-$('q').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const c=document.querySelector('#bands .card');if(c){c.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});c.focus({preventScroll:true})}}});
+let Q_T=0;
+function qFlush(){if(Q_T){clearTimeout(Q_T);Q_T=0;qUpdate(true)}}
+function qSoon(after){clearTimeout(Q_T);Q_T=setTimeout(()=>{Q_T=0;qUpdate(true);if(after)after()},140)}
+$('q').addEventListener('input',()=>qSoon());
+$('q').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();qFlush();const c=document.querySelector('#bands .card');if(c){c.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});c.focus({preventScroll:true})}}});
 $('qhint').addEventListener('click',e=>{const b=e.target.closest('[data-qa]');if(b){selectArea(b.dataset.qa);return}
   if(e.target.closest('#qgo')){const c=document.querySelector('#bands .card');if(c){c.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});c.focus({preventScroll:true})}}});
 $('camp').addEventListener('change',e=>{S.cur=e.target.value;loadDone();commit();renderAll()});
@@ -2885,11 +2942,11 @@ bandsEl.addEventListener('keydown',e=>{const c=e.target.closest('.card');if(c&&e
   document.body.appendChild(fs);
   const q=$('q'),q2=$('q2');
   const toBands=()=>{const b=$('bands');const top=b.getBoundingClientRect().top;if(top<0||top>innerHeight*0.6)window.scrollBy(0,top-80)};
-  const sync=()=>{$('q2x').hidden=!q2.value;const h=$('qhint');$('q2hint').textContent=(!q.value.trim()||h.hidden)?'':h.innerText.replace(/\s*·\s*Show results ↓\s*$/,'').replace(/^Switched to [A-Za-z]+ · /,'')};
-  q2.addEventListener('input',()=>{q.value=q2.value;qUpdate(true);sync();toBands()});
-  q2.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const c=document.querySelector('#bands .card');if(c){c.scrollIntoView({block:'center'});c.focus({preventScroll:true})}}if(e.key==='Escape'){q2.value='';q.value='';qUpdate(false);sync()}});
-  $('q2x').addEventListener('click',()=>{q2.value='';q.value='';qUpdate(false);sync();q2.focus()});
-  q.addEventListener('input',()=>{q2.value=q.value;sync()});
+  const sync=()=>{$('q2x').hidden=!q2.value;const h=$('qhint');$('q2hint').textContent=(!q.value.trim()||h.hidden)?'':(h.dataset.plain||'')};
+  q2.addEventListener('input',()=>{q.value=q2.value;$('q2x').hidden=!q2.value;qSoon(()=>{sync();toBands()})});
+  q2.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();qFlush();const c=document.querySelector('#bands .card');if(c){c.scrollIntoView({block:'center'});c.focus({preventScroll:true})}}if(e.key==='Escape'){clearTimeout(Q_T);q2.value='';q.value='';qUpdate(false);sync()}});
+  $('q2x').addEventListener('click',()=>{clearTimeout(Q_T);q2.value='';q.value='';qUpdate(false);sync();q2.focus()});
+  q.addEventListener('input',()=>{q2.value=q.value;$('q2x').hidden=!q2.value});
   document.addEventListener('click',e=>{if(e.target.closest('#qhint'))setTimeout(sync,0)});
   window.__fsSync=sync;
   const set=v=>{if(fs.hidden===!v)return;fs.hidden=!v;document.documentElement.classList.toggle('fs-on',v);if(v){q2.value=q.value;sync()}};
@@ -2903,8 +2960,6 @@ $('fSave').addEventListener('click',async()=>{
   commit();
   const data=JSON.stringify({app:'stellaris-research-tracker',version:1,savedAt:new Date().toISOString(),name:S.cur,perTier:S.thr,campaign:S.camps[S.cur]},null,1);
   const fn='stellaris-'+slug(S.cur)+'-'+new Date().toISOString().slice(0,10)+'.json';
-  let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(_){dl=null}
-  if(dl){try{await dl.save({filename:fn,data});fMsg('Saved '+fn)}catch(e){fMsg(e&&e.code==='declined'?'Save cancelled':'Saving files isn’t available here')}return}
   try{const url=URL.createObjectURL(new Blob([data],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=fn;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(url);a.remove()},1500);fMsg('Saved '+fn)}
   catch(_){fMsg('Saving files isn’t available here')}
 });
@@ -2923,27 +2978,455 @@ $('fLoad').addEventListener('change',async e=>{
     loadDone();commit();renderAll();
   }catch(_){fMsg("That file isn't a saved campaign")}
 });
+/* ---------- user mods: read a mod (or the whole Workshop folder) right in the browser ---------- */
+/* ---- DDS (DirectDraw Surface) decoder: the game's icon format → RGBA ---- */
+function ddsDecode(buf){
+  const dv=new DataView(buf);if(dv.getUint32(0,true)!==0x20534444)return null;
+  const h=dv.getUint32(12,true),w=dv.getUint32(16,true);if(!w||!h||w>4096||h>4096)return null;
+  const pfFlags=dv.getUint32(80,true);let four=String.fromCharCode(dv.getUint8(84),dv.getUint8(85),dv.getUint8(86),dv.getUint8(87));
+  let off=128;
+  if((pfFlags&4)&&four==='DX10'){const fmt=dv.getUint32(128,true);off=148;four={71:'DXT1',72:'DXT1',74:'DXT3',75:'DXT3',77:'DXT5',78:'DXT5',87:'BGRA',88:'BGRX',28:'RGBA',29:'RGBA'}[fmt]||'?'}
+  const out=new Uint8ClampedArray(w*h*4);const src=new Uint8Array(buf,off);
+  const c565=(c,o,arr)=>{arr[o]=((c>>11)&31)*255/31;arr[o+1]=((c>>5)&63)*255/63;arr[o+2]=(c&31)*255/31};
+  const colorBlock=(p,pal,force4)=>{const c0=src[p]|src[p+1]<<8,c1=src[p+2]|src[p+3]<<8;c565(c0,0,pal);c565(c1,4,pal);pal[3]=pal[7]=255;
+    if(c0>c1||force4){for(let i=0;i<3;i++){pal[8+i]=(2*pal[i]+pal[4+i])/3;pal[12+i]=(pal[i]+2*pal[4+i])/3}pal[11]=pal[15]=255}
+    else{for(let i=0;i<3;i++){pal[8+i]=(pal[i]+pal[4+i])/2;pal[12+i]=0}pal[11]=255;pal[15]=0}
+    return (src[p+4]|src[p+5]<<8|src[p+6]<<16|src[p+7]<<24)>>>0};
+  if(four==='DXT1'||four==='DXT3'||four==='DXT5'){
+    const bw=Math.max(1,(w+3)>>2),bh=Math.max(1,(h+3)>>2),bs=four==='DXT1'?8:16,pal=new Float32Array(16),al=new Float32Array(8);let p=0;
+    if(src.length<bw*bh*bs)return null;
+    for(let by=0;by<bh;by++)for(let bx=0;bx<bw;bx++){
+      let aBits=null,aLo=0,aHi=0;
+      if(four==='DXT5'){const a0=src[p],a1=src[p+1];al[0]=a0;al[1]=a1;if(a0>a1){for(let i=1;i<7;i++)al[i+1]=((7-i)*a0+i*a1)/7}else{for(let i=1;i<5;i++)al[i+1]=((5-i)*a0+i*a1)/5;al[6]=0;al[7]=255}
+        aLo=(src[p+2]|src[p+3]<<8|src[p+4]<<16)>>>0;aHi=(src[p+5]|src[p+6]<<8|src[p+7]<<16)>>>0}
+      const cp=four==='DXT1'?p:p+8;const idx=colorBlock(cp,pal,four!=='DXT1');
+      for(let py=0;py<4;py++)for(let px=0;px<4;px++){const x=bx*4+px,y=by*4+py;if(x>=w||y>=h)continue;const k=py*4+px;const ci=(idx>>(2*k))&3;const o=(y*w+x)*4;
+        out[o]=pal[ci*4];out[o+1]=pal[ci*4+1];out[o+2]=pal[ci*4+2];
+        if(four==='DXT1')out[o+3]=pal[ci*4+3];
+        else if(four==='DXT3'){const b=src[p+(k>>1)];out[o+3]=((k&1)?(b>>4):(b&15))*17}
+        else{const ai=k<8?(aLo>>(3*k))&7:(aHi>>(3*(k-8)))&7;out[o+3]=al[ai]}}
+      p+=bs}
+    return {w,h,data:out};
+  }
+  let bits=dv.getUint32(88,true),rm=dv.getUint32(92,true),gm=dv.getUint32(96,true),bm=dv.getUint32(100,true),am=(pfFlags&1)?dv.getUint32(104,true):0;
+  if(four==='BGRA'||four==='BGRX'){bits=32;rm=0xff0000;gm=0xff00;bm=0xff;am=four==='BGRA'?0xff000000:0}
+  if(four==='RGBA'){bits=32;rm=0xff;gm=0xff00;bm=0xff0000;am=0xff000000}
+  if(!(pfFlags&0x40)&&!['BGRA','BGRX','RGBA'].includes(four)&&!(pfFlags&0x20000))return null;
+  const bpp=bits>>3;if(bpp<1||bpp>4)return null;if(src.length<w*h*bpp)return null;
+  const sh=m=>{if(!m)return [0,0];let s=0;while(!((m>>>s)&1))s++;let n=0;while((m>>>(s+n))&1)n++;return [s,n]};
+  const [rs,rn]=sh(rm),[gs,gn]=sh(gm),[bs2,bn]=sh(bm),[as,an]=sh(am);
+  const sc=(v,n)=>n>=8?v>>>(n-8):Math.round(v*255/((1<<n)-1));
+  for(let i=0,p=0;i<w*h;i++,p+=bpp){let v=0;for(let b=0;b<bpp;b++)v|=src[p+b]<<(8*b);v>>>=0;const o=i*4;
+    out[o]=rn?sc((v&rm)>>>rs,rn):0;out[o+1]=gn?sc((v&gm)>>>gs,gn):0;out[o+2]=bn?sc((v&bm)>>>bs2,bn):0;out[o+3]=am?sc((v&am)>>>as,an):255}
+  return {w,h,data:out};
+}
+function ddsToIcon(img,size=40){
+  const c=document.createElement('canvas');c.width=img.w;c.height=img.h;c.getContext('2d').putImageData(new ImageData(img.data,img.w,img.h),0,0);
+  const o=document.createElement('canvas');o.width=o.height=size;const g=o.getContext('2d');g.imageSmoothingEnabled=true;g.imageSmoothingQuality='high';g.drawImage(c,0,0,size,size);
+  let u=o.toDataURL('image/webp',0.8);if(!u.startsWith('data:image/webp'))u=o.toDataURL('image/png');return u}
+
+/* icons for added mods are kept in this browser's IndexedDB (they're too big for normal storage) */
+const UMIDB={p:null,open(){if(!this.p)this.p=new Promise(res=>{try{const r=indexedDB.open('stellaris-tracker-icons',1);r.onupgradeneeded=()=>r.result.createObjectStore('icons');r.onsuccess=()=>res(r.result);r.onerror=()=>res(null)}catch(e){res(null)}});return this.p},
+  async put(code,map){const db=await this.open();if(!db)return false;return new Promise(res=>{try{const tx=db.transaction('icons','readwrite');tx.objectStore('icons').put(map,code);tx.oncomplete=()=>res(true);tx.onerror=()=>res(false)}catch(e){res(false)}})},
+  async get(code){const db=await this.open();if(!db)return null;return new Promise(res=>{try{const q=db.transaction('icons').objectStore('icons').get(code);q.onsuccess=()=>res(q.result||null);q.onerror=()=>res(null)}catch(e){res(null)}})},
+  async del(code){const db=await this.open();if(!db)return;try{db.transaction('icons','readwrite').objectStore('icons').delete(code)}catch(e){}}};
+const UMICONS={}; /* code -> {techKey: dataURL} (in memory) */
+function umApplyIcons(){for(const code in UMICONS){const m=UMICONS[code];for(const k in m){const j=KEYIDX[k];if(j!=null)T[j].icoU=m[k]}}}
+async function umLoadIcons(){let any=false;for(const m of UM){const map=await UMIDB.get(m.code);if(map){UMICONS[m.code]=map;any=true}}if(any){umApplyIcons();renderBands()}}
+async function umIconURL(f){try{if(/\.png$/i.test(f.name)){const url=URL.createObjectURL(f);const im=new Image();await new Promise((ok,no)=>{im.onload=ok;im.onerror=no;im.src=url});const o=document.createElement('canvas');o.width=o.height=40;const g=o.getContext('2d');g.imageSmoothingQuality='high';g.drawImage(im,0,0,40,40);URL.revokeObjectURL(url);let u=o.toDataURL('image/webp',0.8);if(!u.startsWith('data:image/webp'))u=o.toDataURL('image/png');return u}
+  const img=ddsDecode(await f.arrayBuffer());return img?ddsToIcon(img):null}catch(e){return null}}
+const UM_LS=LS+'-usermods';
+const VANVARS=(()=>{try{return JSON.parse(document.getElementById('vanvars').textContent)}catch(e){return {}}})();
+const VANIS=(()=>{try{return JSON.parse(document.getElementById('vanis').textContent)}catch(e){return {}}})();
+const BUILTIN={'1419304439':'Ancient Cache of Technologies','1121692237':'Gigastructural Engineering'};
+const MODFULL={a:'Ancient Cache of Technologies',g:'Gigastructural Engineering'};
+const DATA_GAMEVER='v4.5.2';
+let UM=[],UMMSG='';
+function umLoad(){try{UM=JSON.parse(localStorage.getItem(UM_LS)||'[]')||[]}catch(e){UM=[]}}
+function umSave(){try{localStorage.setItem(UM_LS,JSON.stringify(UM));return true}catch(e){return false}}
+/* Paradox script */
+function pdxTok(s){const out=[];const re=/"(?:[^"\\]|\\.)*"|#[^\n]*|[{}]|[<>!=]=|[=<>]|[^\s{}=<>"#]+/g;let m;while((m=re.exec(s)))if(m[0][0]!=='#')out.push(m[0]);return out}
+function pdxParse(s){
+  s=s.replace(/^﻿/,'').replace(/@\[([^\]]*)\]/g,(m,e)=>'@['+e.replace(/\s+/g,'')+']');
+  const t=pdxTok(s);let i=0;const OPS=new Set(['=','<','>','<=','>=','!=','==']);
+  const block=()=>{const items=[];while(i<t.length){const k=t[i];if(k==='}'){i++;return items}
+    if(k==='{'){i++;items.push([null,'=',block()]);continue}
+    if(OPS.has(t[i+1])){const op=t[i+1];i+=2;let v;if(t[i]==='{'){i++;v=block()}else{v=t[i];i++}items.push([k,op,v])}
+    else{items.push([k,null,null]);i++}}return items};
+  return block();
+}
+const unq=v=>typeof v==='string'&&v.length>1&&v[0]==='"'?v.slice(1,-1):v;
+const pget=(b,k)=>{let r;if(Array.isArray(b))for(const it of b)if(it[0]===k)r=it[2];return r};
+function arith(e){/* + - * / and brackets */let i=0;const n=()=>{let s='';while(i<e.length&&/[0-9.]/.test(e[i]))s+=e[i++];return parseFloat(s)};
+  const f=()=>{if(e[i]==='('){i++;const v=x();i++;return v}if(e[i]==='-'){i++;return -f()}return n()};
+  const tm=()=>{let v=f();while(e[i]==='*'||e[i]==='/'){const o=e[i++];const w=f();v=o==='*'?v*w:v/w}return v};
+  const x=()=>{let v=tm();while(e[i]==='+'||e[i]==='-'){const o=e[i++];const w=tm();v=o==='+'?v+w:v-w}return v};
+  const r=x();return isFinite(r)?r:null}
+function pnum(v,V,d=0){let n=0;
+  while(typeof v==='string'&&v[0]==='@'&&n<12){
+    if(v.startsWith('@[')){const e=v.slice(2,-1).replace(/[A-Za-z_][A-Za-z0-9_]*/g,w=>{const r=pnum('@'+w,V,null);return r==null?'0':String(r)});return arith(e)??d}
+    v=(v in V)?V[v]:(v in VANVARS)?VANVARS[v]:v;n++}
+  if(typeof v==='number')return v;const f=parseFloat(v);return isNaN(f)?d:f}
+function expandIS(b,IS,depth=0){const out=[];
+  for(const it of b){const [k,op,v]=it;
+    if(k==='inline_script'&&depth<6){let path,params={};
+      if(Array.isArray(v)){path=unq(pget(v,'script'));for(const [kk,,vv] of v)if(kk!=='script'&&typeof vv==='string')params[kk]=unq(vv)}else path=unq(v);
+      const pk=String(path||'').toLowerCase();const txt=IS[pk]!=null?IS[pk]:VANIS[pk];if(txt==null)continue;
+      let s=txt;for(const p in params)s=s.split('$'+p+'$').join(params[p]);s=s.replace(/\$[A-Za-z_]+\|([^$]*)\$/g,'$1');
+      out.push(...expandIS(pdxParse(s),IS,depth+1));
+    }else if(Array.isArray(v))out.push([k,op,expandIS(v,IS,depth)]);else out.push(it)}
+  return out}
+function titleKey(s){const small=new Set(['of','the','and','to','a','in']);return s.replace(/^(tech_|giga_tech_)/,'').split('_').filter(Boolean).map((w,i)=>i&&small.has(w)?w:w[0].toUpperCase()+w.slice(1)).join(' ')}
+function cleanLoc(s){return s.replace(/§[A-Za-z!]/g,'').replace(/£[^£]*£/g,'').replace(/\[[^\]]*\]/g,'').replace(/\\"/g,'"').trim()}
+/* group the picked files by mod */
+
+/* ---- conditions → toggles (same rules the tracker's own data was built with) ---- */
+const KEYLBL=(()=>{try{return JSON.parse(document.getElementById('keylbl').textContent)}catch(e){return {}}})();
+const ETHS=new Set(['militarist','pacifist','spiritualist','materialist','xenophile','xenophobe','egalitarian','authoritarian']);
+const COPS={'=':'==','>':'>','<':'<','>=':'>=','<=':'<='};
+const DLCMAP={has_ancrel:'Ancient Relics',has_machine_age_dlc:'The Machine Age',has_shroud_dlc:'Shadows of the Shroud',has_grand_archive_dlc:'Grand Archive',has_cosmic_storms_dlc:'Cosmic Storms',has_paragon_dlc:'Galactic Paragons',has_overlord_dlc:'Overlord',has_megacorp:'MegaCorp',has_utopia:'Utopia',has_astral_planes_dlc:'Astral Planes',has_nemesis:'Nemesis',has_biogenesis_dlc:'BioGenesis',has_federations_dlc:'Federations',has_nomads_dlc:'Nomads',has_infernals:'Infernals',has_distar:'Distant Stars Story Pack',has_first_contact_dlc:'First Contact',has_apocalypse:'Apocalypse',has_leviathans:'Leviathans Story Pack',has_lithoids:'Lithoids',has_toxoids:'Toxoids'};
+function title2(s){const small=new Set(['of','the','and','to','a','in']);return String(s).replace(/_/g,' ').split(/\s+/).filter(Boolean).map((w,i)=>i&&small.has(w)?w:w[0].toUpperCase()+w.slice(1)).join(' ')}
+function mkConv(ctx){ /* ctx: {L:loc function, ST:scripted triggers, V:vars} */
+  const yes=v=>String(v).toLowerCase()==='yes';
+  const negIf=(n,v)=>yes(v)?n:['not',n];
+  const A=(k,l)=>['A',k,l];
+  const nm=(key,fb)=>KEYLBL[key]||ctx.L(key)||fb;
+  const num=v=>{const r=pnum(v,ctx.V,null);return r==null?0:r};
+  const rv=v=>{let n=0;while(typeof v==='string'&&v[0]==='@'&&n<8&&(v in ctx.V)){v=ctx.V[v];n++}return unq(v)};
+  const flat=(k,op,v)=>Array.isArray(v)?title2(k)+': '+v.filter(x=>x[0]).map(x=>flat(...x)).join(', '):`${k} ${op} ${v}`;
+  let depth=0;
+  const list=b=>{const it=(b||[]).filter(x=>x[0]).map(x=>c(...x)).filter(x=>x!=null);return it.length===1?it[0]:['and',...it]};
+  const c=(k,op,v)=>{const kl=String(k).toLowerCase();
+    if(kl==='and')return list(v);
+    if(kl==='or')return ['or',...(v||[]).filter(x=>x[0]).map(x=>c(...x)).filter(x=>x!=null)];
+    if(kl==='not'||kl==='nand')return ['not',list(v)];
+    if(kl==='nor')return ['not',['or',...(v||[]).filter(x=>x[0]).map(x=>c(...x)).filter(x=>x!=null)]];
+    if(['factor','add','base','weight','text','custom_tooltip','tooltip','custom_tooltip_fail'].includes(kl))return null;
+    if(kl==='hidden_trigger')return Array.isArray(v)?list(v):null;
+    if(kl==='always')return yes(v)?['and']:['not',['and']];
+    if(kl==='has_technology'){const t=unq(v);return ['T',t]}
+    if(kl==='has_ethic'){const e=unq(v).replace('ethic_','');if(e.startsWith('fanatic_'))return A('ethic','Fanatic '+title2(e.slice(8)));return A('ethic',nm('ethic_'+e,title2(e)))}
+    let m=kl.match(/^is_(fanatic_)?(\w+)$/);
+    if(m&&ETHS.has(m[2]))return m[1]?negIf(A('ethic','Fanatic '+title2(m[2])),v):negIf(['or',A('ethic',title2(m[2])),A('ethic','Fanatic '+title2(m[2]))],v);
+    if(kl==='is_gestalt')return negIf(A('ethic','Gestalt Consciousness'),v);
+    if(kl==='is_hive_empire')return negIf(A('auth','Hive Mind'),v);
+    if(kl==='is_machine_empire')return negIf(A('auth','Machine Intelligence'),v);
+    if(kl==='is_megacorp')return negIf(A('auth','Corporate'),v);
+    if(kl==='has_authority'){const a=unq(v).replace('auth_','');return A('auth',{hive_mind:'Hive Mind',machine_intelligence:'Machine Intelligence',corporate:'Corporate'}[a]||title2(a))}
+    if(kl==='is_regular_empire')return negIf(A('other','Is normal empire'),v);
+    if(kl==='is_fallen_empire')return negIf(A('other','Is a Fallen Empire'),v);
+    if(kl==='is_ai')return negIf(A('other','Is AI'),v);
+    if(kl==='has_tradition'){let t=unq(v).replace(/^tr_/,'').replace(/_(adopt|finish)$/,'');return A('trad',nm('tradition_'+t,nm('tr_'+t+'_adopt',title2(t))))}
+    if(kl==='has_ascension_perk')return A('perk',nm(unq(v),title2(unq(v).replace('ap_',''))));
+    if(kl==='has_galactic_wonders')return negIf(A('perk','Galactic Wonders'),v);
+    if(kl==='has_gigastructural_constructs')return negIf(A('perk','Gigastructural Constructs'),v);
+    if(kl==='has_valid_civic'||kl==='has_civic')return A('civic',nm(unq(v),title2(unq(v).replace('civic_',''))));
+    if(kl==='has_origin')return A('origin',nm(unq(v),title2(unq(v).replace('origin_',''))));
+    if(kl==='has_dlc'||kl==='host_has_dlc')return A('dlc',unq(v));
+    if(kl==='has_trait_in_council'&&Array.isArray(v)){let t=unq(pget(v,'TRAIT')||pget(v,'trait')||'').replace(/^leader_trait_/,'').replace(/_\d$/,'');return A('trait',t.startsWith('expertise_')?'Expertise: '+title2(t.slice(10)):nm('leader_trait_'+t,title2(t)))}
+    if(kl==='years_passed'&&COPS[op])return ['n','years',COPS[op],Math.round(num(v))];
+    if(kl==='num_owned_planets'&&COPS[op])return ['n','planets',COPS[op],Math.round(num(v))];
+    if(kl==='num_communications'&&COPS[op])return ['n','contacts',COPS[op],Math.round(num(v))];
+    if(kl==='count_starbase_sizes'&&Array.isArray(v)){const sz=unq(pget(v,'starbase_size')||'');const vr={starbase_starport:'starport',starbase_starhold:'starhold',starbase_starfortress:'fortress',starbase_citadel:'citadel'}[sz];
+      for(const [kk,oo,vv] of v)if(kk==='count'&&vr)return ['n',vr,COPS[oo]||'>=',Math.round(num(vv))]}
+    if(kl==='num_researched_techs_of_tier'&&Array.isArray(v)){let tier=null,val=null,vop='>=';for(const [kk,oo,vv] of v){if(kk==='tier')tier=Math.round(num(vv));if(kk==='value'){val=Math.round(num(vv));vop=COPS[oo]||'>='}}if(tier!=null&&val!=null)return ['tc',tier,vop,val]}
+    if(DLCMAP[kl])return negIf(A('dlc',DLCMAP[kl]),v);
+    if(kl==='is_wilderness_empire')return negIf(A('origin',nm('origin_wilderness','Wilderness')),v);
+    if(kl==='country_uses_bio_ships')return negIf(A('other','Country uses biological ships'),v);
+    if(kl==='is_nomadic')return negIf(A('other','Is a nomadic empire'),v);
+    if(kl==='has_federation')return negIf(A('other','Is part of a Federation'),v);
+    if(kl==='has_country_flag')return A('other','Event flag: '+rv(v));
+    if(kl==='has_global_flag')return A('other','Global flag: '+rv(v));
+    if(kl==='has_modifier')return A('other','Has modifier: '+unq(v));
+    if(kl==='has_policy_flag')return A('other','Policy: '+unq(v));
+    /* the mod's own scripted triggers: read them and expand into their real conditions */
+    const st=ctx.ST[k]||ctx.ST[kl];
+    if(st&&depth<6){let body=st;
+      if(Array.isArray(v)){const params={};for(const [pk,,pv] of v)if(pk&&typeof pv==='string')params[pk]=unq(pv);body=substP(st,params)}
+      depth++;const r=list(body);depth--;
+      if(!Array.isArray(v))return negIf(r,v);return r}
+    if(!Array.isArray(v)&&/^(yes|no)$/i.test(String(v)))return negIf(A('other',title2(kl)),v);
+    return A('other',flat(k,op,v).slice(0,400));
+  };
+  const wmods=wm=>{const mods=[];let base=1;
+    for(const [k,op,v] of (wm||[])){
+      if(k==='factor')base*=num(v)||0;
+      else if(k==='modifier'&&Array.isArray(v)){let f=null,add=null;for(const [kk,,vv] of v){if(kk==='factor')f=num(vv);if(kk==='add')add=num(vv)}
+        const rest=v.filter(x=>x[0]!=='factor'&&x[0]!=='add');const cond=rest.length?list(rest):['and'];
+        const trivial=cond.length===1&&cond[0]==='and';
+        if(f!=null&&trivial)base*=f;else if(f!=null)mods.push([0,f,cond]);else if(add!=null)mods.push([1,add,cond])}}
+    return {base,mods}};
+  return {list,wmods};
+}
+function substP(b,params){return b.map(([k,op,v])=>[typeof k==='string'?subS(k,params):k,op,Array.isArray(v)?substP(v,params):typeof v==='string'?subS(v,params):v])}
+function subS(s,params){return s.replace(/\$([A-Za-z0-9_]+)(\|[^$]*)?\$/g,(m,p,d)=>p in params?params[p]:(d?d.slice(1):m))}
+function umGroup(files){const mods=new Map(),LOOSE=new Map();
+  for(const f of files){const p=(f.webkitRelativePath||f.name).replace(/\\/g,'/');const seg=p.split('/');const low=seg.map(s=>s.toLowerCase());
+    let root;const ci=low.findIndex((s,j)=>j<low.length-1&&(s==='common'||s==='localisation'||s==='localization'||s==='gfx'));
+    if(low[low.length-1]==='descriptor.mod'||low[low.length-1]==='launcher-settings.json')root=seg.slice(0,-1).join('/');
+    else if(ci>=0)root=seg.slice(0,ci).join('/');
+    else{if(/\.(png|jpe?g)$/.test(low[low.length-1])&&f.size<8e6){const r=seg.slice(0,-1).join('/');(LOOSE.get(r)||LOOSE.set(r,[]).get(r)).push({f,rel:low[low.length-1]})}continue}
+    if(!mods.has(root))mods.set(root,[]);mods.get(root).push({f,rel:low.slice(root?root.split('/').length:0).join('/')});}
+  for(const [r,l] of LOOSE)if(mods.has(r))mods.get(r).push(...l);
+  return mods}
+const UMPOOL={V:{},L:{},ST:{},IMG:{}};
+async function umReadMod(root,list){
+  const by=rel=>list.filter(x=>x.rel.startsWith(rel));
+  const desc=list.find(x=>x.rel==='descriptor.mod');
+  const info={root,name:root.split('/').pop()||'Mod',id:'',ver:'',sv:''};
+  if(desc){const d=await desc.f.text();const g=k=>{const m=d.match(new RegExp('^\\s*'+k+'\\s*=\\s*"?([^"\\n]*)"?','m'));return m?m[1].trim():''};info.name=g('name')||info.name;info.id=g('remote_file_id');info.ver=g('version');info.sv=g('supported_version');info.pic=g('picture')}
+  if(!info.id&&/^\d{6,}$/.test(info.name))info.id=info.name;
+  if(list.some(x=>x.rel==='launcher-settings.json')||list.some(x=>x.rel==='common/technology/00_phys_tech.txt'))return {...info,game:true,gv:await (async()=>{const l=list.find(x=>x.rel==='launcher-settings.json');if(!l)return '';try{return JSON.parse(await l.f.text()).rawVersion||''}catch(_){return ''}})()};
+  const techFiles=by('common/technology/').filter(x=>/^common\/technology\/[^/]+\.txt$/.test(x.rel));
+  if(BUILTIN[info.id])return {...info,builtin:true};
+  info.thumb=await umThumb(list,info.pic);
+  if(!techFiles.length)return {...info,techs:[],over:[]};
+  const V=Object.create(UMPOOL.V);const readVars=t=>{const s=t.replace(/#[^\n]*/g,'');for(const m of s.matchAll(/^\s*(@[A-Za-z0-9_]+)\s*=\s*([^\s{}]+)/gm))V[m[1]]=m[2]};
+  /* files named like "compat"/"overwrite_me" hold placeholders that another mod is meant to replace */
+  for(const x of by('common/scripted_variables/'))if(x.rel.endsWith('.txt')){const t=await x.f.text();if(/compat|overwrite|placeholder/.test(x.rel)){const s2=t.replace(/#[^\n]*/g,'');for(const m of s2.matchAll(/^\s*(@[A-Za-z0-9_]+)\s*=\s*([^\s{}]+)/gm))if(!(m[1] in UMPOOL.V))V[m[1]]=m[2]}else readVars(t)}
+  const IS={};for(const x of by('common/inline_scripts/'))if(x.rel.endsWith('.txt'))IS[x.rel.slice('common/inline_scripts/'.length,-4)]=await x.f.text();
+  const L=Object.create(UMPOOL.L);for(const x of list)if(x.rel.endsWith('.yml')&&/english/.test(x.rel)){const t=await x.f.text();for(const line of t.split('\n')){const m=line.match(/^\s*([A-Za-z0-9_.\-]+):\d*\s*"(.*)"\s*(#.*)?$/);if(m)L[m[1]]=m[2]}}
+  const loc=(k,d=0)=>{let s=L[k];if(s==null){const j=KEYIDX[k];return j!=null?T[j].n0:null}if(d<4)s=s.replace(/\$([A-Za-z0-9_.\-]+)\$/g,(m,r)=>loc(r,d+1)??titleKey(r));return cleanLoc(s)||null};
+  const blocks=[];
+  for(const x of techFiles){const txt=await x.f.text();readVars(txt);blocks.push(...expandIS(pdxParse(txt),IS))}
+  const OWNIMG={};for(const x of list)if(/^gfx\/.*\.(dds|png)$/.test(x.rel)){const b=x.rel.split('/').pop().replace(/\.(dds|png)$/,'');if(!(b in OWNIMG))OWNIMG[b]=x.f}
+  const iconJobs=[];
+  const techs=[],over=[];const areaMap={physics:'p',society:'s',engineering:'e'};
+  const ST=Object.create(UMPOOL.ST);for(const x of by('common/scripted_triggers/'))if(x.rel.endsWith('.txt')){for(const [k,,b] of expandIS(pdxParse(await x.f.text()),IS))if(k&&Array.isArray(b))ST[k]=b}
+  const CV=mkConv({L:k=>loc(k),ST,V});
+  for(const [k,,b] of blocks){if(!k||!Array.isArray(b)||k[0]==='@')continue;const area=areaMap[unq(pget(b,'area'))];if(!area)continue;
+    const catB=pget(b,'category');let cat=Array.isArray(catB)&&catB.length?unq(catB[0][0]):'computing';
+    const p=[],pa=[];for(const [kk,,vv] of (pget(b,'prerequisites')||[])){if(kk==='OR'&&Array.isArray(vv))pa.push(vv.map(q=>unq(q[0])).filter(Boolean));else if(kk)p.push(unq(kk))}
+    const rec={k,n:loc(k)||titleKey(k),a:area,c:loc(cat)||titleKey(cat),t:Math.round(pnum(pget(b,'tier'),V,0)),cost:Math.round(pnum(pget(b,'cost'),V,0)),p,pa,
+      r:pget(b,'is_rare')==='yes',d:pget(b,'is_dangerous')==='yes',s:pget(b,'start_tech')==='yes',w:pnum(pget(b,'weight'),V,0)};
+    const potB=pget(b,'potential');rec.pot=Array.isArray(potB)&&potB.length?[CV.list(potB)]:[];
+    const wm=CV.wmods(pget(b,'weight_modifier'));rec.w=Math.round(rec.w*wm.base*1e4)/1e4;rec.m=wm.mods;rec.v=2;
+    let ik=unq(pget(b,'icon'))||k;ik=String(ik).replace(/^GFX_/i,'').split('/').pop().replace(/\.(dds|png)$/i,'').toLowerCase();
+    const isOver=KEYIDX[k]!=null&&!(T[KEYIDX[k]].mod||'').startsWith('u');
+    const imgF=OWNIMG[ik]||(isOver?null:UMPOOL.IMG[ik]);
+    if(imgF)iconJobs.push([k,imgF]);
+    if(isOver)over.push(rec);else techs.push(rec)}
+  const icons={};for(const [k,f] of iconJobs){const u=await umIconURL(f);if(u)icons[k]=u}
+  return {...info,techs,over,icons};
+}
+
+const ATOMIDX=new Map();ATOMS.forEach((a,i)=>ATOMIDX.set(a[0]+'\u0001'+a[1].toLowerCase(),i));
+function umAtom(kind,label){const key=kind+'\u0001'+label.toLowerCase();let i=ATOMIDX.get(key);if(i==null){i=ATOMS.length;ATOMS.push([kind,label]);ATOMIDX.set(key,i)}return i}
+function umRT(n){if(!Array.isArray(n))return n;
+  if(n[0]==='A')return ['a',umAtom(n[1],n[2])];
+  if(n[0]==='T'){const j=KEYIDX[n[1]];return j!=null?['t',j]:['a',umAtom('other','Has technology: '+n[1])]}
+  if(n[0]==='n'||n[0]==='tc'||n[0]==='tb')return n;
+  return n.map((c,i)=>i===0?c:umRT(c))}
+function umRec(r){/* runtime fields for a stored tech record */
+  return {w:r.w,m:(r.m||[]).map(([a,f,c])=>[a,f,umRT(c)]),pot:(r.pot||[]).map(umRT)}}
+function umCode(m){return 'u'+(m.id||m.name.replace(/[^A-Za-z0-9]/g,'').slice(0,12).toLowerCase())}
+function umShort(n){n=n.replace(/\s*\([^)]*\)\s*$/,'').trim();return n.length>22?n.slice(0,21)+'…':n}
+function umInject(){
+  const added=[];
+  for(const m of UM)if(!EGROUPS.some(g=>g[0]==='other@'+m.code))EGROUPS.push(['other@'+m.code,umShort(m.name)+' situations']);
+  OTHSRC=null;
+  for(const m of UM){MODNAMES[m.code]=umShort(m.name);MODFULL[m.code]=m.name;
+    for(const r of m.techs){if(KEYIDX[r.k]!=null)continue;const i=T.length;
+      const rt=umRec(r);
+      const x={i,n:r.n,n0:r.n,a:r.a,c:r.c,t:r.t,cost:r.cost,p:[],r:r.r,d:r.d,s:r.s,u:'',mod:m.code,k:r.k,only:'',any:[],pa:[],w:rt.w,m:rt.m,pot:rt.pot,sw:null,alln:'',_r:r};
+      T.push(x);KEYIDX[r.k]=i;added.push(x)}}
+  for(const x of added){const r=x._r;const miss=[];
+    x.p=r.p.map(k=>{const j=KEYIDX[k];if(j==null)miss.push(k);return j}).filter(j=>j!=null);
+    x.pa=r.pa.map(g=>g.map(k=>KEYIDX[k]).filter(j=>j!=null)).filter(g=>g.length);
+    const parts=[];if(x.pot.length)parts.push(x.pot.map(q=>lbl(q)).join(' + '));
+    if(miss.length){parts.push('also needs '+miss.map(titleKey).join(', ')+' (from a mod that isn’t loaded)');x.pot=x.pot.concat([['not',['and']]])}
+    x.only=parts.join(' · ');
+    delete x._r}
+}
+function umApplyOver(mods){
+  const touched=new Set();
+  for(const m of UM)for(const r of m.over||[]){const j=KEYIDX[r.k];if(j==null)continue;const x=T[j];
+    if(!x.umBase)x.umBase={n0:x.n0,t:x.t,cost:x.cost,p:x.p,pa:x.pa,r:x.r,d:x.d,w:x.w,m:x.m,pot:x.pot,only:x.only};touched.add(x)}
+  for(const x of touched)Object.assign(x,x.umBase);
+  for(const m of UM){if(mods[m.code]===false)continue;
+    for(const r of m.over||[]){const j=KEYIDX[r.k];if(j==null)continue;const x=T[j];
+      x.n0=r.n||x.n0;x.t=r.t;x.cost=r.cost;x.p=r.p.map(k=>KEYIDX[k]).filter(q=>q!=null);x.pa=r.pa.map(g=>g.map(k=>KEYIDX[k]).filter(q=>q!=null)).filter(g=>g.length);x.r=r.r;x.d=r.d;
+      if(r.v===2){if(!r._rt)r._rt=umRec(r);x.w=r._rt.w;x.m=r._rt.m;x.pot=r._rt.pot;x.only=x.pot.map(q=>lbl(q)).join(' + ')}}}}
+async function umHandle(fileList){
+  const files=[...fileList];if(!files.length)return;
+  UMMSG=`Reading ${files.length.toLocaleString()} files…`;renderEmpire();
+  const groups=umGroup(files);const notes=[];let addedCount=0;const BUILT_SEEN=[];
+  const dl=files.find(f=>/(^|\/)dlc_load\.json$/i.test(f.webkitRelativePath||f.name));
+  /* first pass: shared values and text from every picked folder (mods often borrow each other's and the game's) */
+  for(const [root,list] of groups){
+    for(const x of list){
+      if(x.rel.endsWith('.txt')&&!/compat|overwrite|placeholder/.test(x.rel)&&(x.rel.startsWith('common/scripted_variables/')||/^common\/technology\/[^/]+\.txt$/.test(x.rel))){const t=(await x.f.text()).replace(/#[^\n]*/g,'');for(const m of t.matchAll(/^\s*(@[A-Za-z0-9_]+)\s*=\s*([^\s{}]+)/gm))if(!(m[1] in UMPOOL.V))UMPOOL.V[m[1]]=m[2]}
+      else if(/^gfx\/.*\.(dds|png)$/.test(x.rel)){const b=x.rel.split('/').pop().replace(/\.(dds|png)$/,'');if(!(b in UMPOOL.IMG))UMPOOL.IMG[b]=x.f}
+      else if(x.rel.endsWith('.txt')&&x.rel.startsWith('common/scripted_triggers/')){try{for(const [k,,b] of pdxParse(await x.f.text()))if(k&&Array.isArray(b)&&!(k in UMPOOL.ST))UMPOOL.ST[k]=b}catch(_){}}
+      else if(x.rel.endsWith('.yml')&&/english/.test(x.rel)&&x.f.size<4e6){const t=await x.f.text();if(!/(^|\n)\s*[A-Za-z0-9_.\-]+:\d*\s*"/.test(t))continue;for(const line of t.split('\n')){const m=line.match(/^\s*([A-Za-z0-9_.\-]+):\d*\s*"(.*)"\s*(#.*)?$/);if(m&&!(m[1] in UMPOOL.L))UMPOOL.L[m[1]]=m[2]}}
+    }
+  }
+  for(const [root,list] of groups){
+    let m;try{m=await umReadMod(root,list)}catch(e){notes.push(`Couldn't read ${root||'that folder'}`);continue}
+    if(m.game){notes.push(m.gv?(m.gv===DATA_GAMEVER?`Game folder ${m.gv} matches the tracker's data`:`Game folder is ${m.gv}; the tracker's vanilla data is from ${DATA_GAMEVER}, so a few techs may differ`):'Game folder found');continue}
+    if(m.builtin){BUILT_SEEN.push(BUILTIN[m.id]);notes.push(`${BUILTIN[m.id]} is already built in`);continue}
+    if(!m.techs.length&&!(m.over||[]).length)continue;
+    const code=umCode(m);const rec={code,id:m.id,name:m.name,ver:m.ver,sv:m.sv,thumb:m.thumb||'',techs:m.techs,over:m.over,added:Date.now()};
+    const old=UM.findIndex(u=>u.code===code);if(old>=0)UM[old]=rec;else UM.push(rec);
+    const ic=m.icons||{};UMICONS[code]=ic;const nIc=Object.keys(ic).length;if(nIc)await UMIDB.put(code,ic);
+    addedCount++;notes.unshift(`Added ${umShort(m.name)}: ${m.techs.length} new tech${m.techs.length===1?'':'s'}${m.over.length?`, changes ${m.over.length} existing`:''}${nIc?`, ${nIc} icon${nIc===1?'':'s'}`:''}`);
+  }
+  if(!addedCount&&!notes.length&&!dl)notes.push('No techs found. Pick a mod folder, or your Steam Workshop folder for Stellaris (steamapps/workshop/content/281990).');
+  if(addedCount&&!umSave())notes.push('Couldn’t save the mods in this browser (storage full), so they’ll be gone after a reload');
+  if(dl){try{const j=JSON.parse(await dl.text());const ids=(j.enabled_mods||[]).map(p=>(String(p).match(/(\d+)\.mod$/)||String(p).match(/(\d{3,})/)||[])[1]).filter(Boolean);
+      const E=emp();const pos=id=>{const i=ids.indexOf(id);return i<0?1e9:i};
+      E.mods.a=ids.includes('1419304439');E.mods.g=ids.includes('1121692237');
+      for(const u of UM)E.mods[u.code]=!u.id||ids.includes(u.id);
+      UM.sort((x,y)=>pos(x.id)-pos(y.id));umSave();
+      E.launch={n:ids.length,t:Date.now()};
+      notes.push(`Read your launcher's mod list: ${ids.length} enabled mod${ids.length===1?'':'s'}; switched mods on or off and set the load order to match`)}
+    catch(_){notes.push("Couldn't read dlc_load.json")}}
+  if(addedCount||BUILT_SEEN.length)impSet({ws:{t:Date.now(),n:addedCount,b:BUILT_SEEN.join(', ')}});
+  commit();umInject();umApplyIcons();loadDone();UMMSG=notes.join(' · ');renderAll();
+}
+document.addEventListener('change',e=>{if(e.target&&(e.target.id==='umIn'||e.target.id==='umIn2')){const fl=[...e.target.files];e.target.value='';umHandle(fl).catch(()=>{UMMSG='Something went wrong reading those files';renderEmpire()})}});
+EMPHOST.addEventListener('click',e=>{const mv=e.target.closest('[data-ummv]');if(!mv)return;const [code,d]=mv.dataset.ummv.split(':');const i=UM.findIndex(u=>u.code===code),j=i+(+d);if(i<0||j<0||j>=UM.length)return;[UM[i],UM[j]]=[UM[j],UM[i]];umSave();UMMSG='Load order changed: mods lower in the list win when two change the same tech';commit();renderAll()});
+EMPHOST.addEventListener('click',e=>{const b=e.target.closest('[data-umrm]');if(!b)return;const code=b.dataset.umrm;UM=UM.filter(u=>u.code!==code);umSave();UMIDB.del(code);commit();location.reload()});
+umLoad();umInject();umLoadIcons();
+/* ---------- save-file import ---------- */
+function zipEntries(buf){const dv=new DataView(buf);let e=buf.byteLength-22;while(e>=0&&dv.getUint32(e,true)!==0x06054b50)e--;if(e<0)throw new Error('notzip');
+  const n=dv.getUint16(e+10,true),cd=dv.getUint32(e+16,true),out={};let p=cd;
+  for(let i=0;i<n;i++){if(dv.getUint32(p,true)!==0x02014b50)break;const method=dv.getUint16(p+10,true),csize=dv.getUint32(p+20,true),fnl=dv.getUint16(p+28,true),exl=dv.getUint16(p+30,true),cml=dv.getUint16(p+32,true),loff=dv.getUint32(p+42,true);
+    out[new TextDecoder().decode(new Uint8Array(buf,p+46,fnl))]={method,csize,loff};p+=46+fnl+exl+cml}
+  return out}
+async function zipRead(buf,ent){const dv=new DataView(buf),p=ent.loff;const data=new Uint8Array(buf,p+30+dv.getUint16(p+26,true)+dv.getUint16(p+28,true),ent.csize);
+  if(ent.method===0)return data;if(ent.method!==8)throw new Error('method');
+  if(typeof DecompressionStream==='undefined')throw new Error('nodecomp');
+  return new Uint8Array(await new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer())}
+function braceEnd(s,i){let d=0;for(;i<s.length;i++){const c=s.charCodeAt(i);if(c===123)d++;else if(c===125){d--;if(!d)return i}else if(c===34){i++;while(i<s.length&&s.charCodeAt(i)!==34)i++}}return -1}
+function blockOf(s,key,from=0,to=s.length){const k=s.indexOf(key,from);if(k<0||k>=to)return null;const b=s.indexOf('{',k);if(b<0)return null;const e=braceEnd(s,b);return e<0?null:s.slice(b+1,e)}
+const quoted=t=>t?[...t.matchAll(/"([^"]*)"/g)].map(m=>m[1]):[];
+async function svParse(file){
+  const buf=await file.arrayBuffer();let ents;try{ents=zipEntries(buf)}catch(e){throw new Error('That isn’t a Stellaris save file (.sav)')}
+  if(!ents.gamestate)throw new Error('That save has no game state inside');
+  const meta=ents.meta?new TextDecoder().decode(await zipRead(buf,ents.meta)):'';
+  const gsBytes=await zipRead(buf,ents.gamestate);
+  const head=new TextDecoder().decode(gsBytes.subarray(0,64));
+  if(!/^\s*version\s*=/.test(head))throw new Error('This looks like an Ironman save. Those are stored in a compressed binary format the tracker can’t read yet; a normal (non-Ironman) save works');
+  const s=new TextDecoder().decode(gsBytes);
+  const pm=s.match(/\nplayer=\s*\{[\s\S]*?country=(\d+)/);const id=pm?pm[1]:'0';
+  const cs=s.indexOf('\ncountry=\n{');if(cs<0)throw new Error('Couldn’t find the empires in that save');
+  const ck=s.indexOf('\n\t'+id+'=\n\t{',cs);if(ck<0)throw new Error('Couldn’t find your empire in that save');
+  const cb0=s.indexOf('{',ck);const cb=s.slice(cb0+1,braceEnd(s,cb0));
+  const r={id,date:(s.match(/\ndate="([^"]+)"/)||[])[1]||'',name:(meta.match(/\nname="([^"]*)"/)||meta.match(/^name="([^"]*)"/m)||[])[1]||'',ver:(meta.match(/version="([^"]*)"/)||[])[1]||''};
+  r.dlcs=quoted(blockOf(meta,'required_dlcs'));r.mods=quoted(blockOf(meta,'\nmods'));
+  const ts=blockOf(cb,'\n\t\ttech_status=')||'';
+  r.techs=[...ts.matchAll(/technology="([^"]+)"\s*\n\s*level=(\d+)/g)].map(m=>m[1]);
+  const alt=blockOf(ts,'alternatives=')||'';r.alts={p:quoted(blockOf(alt,'physics=')),s:quoted(blockOf(alt,'society=')),e:quoted(blockOf(alt,'engineering='))};
+  r.ethics=quoted(blockOf(cb,'\n\t\tethos='));
+  const gov=blockOf(cb,'\n\t\tgovernment=')||'';r.auth=(gov.match(/authority="([^"]+)"/)||[])[1]||'';r.civics=quoted(blockOf(gov,'civics='));r.origin=(gov.match(/origin="([^"]+)"/)||[])[1]||'';
+  r.trads=quoted(blockOf(cb,'\n\t\ttraditions='));r.perks=quoted(blockOf(cb,'\n\t\tascension_perks='));r.policies=quoted(blockOf(cb,'\n\t\tpolicy_flags='));
+  r.flags=[...(blockOf(cb,'\n\t\tflags=')||'').matchAll(/\n\t\t\t([A-Za-z0-9_.@:\-]+)=/g)].map(m=>m[1]);
+  r.gflags=[...(blockOf(s,'\nflags=\n{')||'').matchAll(/\n\t([A-Za-z0-9_.@:\-]+)=/g)].map(m=>m[1]);
+  r.mods2=[...(blockOf(cb,'\n\t\ttimed_modifier=')||'').matchAll(/modifier="([^"]+)"/g)].map(m=>m[1]);
+  r.planets=((blockOf(cb,'\n\t\towned_planets=')||'').match(/\d+/g)||[]).length;
+  r.storms=+((cb.match(/\n\t\tnum_cosmic_storms_encountered=(\d+)/)||[])[1]||0);
+  r.contacts=((blockOf(cb,'\n\t\trelations_manager=')||'').match(/communications=yes/g)||[]).length;
+  /* starbase levels: our fleets → starbase stations → levels */
+  try{const owned=new Set(((blockOf(cb,'owned_fleets=')||'').match(/fleet=(\d+)/g)||[]).map(x=>x.slice(6)));
+    const fs=s.indexOf('\nfleet=\n{');const fe=fs<0?-1:s.indexOf('\n}',fs);const stations=new Set();
+    if(fs>=0){const sec=s.slice(fs,fe);const re=/\n\t(\d+)=\n\t\{/g;let m,prev=null;const starts=[];while((m=re.exec(sec)))starts.push([m[1],m.index]);
+      for(let i=0;i<starts.length;i++){if(!owned.has(starts[i][0]))continue;const ch=sec.slice(starts[i][1],i+1<starts.length?starts[i+1][1]:sec.length);
+        if(ch.includes('ship_class=shipclass_starbase')){const q=ch.match(/ships=\s*\{\s*(\d+)/);if(q)stations.add(q[1])}}}
+    const ss=s.indexOf('\nstarbase_mgr=');const sbs=ss<0?'':blockOf(s,'starbases=',ss)||'';const lv={};
+    for(const part of sbs.split(/\n\t\t\d+=\n\t\t\{/)){const L=part.match(/level="starbase_level_([a-z]+)"/),st=part.match(/station=(\d+)/);if(L&&st&&stations.has(st[1]))lv[L[1]]=(lv[L[1]]||0)+1}
+    r.sb=lv}catch(e){r.sb=null}
+  return r}
+const ETHLBL=k=>{const e=k.replace(/^ethic_/,'');if(e==='gestalt_consciousness')return null;return e.startsWith('fanatic_')?'Fanatic '+title2(e.slice(8)):title2(e)};
+function svApply(r){
+  const c=S.camps[S.cur];const E=emp();const keyOn=(k,v)=>{E.on[k]=v};
+  /* research */
+  const known=r.techs.filter(k=>KEYIDX[k]!=null);done=new Set(known.map(k=>KEYIDX[k]));XKEYS=r.techs.filter(k=>KEYIDX[k]==null);
+  /* numbers */
+  const yr=parseInt(r.date);if(yr)E.num.year=yr;E.num.planets=r.planets;E.num.storms=r.storms;E.num.contacts=r.contacts;
+  if(r.sb){E.num.starport=r.sb.starport||0;E.num.starhold=r.sb.starhold||0;E.num.fortress=r.sb.starfortress||0;E.num.citadel=r.sb.citadel||0}
+  E.auth={auth_corporate:'Corporate',auth_hive_mind:'Hive Mind',auth_machine_intelligence:'Machine Intelligence'}[r.auth]||'Standard';
+  const clear=pre=>{for(const k in E.on)if(k.startsWith(pre))delete E.on[k]};
+  clear('ethic:');for(const e of r.ethics){const l=ETHLBL(e);if(l)keyOn('ethic:'+l,true)}
+  clear('civic:');for(const cv of r.civics)keyOn('civic:'+(KEYLBL[cv]||title2(cv.replace(/^civic_/,''))),true);
+  clear('origin:');if(r.origin)keyOn('origin:'+(KEYLBL[r.origin]||title2(r.origin.replace(/^origin_/,''))),true);
+  clear('trad:');for(const t of r.trads){const m=t.match(/^tr_(.+)_adopt$/);if(!m)continue;keyOn('trad:'+(KEYLBL['tradition_'+m[1]]||KEYLBL[t]||title2(m[1])),true)}
+  clear('perk:');for(const p of r.perks)keyOn('perk:'+(KEYLBL[p]||title2(p.replace(/^ap_/,''))),true);
+  /* flags, modifiers, policies: only those that matter to some tech */
+  const setKnown=(pre,list)=>{for(const k in E.on)if(k.startsWith('other:'+pre))E.on[k]=false;for(const f of list){const lab=pre+f;if(ATOMIDX.has('other\u0001'+lab.toLowerCase())){const i=ATOMIDX.get('other\u0001'+lab.toLowerCase());E.on['other:'+ATOMS[i][1]]=true}}};
+  setKnown('Event flag: ',r.flags);setKnown('Global flag: ',r.gflags);setKnown('Has modifier: ',r.mods2);setKnown('Policy: ',r.policies);
+  /* DLC and mods */
+  const norm=x=>x.toLowerCase().replace(/ (story|species) pack$/,'').replace(/[^a-z0-9]/g,'');const have=new Set(r.dlcs.map(norm));
+  const dlcs=[...new Set(ATOMS.filter(a=>a[0]==='dlc').map(a=>a[1]))];E.dlcOff=dlcs.filter(l=>!have.has(norm(l))&&!r.dlcs.some(d=>norm(d).startsWith(norm(l))||norm(l).startsWith(norm(d))));
+  if(r.mods.length){E.mods.a=r.mods.some(m=>/ancient cache of technologies/i.test(m));E.mods.g=r.mods.some(m=>/gigastructural/i.test(m));for(const u of UM)E.mods[u.code]=r.mods.some(m=>m===u.name)}
+  /* options per area: the save's current research options show how many you get */
+  const nAlt=Math.max(r.alts.p.length,r.alts.s.length,r.alts.e.length);const sel=KEYIDX['tech_self_aware_logic'];
+  if(nAlt)E.num.opts=Math.max(1,nAlt-(sel!=null&&done.has(sel)?1:0));
+  c.save={name:r.name,date:r.date,ver:r.ver,alts:r.alts};
+  commit();c.save.dk0=c.dk;commit();
+  return {known:known.length,unknown:XKEYS.length}}
+function svFresh(){const c=S.camps[S.cur];return c&&c.save&&c.save.dk0===c.dk?c.save:null}
+function svOffered(x){const sv=svFresh();return !!(sv&&sv.alts&&(sv.alts[x.a]||[]).includes(x.k))}
+let SVMSG='';
+async function svHandle(f){if(!f)return;SVMSG='Reading '+f.name+'…';renderSaveNote();
+  try{const r=await svParse(f);const n=svApply(r);
+    SVMSG=`Loaded ${r.name||'your save'} (${r.date}): ${n.known} researched techs${n.unknown?` (+${n.unknown} from mods not loaded)`:''}, ethics, civics, origin, traditions, perks, planets, starbases, flags and options per area`;
+    loadDone();renderAll();renderSaveNote()}
+  catch(e){SVMSG=e&&e.message?e.message:'Couldn’t read that save';renderSaveNote()}}
+function renderSaveNote(){if(typeof renderImports==='function')renderImports();const el=$('svNote');if(!el)return;const c=S.camps[S.cur]||{};const sv=c.save;let h='';
+  if(SVMSG)h+=`<span>${esc(SVMSG)}</span>`;
+  if(sv)h+=` <span class="svstate ${svFresh()?'ok':''}">${svFresh()?`Cards marked “On offer” are your current research options in the save (${esc(sv.date)})`:`Filled from your save (${esc(sv.date)}); research has changed since, so the “On offer” marks are hidden`}</span>`;
+  el.innerHTML=h;el.hidden=!h}
+
+$('svIn').addEventListener('change',e=>{const f=e.target.files[0];svHandle(f).finally(()=>{e.target.value=''})});
+/* ---------- credits for mods you add ---------- */
+async function umThumb(list,pic){
+  try{const f=(pic&&list.find(x=>x.rel.toLowerCase()===pic.toLowerCase()))||list.find(x=>/^thumbnail\.(png|jpe?g)$/i.test(x.rel));
+    if(!f||f.f.size>8e6)return '';
+    const bm=await createImageBitmap(f.f);const W=360,sc=Math.min(1,W/bm.width),c=document.createElement('canvas');
+    c.width=Math.round(bm.width*sc);c.height=Math.round(bm.height*sc);c.getContext('2d').drawImage(bm,0,0,c.width,c.height);bm.close&&bm.close();
+    let u=c.toDataURL('image/webp',0.75);if(!u.startsWith('data:image/webp'))u=c.toDataURL('image/jpeg',0.75);return u.length<90000?u:''}catch(_){return ''}}
+function renderUMCredits(){
+  const g=document.querySelector('#credits .cgrid');if(!g)return;
+  g.querySelectorAll('.umcred').forEach(e=>e.remove());if(!UM.length)return;
+  const anchor=[...g.children].find(a=>/^Game$/i.test((a.querySelector('.eyebrow')||{}).textContent||''))||null;
+  for(const u of UM){
+    const a=document.createElement('article');a.className='ccard umcred';
+    const ws=u.id&&/^\d+$/.test(u.id)?`https://steamcommunity.com/sharedfiles/filedetails/?id=${u.id}`:'';
+    a.innerHTML=`${u.thumb?`<img class="umthumb" src="${u.thumb}" alt="" loading="lazy">`:''}<p class="eyebrow">Mod you added</p><h3>${esc(u.name)}</h3>
+      <p>${u.ver?`Version ${esc(u.ver)}. `:''}Made by its author${ws?'s; see the Workshop page for who made it and how to support them':'s'}. ${u.techs.length} tech${u.techs.length===1?'':'s'}${(u.over||[]).length?` and changes to ${u.over.length} more`:''} read from your copy. Only you see this card.</p>
+      ${ws?`<div class="links"><a class="pill raised" href="${ws}" target="_blank" rel="noopener">Steam Workshop</a></div>`:'<p class="umhelp" style="margin:0">Local mod, no Workshop page.</p>'}`;
+    g.insertBefore(a,anchor);
+  }
+}
+function renderModLabels(){const E=emp(),um=UM.filter(u=>E.mods[u.code]!==false);
+  const on=[E.mods.a!==false&&'ACOT',E.mods.g!==false&&'Giga',...um.map(u=>umShort(u.name))].filter(Boolean);
+  const l=$('modLabel');if(l){const MAX=4,shown=on.length>MAX?[...on.slice(0,MAX-1),`${on.length-MAX+1} more mods`]:on;
+    l.textContent='Tech tracker · Vanilla'+(shown.length?' · '+shown.join(' + '):'');l.title=on.length?'Mods in use: '+[E.mods.a!==false&&'Ancient Cache of Technologies',E.mods.g!==false&&'Gigastructural Engineering & More',...um.map(u=>u.name)].filter(Boolean).join(', '):'Vanilla only'}
+  const a=$('dvA'),g=$('dvG');if(a)a.hidden=E.mods.a===false;if(g)g.hidden=E.mods.g===false;
+  const dv=$('dvU');if(dv)dv.innerHTML=um.map(u=>` · <b>${esc(u.name)}</b> <span>(${u.ver?'v'+esc(u.ver)+', ':''}your copy)</span>`).join('')}
+/* ---------- import check marks ---------- */
+const IMP_LS=LS+'-imports';
+function impGet(){try{return JSON.parse(localStorage.getItem(IMP_LS)||'{}')||{}}catch(_){return {}}}
+function impSet(o){try{localStorage.setItem(IMP_LS,JSON.stringify(Object.assign(impGet(),o)))}catch(_){}}
+function renderImports(){
+  const set=(k,ok,txt,warn)=>{const r=$('imp_'+k),s=$('st_'+k);if(!r||!s)return;r.classList.toggle('ok',!!ok);r.classList.toggle('warn',!ok&&!!warn);s.textContent=txt;const c=$('ck_'+k);if(c)c.title=ok?'Loaded':'Not loaded yet'};
+  const c=S.camps[S.cur]||{},sv=c.save;
+  if(sv)set('sv',true,`Loaded ${sv.name||'your save'}${sv.date?' · '+sv.date:''}${sv.ver?' · game '+sv.ver:''}${svFresh()?'':' · you’ve ticked techs since'}`);
+  else set('sv',false,'Not loaded for this campaign yet');
+  const I=impGet(),E=emp(),on=UM.filter(u=>E.mods[u.code]!==false);
+  const nm=a=>a.slice(0,3).map(u=>umShort(u.name)).join(', ')+(a.length>3?` and ${a.length-3} more`:'');
+  if(UM.length)set('ws',true,`${UM.length} mod${UM.length===1?'':'s'} added (${nm(UM)})${on.length<UM.length?` · ${on.length} switched on in this campaign`:''}`);
+  else if(I.ws&&!I.ws.n)set('ws',true,`Workshop folder read · ${I.ws.b?`only built-in mods found (${I.ws.b})`:'no extra techs found'}`);
+  else set('ws',false,'No mods added yet');
+  const L=E.launch;
+  if(L)set('ln',true,`Matched your launcher (${L.n} mod${L.n===1?'':'s'} enabled there) · ACOT ${E.mods.a?'on':'off'} · Giga ${E.mods.g?'on':'off'}${UM.length?` · ${on.length} of ${UM.length} added mod${UM.length===1?'':'s'} on`:''}`);
+  else set('ln',false,UM.length?'Not matched yet: mods are on in the order you added them':'Not matched yet');
+}
 /* ---------- boot ---------- */
 adopt(lsGet());
 renderAll();
 status('Saved in this browser');
-(async()=>{
-  try{
-    if(!window.claude||!window.claude.use)return;
-    const [db,user]=await Promise.all([claude.use('db'),claude.use('user')]);
-    if(!db||!user)return;
-    const uid=await user.id();
-    if(!uid)return;
-    docRef=db.doc('data/users/'+uid+'/tracker');
-    const snap=await docRef.get();
-    const remote=snap.exists?snap.data():null;
-    if(remote&&remote.state&&(remote.updatedAt||0)>(S.updatedAt||0)){
-      adopt(JSON.parse(remote.state));lsSet();renderAll();
-      status('Loaded from your account');
-    }else if(S.updatedAt){await pushRemote()}
-    else status('Progress saves to your account');
-  }catch(e){docRef=null;status('Saved in this browser')}
-})();
 })();
 </script>
 
